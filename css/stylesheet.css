@@ -15,7 +15,7 @@ h1{
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 25px;
-    background-color: #FFFFFF;
+    background-color: rgb(198, 197, 197);
 }
 
 .column {
@@ -44,7 +44,7 @@ h1{
 body{
     color: #000000;
     margin: auto;
-    background-color: #ade757;
+    background-color: #FFFFFF;
 }
 
 .body_container{
@@ -68,8 +68,7 @@ body{
 .bottom_container{
     margin-top: 20px;  	    
     padding: 20px;
-    color: #00000; /* Ghost White */
-    background-color: #FFFFFF;
+    background-color: rgb(229, 255, 215);
 }
 
 .footer_container{
