@@ -1,0 +1,80 @@
+/*trash tracker css*/
+h1{
+    text-align: center;
+}
+
+.img_center{
+    text-align: center;
+}
+
+.top_body{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    background-color: #FFFFFF;
+}
+
+.column {
+    float: left;
+    height: auto; /* Should be removed. Only for demonstration */
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.left {
+  width: 30%;
+  border-radius: 25px;
+}
+
+.right {
+  width: 70%;
+  border-radius: 25px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body{
+    color: #000000;
+    margin: auto;
+    background-color: #ade757;
+}
+
+.body_container{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;  	    
+    padding: 10px;  
+    border-radius: 20px;
+    background-color: #A9A9A9;
+}
+
+.inner_container{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;  	    
+    padding: 10px;  
+    border-radius: 20px;
+    background-color: #FFFFFF;
+}
+
+.bottom_container{
+    margin-top: 20px;  	    
+    padding: 20px;
+    color: #00000; /* Ghost White */
+    background-color: #FFFFFF;
+}
+
+.footer_container{
+   margin-top: 5px;  	    
+   width: auto;
+   height: auto;
+   background-color: #000000; 
+}
