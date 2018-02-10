@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Trash Tracker</title>
-        <link rel="icon" href="images/trashTracker.png"/>
-        <!--BOOTSTRAP-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!--CSS-->
-        <link rel="stylesheet" href="css/stylesheet.css" >
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Trash Tracker</title>
+    <link rel="icon" href="images/trashTracker.png"/>
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/stylesheet.css" >
+    <!--CSS MEDIA QUERY-->
+    <link rel="stylesheet" href="css/stylesheet2.css">
 </head>
 
 <body> <!--START OF BODY-->     
@@ -36,101 +38,109 @@
   </nav><!--END OF NAV-->
 </header><!--END OF HEADER-->
 
-<div class="top_body">
- <div class="row">
-<div class="column left" style="background-color:#507ed4;">  
-     <p>Address <br/>
-      Street <br/>
-      City <br/>
-      State <br/>
-      Zipcode <br/>
-     </p>     
- </div>
-<div class="column right" style="background-color:#ade800;">
-    <p class="img_center">
-     <img src="images/waste.png" width="100px"> 
-     <img src="images/recycle.png" width="90px"> 
-     <img src="images/greenwaste.png" width="90px">    
-    </p>     
- </div>
-</div>
-</div>
 
-<div class="body_container">
- <h3>Historical Comparison</h3>
-    <div class="inner_container" name="normComparison">  
-    <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Weekly View</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Monthly</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Year View</a>
-            </li>
-          </ul>
-    <p>
-        <ul>
-            <li>Bar graph (weekly view)</li>
-            <li>Line graph (monthly)</li>
-            <li>Clickables to show or hide</li>
-        </ul>
-    </p>
- </div>
-</div>
-
-<div class="body_container">
- <h3>Norm Comparison</h3>
-    <div class="inner_container" name="normComparison">  
-     <div class="row">
-      <div class="column left" style="background-color:#94968e;"> 
-      <p class="img_center"><img src="images/thumbsUp.png" width="125px"></p>
-      </div>
-
-    <div class="column right" style="background-color:#ade800;">
-            <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">Closet Neighbors</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Neighborhood</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">City</a>
-                    </li>
-                  </ul>
-        <p>
-        <ul>
-            <li>Total waste and recycle compared to your neighbors.</li>
-            <li>Load data next to them</li>
-            <li>City comparison</li>
-        </ul>
-    </p>
-    </div>  
+<!--#1-->
+<div class="container" style="background-color:rgb(165, 165, 165);">
+ <h3>GENERAL INFO</h3>    
+  <div class="row">
+    <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+    <p>Address <br/>
+        Street <br/>
+        City <br/>
+        State <br/>
+        Zipcode <br/>
+    </p>    
+    </div>
+    <div class="col-sm-8" style="background-color:rgb(53, 97, 133); margin: 5px;">
+     <p class="img_center">
+        <img src="images/waste.png" width="100px"> 
+        <img src="images/recycle.png" width="90px"> 
+        <img src="images/greenwaste.png" width="90px">    
+     </p>  
   </div>
  </div>
 </div>
 
-<div class="body_container">
- <h3>Recycle Game</h3>
-    <div class="inner_container" name="normComparison">  
+<!--#2-->
+<div class="container" style="background-color:#FFFFFF;">
+ <h3>Historical Comparison</h3>
+ <div class="row">
+  <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+    <ul class="nav nav-tabs">
+     <li class="nav-item">
+      <a class="nav-link active" href="#">Weekly View</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#">Monthly</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#">Year View</a>
+     </li>
+    </ul>
     <p>
-        <ul>
-            <li>Be able to go back see what the other items </li>
-            <li>Each week update with new items, click and drag into the bin.</li>
-            <li>Correct fill one star</li>
-        </ul>
-    </p>    
- </div>
+     <ul>
+      <li>Bar graph (weekly view)</li>
+      <li>Line graph (monthly)</li>
+      <li>Clickables to show or hide</li>
+    </ul>
+   </p>
+  </div>
+ </div>   
 </div>
 
-
-<div class="bottom_container">        
-    <div class="footer">
-        <p id="social_media_links">Footer Goes Here</p>
+<!--#3-->
+<div class="container" style="background-color:rgb(165, 165, 165);">
+  <h3>Historical Comparison</h3>
+  <div class="row">      
+   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+    <p class="img_center"><img src="images/thumbsUp.png" class="resize1"></p>
+   </div>
+   <div class="col-sm-8" style="background-color:rgb(39, 103, 155); margin: 5px;">
+    <ul class="nav nav-tabs">
+     <li class="nav-item">
+       <a class="nav-link active" href="#">Weekly View</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">Monthly</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">Year View</a>
+     </li>
+    </ul>
+    <p>
+    <ul>
+       <li>Bar graph (weekly view)</li>
+       <li>Line graph (monthly)</li>
+       <li>Clickables to show or hide</li>
+     </ul>
+    </p>
     </div>
+  </div>
 </div>
+
+<!--#4-->
+<div class="container" style="background-color:#FFFFFF;">
+  <h3>Recycle Game</h3>
+   <div class="row">
+   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+    <p>
+      <ul>
+        <li>Be able to go back see what the other items </li>
+        <li>Each week update with new items, click and drag into the bin.</li>
+        <li>Correct fill one star</li>
+      </ul>
+    </p>   
+  </div>
+ </div> 
+</div>  
+
+<!--FOOTER CONTAINER-->
+<footer>
+        FOOTER
+</footer>
+        <!--.FOOTER CONTAINER-->
+
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

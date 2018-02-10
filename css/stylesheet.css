@@ -1,79 +1,63 @@
-/*trash tracker css*/
-h1{
-    text-align: center;
+/*trashtracker vy stylesheet*/
+body{
+    color: #000000;
+    margin: auto;
+    background-color: rgb(0, 0, 0);
+}
+
+nav{
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color:rgba(255, 255, 255, 0.527) ;
+
+}
+.container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+.col{
+    border-radius: 10px;
+}
+
+.col-sm{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.col-sm-8{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+footer{
+
+    padding: 10px;
+    background-color:rgba(255, 255, 255, 0.527) ;
+}
+
+.resize1{
+    width: ;
 }
 
 .img_center{
     text-align: center;
 }
 
-.top_body{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10px;
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 25px;
-    background-color: rgb(198, 197, 197);
-}
 
-.column {
-    float: left;
-    height: auto; /* Should be removed. Only for demonstration */
-    padding: 10px;
-    border-radius: 25px;
-}
+@media screen and (min-width: 500px) {
+    .col-sm{
+       width: 100%;
+       height: auto; overflow: 
+       hidden; // clearing 
+    }
+ }
 
-.left {
-  width: 30%;
-  border-radius: 25px;
-}
-
-.right {
-  width: 70%;
-  border-radius: 25px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-body{
-    color: #000000;
-    margin: auto;
-    background-color: #FFFFFF;
-}
-
-.body_container{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10px;  	    
-    padding: 10px;  
-    border-radius: 20px;
-    background-color: #A9A9A9;
-}
-
-.inner_container{
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;  	    
-    padding: 10px;  
-    border-radius: 20px;
-    background-color: #FFFFFF;
-}
-
-.bottom_container{
-    margin-top: 20px;  	    
-    padding: 20px;
-    background-color: rgb(229, 255, 215);
-}
-
-.footer_container{
-   margin-top: 5px;  	    
-   width: auto;
-   height: auto;
-   background-color: #000000; 
-}
+ /*IMAGE SCALE*/
+ @media screen and (min-width: 500px) and (max-width: 800px) {
+    .resize1{
+        width:80px;
+    }
+ }
