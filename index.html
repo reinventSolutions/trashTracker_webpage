@@ -15,32 +15,44 @@
 
 <body> <!--START OF BODY-->     
  <header> <!--START OF HEADER-->
-  <!--START OF NAV-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!--LOGO-->
+  <!--START OF NAV
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top";>
     <a class="navbar-brand" href="">
         <img src="images/trashTracker.png" width="40" height="auto"/> 
     </a>    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
     </button>
-    <!--START NAV BAR-->
+    <!--START NAV BAR
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
             <a link="/logout.html">Profile</a>
+            <a href="#historical">History</a>
         </li>
     </ul>
     <a href="#" data-toggle="modal" data-target="#logoutModal"> 
         <button type="button" class="btn btn-outline-success">Logout</button>
     </a>
     </div>
+-->
+    <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+              </div>
+            </div>
+    <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
   </nav><!--END OF NAV-->
 </header><!--END OF HEADER-->
 
 
 <!--#1-->
-<div class="container" style="background-color:rgb(165, 165, 165);">
+<div class="container" style="background-color:#b4b4b4; margin-top:100px;">
  <h3>GENERAL INFO</h3>    
   <div class="row">
     <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
@@ -51,7 +63,7 @@
         Zipcode <br/>
     </p>    
     </div>
-    <div class="col-sm-8" style="background-color:rgb(53, 97, 133); margin: 5px;">
+    <div class="col-sm-8" style="background-color:rgb(255, 255, 255); margin: 5px;">
      <p class="img_center">
         <img src="images/waste.png" width="100px"> 
         <img src="images/recycle.png" width="90px"> 
@@ -62,10 +74,11 @@
 </div>
 
 <!--#2-->
-<div class="container" style="background-color:#FFFFFF;">
+<div id="historical"></div>
+<div class="container" style="background-color:#b4b4b4; height:800px; margin-top:50px;">
  <h3>Historical Comparison</h3>
  <div class="row">
-  <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+  <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px; height:700px;">
     <ul class="nav nav-tabs">
      <li class="nav-item">
       <a class="nav-link active" href="#">Weekly View</a>
@@ -89,7 +102,7 @@
 </div>
 
 <!--#3-->
-<div class="container" style="background-color:rgb(165, 165, 165);">
+<div class="container" style="background-color:#b4b4b4; margin-top:50px;">
   <h3>Historical Comparison</h3>
   <div class="row">      
    <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
@@ -119,10 +132,10 @@
 </div>
 
 <!--#4-->
-<div class="container" style="background-color:#FFFFFF;">
+<div class="container" style="background-color:#b4b4b4; margin-top:50px; margin-bottom:50px;">
   <h3>Recycle Game</h3>
    <div class="row">
-   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px; height:700px;">
     <p>
       <ul>
         <li>Be able to go back see what the other items </li>
@@ -135,7 +148,7 @@
 </div>  
 
 <!--FOOTER CONTAINER-->
-<footer>
+<footer style="background-color:#FFFFFF">
         FOOTER
 </footer>
         <!--.FOOTER CONTAINER-->
