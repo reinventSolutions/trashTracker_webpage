@@ -4,52 +4,40 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="images/trashTracker.png"/>
+    <link rel="icon" href="images/trashTracker.jpg"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
     <link rel="stylesheet" href="css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
     <link rel="stylesheet" href="css/stylesheet2.css">
+      <!-- ICONS https://material.io/icons/#ic_cloud-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body> <!--START OF BODY-->     
- <header> <!--START OF HEADER-->
-  <!--START OF NAV
+<header> <!--START OF HEADER-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top";>
-    <a class="navbar-brand" href="">
-        <img src="images/trashTracker.png" width="40" height="auto"/> 
-    </a>    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--START NAV BAR
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a link="/logout.html">Profile</a>
-            <a href="#historical">History</a>
-        </li>
-    </ul>
-    <a href="#" data-toggle="modal" data-target="#logoutModal"> 
-        <button type="button" class="btn btn-outline-success">Logout</button>
-    </a>
-    </div>
--->
-    <div class="pos-f-t">
-            <div class="collapse" id="navbarToggleExternalContent">
-              <div class="bg-dark p-4">
-                <h4 class="text-white">Collapsed content</h4>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
-              </div>
-            </div>
-    <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav><!--END OF NAV-->
+      <a class="navbar-brand" href="">
+          <img src="images/trashTracker.png" width="40" height="auto"/> 
+      </a>    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mr-auto mt-2 mt-sm-0">
+        <li class="nac-item"><a class="nav-link" href="profile.html">Profile</a></li>
+        <li class="nac-item"><a class="nav-link" href="#historical">Historical</a></li>        
+        <li class="nac-item"><a class="nav-link" href="#normal">Normal</a></li>        
+        <li class="nac-item"><a class="nav-link" href="#game">Game</a></li>        
+        <li class="nav-item active"><a class="nav-link" href="users"><i class="material-icons">settings</i></a></li> 
+      </ul>
+      <a href="#" data-toggle="modal" data-target="#logoutModal"> 
+          <button type="button" class="btn btn-outline-success">Logout</button>
+      </a>
+      </div>
+      </nav><!--END OF NAV-->
 </header><!--END OF HEADER-->
-
 
 <!--#1-->
 <div class="container" style="background-color:#b4b4b4; margin-top:100px;">
@@ -74,11 +62,11 @@
 </div>
 
 <!--#2-->
-<div id="historical"></div>
-<div class="container" style="background-color:#b4b4b4; height:800px; margin-top:50px;">
+<div id="historical" style="margin-bottom:100px;"></div>
+<div class="container" style="background-color:#b4b4b4; margin-top:5px;">
  <h3>Historical Comparison</h3>
  <div class="row">
-  <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px; height:700px;">
+  <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px; height:600px;">
     <ul class="nav nav-tabs">
      <li class="nav-item">
       <a class="nav-link active" href="#">Weekly View</a>
@@ -102,10 +90,11 @@
 </div>
 
 <!--#3-->
+<div id="normal" style="margin-bottom:100px;"></div>
 <div class="container" style="background-color:#b4b4b4; margin-top:50px;">
-  <h3>Historical Comparison</h3>
+  <h3>Normal Comparison</h3>
   <div class="row">      
-   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px;">
+   <div class="col-sm" style="background-color:rgb(88, 180, 255); margin: 5px; height:500px;">
     <p class="img_center"><img src="images/thumbsUp.png" class="resize1"></p>
    </div>
    <div class="col-sm-8" style="background-color:rgb(39, 103, 155); margin: 5px;">
@@ -127,11 +116,12 @@
        <li>Clickables to show or hide</li>
      </ul>
     </p>
-    </div>
-  </div>
-</div>
+    </div><!--.col-sm 8-->
+   </div><!--.row-->
+  </div><!--.container-->
 
 <!--#4-->
+<div id="game" style="margin-bottom:100px;"></div>
 <div class="container" style="background-color:#b4b4b4; margin-top:50px; margin-bottom:50px;">
   <h3>Recycle Game</h3>
    <div class="row">
@@ -143,16 +133,32 @@
         <li>Correct fill one star</li>
       </ul>
     </p>   
-  </div>
- </div> 
-</div>  
+  </div><!--.col-sm-->
+ </div> <!--.row-->
+</div><!--.container-->
 
 <!--FOOTER CONTAINER-->
-<footer style="background-color:#FFFFFF">
-        FOOTER
+<!--START BOTTOM NAVBAR-->
+<footer>
+<nav class="navbar fixed-bottom navbar-expand navbar-light bg-light">
+    <!--BOTTOM DROP UP MENU-->
+    <li class="nav-item dropup" style="list-style-type:none" >
+      <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
+        <img src="images/arrowup.png" width="25" height="auto">
+      </a>
+      <!--PAGE REDIRECTION-->
+      <div class="dropdown-menu" aria-labelledby="dropdown10">
+        <ul class="navbar-nav mr-auto mr-auto mt-2 mt-sm-0">
+            <li class="nac-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            <li class="nac-item"><a class="nav-link" href="#historical">Historical</a></li>        
+            <li class="nac-item"><a class="nav-link" href="#normal">Normal</a></li>        
+            <li class="nac-item"><a class="nav-link" href="#game">Game</a></li>        
+            <li class="nav-item active"><a class="nav-link" href="users"><i class="material-icons">settings</i></a></li> 
+          </ul>
+      </div>
+    </li>
+  </nav><!--END BOTTOM NAVBAR-->
 </footer>
-        <!--.FOOTER CONTAINER-->
-
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
