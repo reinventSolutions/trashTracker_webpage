@@ -8,35 +8,47 @@ body{
 nav{
     background-color:rgba(255, 255, 255, 0.527) ;
 }
+
 .container{
-    margin-top: 10px;
-    margin-bottom: 10px;
     border-radius: 20px;
+    
 }
 .col{
     border-radius: 10px;
 }
 
-.col-sm{
-    margin: 5px;
-    padding: 5px;
+.col-sm, .col-sm-8, .col-sm-4, .col-sm-6{
     border-radius: 10px;
-}
-
-.col-sm-8{
-    margin: 5px;
-    padding: 5px;
-    border-radius: 20px;
 }
 
 footer{
     background-color:rgba(255, 255, 255, 0.527) ;
 }
 
-.resize1{
-    width: ;
-}
-
 .img_center{
     text-align: center;
+}
+
+.img {
+    display: block;
+    margin: auto;
+    padding-top: 15px;
+}
+
+.alignright {
+    float: right;
+    text-align: right;
+}
+
+.aligncenter {
+    float: center;
+    text-align: center;
+}
+
+
+hr{
+    border: none; 				/* Make line fill consistent */
+    height: 5px; 				/* Set line thickness */
+    width: 70%;
+    background-color: #000000; 	/* Set fill color of line */
 }
