@@ -1,5 +1,5 @@
 /*MEDIA QUERIES*/
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 500px) and (max-width:950px) {
     .col-sm{
        width: 100%;
        height: auto; overflow: 
@@ -12,4 +12,6 @@
     .resize1{
         width:80px;
     }
- }
+    
+ 
+
