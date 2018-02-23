@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="css/stylesheet2.css">
       <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript" src="js/login.js"></script>
+
 </head>
 
 <body>
@@ -32,20 +35,30 @@
 <!--SIGN IN-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px">
   <div class="row">      
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto; text-align:center;">
-    <h3>User</h3>
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3>Log into Trash Tracker</h3><br>
-    <input name="username" placeholder="Email Address"><br/><br/>
-    <input name="password" placeholder="Password"><br>
-    <p class="alignright">
-      <a href="">Forgot Password?</a>
-    </p><br>
-    
-    <a class="btn btn-sm btn-success" href="../trashTracker_webpage/index.html" role="button">Log In</a> <br>
+    <form name="userLogin">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+        <p class="alignright">
+            <a href="">Forgot Password?</a>
+          </p><br>
+      </div><br>
+      <a class="btn btn-sm btn-success" href="../trashTracker_webpage/index.html" role="button">Log In</a> <br>
+    </form>
 
     <hr id="bottom_line">
     Or log in as<br> 
-    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/login.html" role="button">New User</a> <br>  
+    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/login.html" role="button" onclick="getIDPW()"> New User</a> <br>  
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
