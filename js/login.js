@@ -9,8 +9,3 @@ function getIDPW(){
     alert('User inputs \n ID ' + userID +  '\n PW: ' + userPW);
 
 }
-
-funtion newUserUpdate(){
-
-    
-}
