@@ -4,13 +4,13 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Trash Tracker</title>
-        <link rel="icon" href="images/trashTracker.png"/>
+        <link rel="icon" href="../images/trashtracker.png"/>
         <!--BOOTSTRAP-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--CSS-->
-        <link rel="stylesheet" href="css/stylesheet.css">
+        <link rel="stylesheet" href="../css/stylesheet.css">
         <!--CSS MEDIA QUERY-->
-        <link rel="stylesheet" href="css/stylesheet2.css">
+        <link rel="stylesheet" href="../css/stylesheet2.css">
         <!-- ICONS https://material.io/icons/#ic_cloud-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--POPOVER
@@ -18,32 +18,33 @@
         -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script type="text/javascript" src="js/popover.js"></script>
+        <script type="text/javascript" src="../js/popover.js"></script>
         <!--GRAPH-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript" src="js/graph.js"></script>
+        <script type="text/javascript" src="../js/graph.js"></script>
 </head>
 
 <body> <!--START OF BODY-->     
- <header> <!--START OF HEADER-->
-  <!--START OF NAV-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <!--LOGO-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-    </button>
+ <header style="margin-bottom:20px;"> <!--START OF HEADER-->
+  <!--START OF NAV-->  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     <!--START NAV BAR-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="container-fluid"> 
         <div class="row" style="padding: 0 5px"><!--ROW-->
          <div class="col-sm-4" style="background-color:#FFFFFF; width:500px; "><!--LOGO-->
-            <img class="img" src="images/trashTracker.png" width="100px">
+            <img class="img" src="../images/trashtracker.png" width="100px">
          </div><!--LOGO-->
          <div class="col-sm" style="background-color:#FFFFFF; width:500px;"><!--USER INFO-->
           <p>Welcome [name] <br/>
               Street <br/>
               <p class="img_center">
-              <a href="../trashTracker_webpage/login.html"> 
+              <a href="login.html"> 
                 <button type="button" class="btn btn-outline-success">Logout</button>
               </a>
             </p>
@@ -53,28 +54,27 @@
           <h6>Your bins</h6>
                     <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                     <button type="button" class="btn btn-secondary">
-                        <img src="images/waste.png" width="32px">
+                        <img src="../images/waste.png" width="32px">
                     </button>
                 </a>
                 <a href="#" title="Recycle" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                     <button type="button" class="btn btn-primary">
-                        <img src="images/recycle.png" width="30px">
+                        <img src="../images/recycle.png" width="30px">
                     </button>
                 </a>
                 <a href="#" title="Green Waste" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                     <button type="button" class="btn btn-success">
-                        <img src="images/greenwaste.png" width="30px">
+                      <img src="../images/greenwaste.png" width="30px">
                     </button>
                 </a>
             <h6 class="img_center">Click for more information</h6>
          </div><!--BIN INFO-->
       </div>
-    </div>
   </nav><!--END OF NAV-->
 </header><!--END OF HEADER-->
 
 <!--Historical Comparison-->
-<div class="container" id="historical" style="background-color:#b4b4b4; margin-top:150px; width:800px;">
+<div class="container" id="historical" style="background-color:#b4b4b4;  width:800px;">
     <div class="row">
      <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; height:auto;">
        <ul class="nav nav-tabs">
@@ -89,7 +89,7 @@
         </li>
        </ul>
        <p>
-
+      <!--GRAPH DIV-->
       <div id="chart_div" style="padding: 10px"></div>
       <a href=""><i class="material-icons">arrow_back</i>Past Week</a>
       <span class="alignright">
@@ -119,7 +119,7 @@
      <div class="row">      
       <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; height:200px;">
        <h3>How do you stack up?</h3>
-       <p class="img_center"><img src="images/thumbsUp.png" class="resize1" width= 80px;></p>
+       <p class="img_center"><img src="../images/thumbsUp.png" class="resize1" width= 80px;></p>
       </div>
       <div class="col-sm-8" style="background-color:#FFFFFF; margin: 5px;">
        <ul class="nav nav-tabs">
@@ -150,10 +150,10 @@
        </div>
       <div class="col-sm-6" style="background-color:#FFFFFF; margin: 5px; height:auto;">
        <p class="img_center" style="padding-top:25px;">
-         <img src="images/apple.png"><br><br>
-         <img src="images/grey.png" width="60px"> 
-         <img src="images/blue.png" width="60px"> 
-         <img src="images/green.png" width="60px">    
+         <img src="../images/apple.png"><br><br>
+         <img src="../images/grey.png" width="60px"> 
+         <img src="../images/blue.png" width="60px"> 
+         <img src="../images/green.png" width="60px">    
        </p>
        <br>
         <a href=""><i class="material-icons">arrow_back</i>Previous</a>
@@ -162,9 +162,9 @@
       </div>
      <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; height:auto;">
          <p class="img_center" style="padding-top:25px;">
-           <img src="images/game/badge.png"><br><br>
+           <img src="../images/game/badge.png"><br><br>
          To date you've gotten 12 correct!<br>
-           <img src="images/game/stars.png" width="150px"><br><br>
+           <img src="../images/game/stars.png" width="150px"><br><br>
          </p>
      </div>  
     </div> <!--.row-->

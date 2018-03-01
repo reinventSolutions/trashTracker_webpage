@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +12,6 @@
     <link rel="stylesheet" href="css/stylesheet2.css">
       <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -36,28 +33,29 @@
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3>Log into Trash Tracker</h3><br>
-    <form name="userLogin">
+    
+    <form action="/login.php" metho="post">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="InputEmail1">Email address</label>
+        <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="InputPassword">Password</label>
+        <input type="password" class="form-control" id="userPassword" placeholder="Password">
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="remeberUser">
         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         <p class="alignright">
             <a href="">Forgot Password?</a>
           </p><br>
       </div><br>
-      <a class="btn btn-sm btn-success" href="../trashTracker_webpage/index.html" role="button">Log In</a> <br>
+      <a class="btn btn-sm btn-success" role="button" oncick="login()">Log In</a> <br>
     </form>
 
     <hr id="bottom_line">
     Or log in as<br> 
-    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/login.html" role="button" onclick="getIDPW()"> New User</a> <br>  
+    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/signup.html" role="button" onclick=""> New User</a> <br>  
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
@@ -84,6 +82,63 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>
 </html>
+
+
+
+	<?php
+	// Start the session
+	session_start();
+?> 
+
+<?php
+
+//Connect to DB
+$connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+ if(!$connection){
+     echo "Error - Unable to connect to mySQL" . PHP_EOL;
+     exit;
+ }
+ 
+ //Select database
+ $database = mysqli_select_db($connection, DB_DATABASE);
+
+//Get the user ID and PW
+$Username = mysqli_real_escape_string($link, $_REQUEST['userEmail']);
+$Password = mysqli_real_escape_string($link, $_REQUEST['userPassword']);
+
+// Attempt insert query execution
+$sql = "SELECT ID, name, email FROM users WHERE userEmail = '" . $Username . "' and userPassword = '" . $Password ."'";
+
+if ($result=mysqli_query($connection,$sql))
+  {
+  $rowcount=mysqli_num_rows($result);
+  if ($rowcount == 1)
+  {
+	  $row=mysqli_fetch_row($result);
+	  
+		$cookie_ID = "TT_user_login";
+		$cookie_ID_info = $row[0];
+		
+		$cookie_name = "TT_user_name";
+		$cookie_name_info = $row[1];
+		
+		$cookie_email = "TT_user_login";
+        $cookie_email_info = $row[2];
+        
+        $_SESSION[$cookie_ID] = $cookie_ID_info;
+        $_SESSION[$cookie_name = $cookie_name_info;
+        $_SESSION[$cookie_email] = $cookie_email_info;
+
+        echo "<script type='text/javascript'>
+        window.location = 'index.html'
+   </script>";
+  }
+  else echo "Error, cannot find the account. Please try again!";
+  mysqli_free_result($result);
+}
+mysqli_close($connection);
+
+?>
 
 <!--
     DENISE THUY VY NGUYEN
