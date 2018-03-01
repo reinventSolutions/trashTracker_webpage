@@ -6,7 +6,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
-    ['Weekly', 'Recyle', 'Waste', 'Greenwaste'],
+    ['Weekly', 'Recycling', 'Trash', 'Greenwaste'],
     ['W1', 22, 44, 10],
     ['W2', 60, 60, 25],
     ['W3', 45, 80, 10],
