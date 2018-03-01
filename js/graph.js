@@ -35,7 +35,7 @@ function drawChart() {
         minValue: 0,
       },
     height: 300,
-    colors: ['#0066ff', '#808080', '#00cc66']
+    colors: ['#0066ff', '#808080', '#7aac3b']
   };
 
   var chart = new google.charts.Bar(document.getElementById('chart_div'));
