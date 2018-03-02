@@ -22,8 +22,11 @@ function drawChart() {
         y: {
             all: {
                 range: {
-                    max: 100,
-                    min: 0
+                    y: 100,
+                    y:75,
+                    y:50,
+                    y:25,
+                    y: 0
                 }
             }
         }
@@ -35,6 +38,7 @@ function drawChart() {
         minValue: 0,
       },
     height: 300,
+    width:600,
     colors: ['#0066ff', '#808080', '#7aac3b']
   };
 
