@@ -34,7 +34,6 @@ function drawChart() {
         format: 'decimal',
         minValue: 0,
       },
-    height: 300,
     colors: ['#0066ff', '#808080', '#7aac3b']
   };
 
