@@ -54,26 +54,22 @@
 
     <!--LEFT--> 
     <div class="container" id="info" style="background-color:#f7f7f7;  width:25%; height:auto;">
-
       <div class="row"><!--.row-->
-        <div class="col" style="background-color:#fff; padding: 5px; margin: 10px;"><!--LOGO-->
+        
+        
+        <div class="col" style="background-color:#fff;"><!--LOGO-->
             <p>Welcome [name] <br/>
                 Street <br/>
+                <p class="img_center">
+
+              </p>
             </p>              
         </div><!--LOGO-->
     </div><!--.row-->
+      
     
-    <div class="row"><!--.row-->
-      <div class="col" style="background-color:#fff; padding: 5px; margin: 10px;"><!--NEXT PICK UP-->
-        <h4>
-          NEXT PICK UP:<br>
-          MM/DD/YY
-        </h4>
-      </div><!--PICK UP-->
-  </div><!--.row-->
-  
-  <div class="row">
-    <div class="col" style="background-color:#fff; padding: 5px; margin: 10px; text-align:center;"><!--BIN INFO-->
+    <div class="row">
+    <div class="col" style="background-color:#fff;"><!--BIN INFO-->
       <h6>Your bins</h6>
                 <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                 <button type="button" class="">
@@ -96,9 +92,9 @@
      </div><!--.row-->
 
     <div class="row">
-    <div class="col" style="background-color:#fff;  padding: 5px; margin: 10px;">
-      <h4>Driver</h4>
-    </div>
+    <div class="col" style="background-color:#fff;">
+        <img src="../images/recycle.png" width="100px">
+      </div>
   </div>
 
   </div><!--LEFT--> 
@@ -120,12 +116,12 @@
              </li>
             </ul>
             <p>
+           <!--GRAPH DIV-->
            <a href=""><i class="material-icons">arrow_back</i>Past Week</a>
            <span class="alignright">
              <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
            </span>
-           <!--GRAPH DIV-->           
-           <div id="chart_div" style="padding: 10px; width:auto; height:400px;"></div>
+           <div id="chart_div" style="padding: 10px; width: 400px;"></div>
                 <!-- OTHER GRAPHN BUTTONS....
             <div id="btn-group">
               <button class="button button-blue" id="none">No Format</button>
