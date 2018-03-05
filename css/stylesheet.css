@@ -10,16 +10,23 @@ nav{
 }
 
 .container{
+    background-color:#b4b4b4; 
     border-radius: 20px;
 }
 
 .oneLeft{
-    width: 90%;
-    background-color:#FFFFFF; 
+    width:auto; 
+    height:auto;
+    border-radius: 10px;
+    background-color:#f7f7f7; 
 }
 
 .onel, .twol, .threel{
+    margin: 10px; 
+    padding: 15px;
+    border-radius: 10px;
     background-color:#FFFFFF; 
+    flex: 1;
 }
     
 .col{

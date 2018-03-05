@@ -1,16 +1,27 @@
 /*MEDIA QUERIES*/
-@media screen and (min-width: 500px) and (max-width:950px) {
-    .col-sm{
-       width: 100%;
+@media screen and (max-width: 570px) {
+    .body{
+       width: 90%;
+       margin: auto;       
        height: auto; overflow: 
        hidden; // clearing 
     }
- }
+    .container{
+		width: 90%;
+		margin-left: 5% !important;
+        margin-right: 5% !important;
+	}
+
+    footer{
+        margin-bottom: 80px;
+    }
+}
+
 
  /*IMAGE SCALE*/
  @media screen and (min-width: 500px) and (max-width: 800px) {
     .resize1{
-        width:80px;
+        width:100%;
     }
 }
 
