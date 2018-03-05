@@ -11,8 +11,17 @@ nav{
 
 .container{
     border-radius: 20px;
-    
 }
+
+.oneLeft{
+    width: 90%;
+    background-color:#FFFFFF; 
+}
+
+.onel, .twol, .threel{
+    background-color:#FFFFFF; 
+}
+    
 .col{
     border-radius: 10px;
 }

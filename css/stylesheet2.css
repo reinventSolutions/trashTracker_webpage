@@ -12,6 +12,19 @@
     .resize1{
         width:80px;
     }
-    
+}
+
+@media screen and (max-width: 1200px) {
+    .oneLeft{
+        width: auto;
+        display: flex;
+    }
+    .onel, .twol, .threel{
+        background-color: aqua;
+        display: flex-grow;
+        justify-content: flex-start;
+
+    }
+}
  
 
