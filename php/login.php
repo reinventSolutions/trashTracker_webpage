@@ -119,6 +119,7 @@ $dbname = "REINVENTSOLUTIONS";
 
 <!--
 PHP STUFF
+
           if($_POST['submit'] !== '' && isset($_POST['submit'])){
           $password = $_POST['userPassword'];//input password
           $email = $_POST['userEmail'];//input email
@@ -145,6 +146,56 @@ PHP STUFF
         } 
      
      mysqli_close($connection);
+
+-->
+
+<!--
+
+//Connect to DB
+$connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+ if(!$connection){
+     echo "Error - Unable to connect to mySQL" . PHP_EOL;
+     exit;
+ }
+ 
+ //Select database
+ $database = mysqli_select_db($connection, DB_DATABASE);
+
+//Get the user ID and PW
+$Username = mysqli_real_escape_string($link, $_REQUEST['userEmail']);
+$Password = mysqli_real_escape_string($link, $_REQUEST['userPassword']);
+
+// Attempt insert query execution
+$sql = "SELECT ID, name, email FROM users WHERE userEmail = '" . $Username . "' and userPassword = '" . $Password ."'";
+
+if ($result=mysqli_query($connection,$sql))
+  {
+  $rowcount=mysqli_num_rows($result);
+  if ($rowcount == 1)
+  {
+    $row=mysqli_fetch_row($result);
+    
+    $cookie_ID = "TT_user_login";
+    $cookie_ID_info = $row[0];
+    
+    $cookie_name = "TT_user_name";
+    $cookie_name_info = $row[1];
+    
+    $cookie_email = "TT_user_login";
+        $cookie_email_info = $row[2];
+        
+        $_SESSION[$cookie_ID] = $cookie_ID_info;
+        $_SESSION[$cookie_name = $cookie_name_info;
+        $_SESSION[$cookie_email] = $cookie_email_info;
+
+        echo "<script type='text/javascript'>
+        window.location = 'index.html'
+   </script>";
+  }
+  else echo "Error, cannot find the account. Please try again!";
+  mysqli_free_result($result);
+}
+mysqli_close($connection);
 
 -->
 
