@@ -7,9 +7,9 @@
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
-    <link rel="stylesheet" href="css/stylesheet.css" >
+    <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
-    <link rel="stylesheet" href="css/stylesheet2.css">
+    <link rel="stylesheet" href="../css/stylesheet2.css">
       <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -27,8 +27,46 @@
  </div><!--ROW-->
 </div><!--container-fuild-->
 
+
+<!--SIGN IN-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px">
+  <div class="row">      
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+    <h3>Log into Trash Tracker</h3><br>
+    
+    <form action="login.php" metho="post">
+      <div class="form-group">
+        <label for="InputEmail1">Email address</label>
+        <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="InputPassword">Password</label>
+        <input type="password" class="form-control" id="userPassword" placeholder="Password">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="remeberUser">
+        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+        <p class="alignright">
+            <a href="">Forgot Password?</a>
+          </p><br>
+      </div><br>
+      <input type="submit" class="btn btn-sm btn-success" value="Log In"/> <br>
+    </form>
+
+    <hr id="bottom_line">
+    Or log in as<br> 
+    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/signup.html" role="button" onclick=""> New User</a> <br>  
+
+  </div>
+  <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
+    <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
+  </div><!--.col-sm-->
+ </div><!--.row-->
+</div><!--.container-->
+
+
 <!--PHP-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px; height: auto;">
+<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 100px; height: auto;">
  <div class="row">
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
   <?php
@@ -53,49 +91,48 @@ $dbname = "REINVENTSOLUTIONS";
     if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
       else 
           echo "<p>Connected to the database now select table</p>";
+
+     	  echo "<p>Waiting for login cred</p>";	
+
+		  // Get the user cred entered by the user to use for WHERE clause
+		  echo "<p>Taking in for login cred</p>";	
+          $email = $_POST['userEmail']; //input email
+          //$password = $_POST['userPassword']; //input password
+
+          // Clean up
+          $email = stripcslashes($userEmail);
+          //$password = stripcslashes($userPassword);
+
+          // Display the WHERE clause
+
+          $email_html = htmlspecialchars($userEmail);
+          //$password_html = htmlspecialchars($userPassword);
+
+          // Store query
+		  echo "<p>Checking in for login cred</p>";	
+          $userLogin = "SELECT * FROM users WHERE ID = 'email_html'";
+          $result = mysqli_query($connection, $userLogin);
+          $row = mysqli_fetch_row($result);
+          $pass = $row[0]; //database password
+          $mail = $row[1]; //dataase email
+          $id = $row[2]; //database userID
+
+		  if(!$result){
+		     print "Error - The query could not be executed.";
+		     $error = mysql_error();
+		     print "<p>" . $error . "</p>";
+		     exit;
+		 }
+
   ?>
+
+  
 
 
  </div>
  </div>
 </div>
 
-
-<!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px">
-  <div class="row">      
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h3>Log into Trash Tracker</h3><br>
-    
-    <form action="/login.php" metho="post">
-      <div class="form-group">
-        <label for="InputEmail1">Email address</label>
-        <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="InputPassword">Password</label>
-        <input type="password" class="form-control" id="userPassword" placeholder="Password">
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="remeberUser">
-        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-        <p class="alignright">
-            <a href="">Forgot Password?</a>
-          </p><br>
-      </div><br>
-      <a class="btn btn-sm btn-success" role="button" oncick="login()">Log In</a> <br>
-    </form>
-
-    <hr id="bottom_line">
-    Or log in as<br> 
-    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/signup.html" role="button" onclick=""> New User</a> <br>  
-
-  </div>
-  <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
-    <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
-  </div><!--.col-sm-->
- </div><!--.row-->
-</div><!--.container-->
 
 
 <footer><!--FOOTER CONTAINER-->
