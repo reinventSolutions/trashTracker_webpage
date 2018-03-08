@@ -24,17 +24,17 @@
         <script type="text/javascript" src="../js/graph.js"></script>
 </head>
 
-<body> <!--START OF BODY-->     
- <header style="margin-bottom:80px;"> <!--START OF HEADER-->
+<body style="background-color:#b4b4b4;"> <!--START OF BODY-->     
+ <header style="margin-bottom:50px;"> <!--START OF HEADER-->
   <!--START OF NAV-->  
-  <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color:#fff;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#fff;">
       <a class="navbar-brand" href="#"></a>
       <img class="img" src="../images/trashtracker.png" width="40px">
     </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarText">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
@@ -49,15 +49,13 @@
   </nav><!--END OF NAV-->
 </header><!--END OF HEADER-->
 
-<div class="container" style="background-color:#818285; margin-bottom: 80px;">
+<div class="container" style="margin-bottom: 80px;">
   <div class="row">
 
     <!--LEFT--> 
-    <div class="container" id="info" style="background-color:#f7f7f7;  width:25%; height:auto;">
+    <div class="oneLeft" id="info" style="">
       <div class="row"><!--.row-->
-        
-        
-        <div class="col" style="background-color:#fff;"><!--LOGO-->
+        <div class="onel" style=""><!--LOGO-->
             <p>Welcome [name] <br/>
                 Street <br/>
                 <p class="img_center">
@@ -69,22 +67,22 @@
       
     
     <div class="row">
-    <div class="col" style="background-color:#fff;"><!--BIN INFO-->
+    <div class="twol" style=""><!--BIN INFO-->
       <h6>Your bins</h6>
                 <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                 <button type="button" class="">
-                    <img src="../images/waste.png" width="32px">
+                    <img src="../images/grey.png" width="32px">
                 </button>
             </a>
             <a href="#" title="Recycling" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                 <button type="button" class="">
-                    <img src="../images/recycle.png" width="30px">
+                    <img src="../images/blue.png" width="30px">
                 </button>
             </a>
             <a href="#" title="Greenwaste" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
                 <button type="button" class="">
 
-                  <img src="../images/greenwaste.png" width="30px">
+                  <img src="../images/green.png" width="30px">
                 </button>
             </a>
         <h6 class="img_center">Click for more information</h6>
@@ -92,8 +90,10 @@
      </div><!--.row-->
 
     <div class="row">
-    <div class="col" style="background-color:#fff;">
-        <img src="../images/recycle.png" width="100px">
+    <div class="threel" style="">
+        <img src="../images/recycle.png" width="100px"><br>
+        NEXT PICK UP: <br>
+        MM/DD/YY<br>
       </div>
   </div>
 
@@ -121,8 +121,8 @@
            <span class="alignright">
              <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
            </span>
-           <div id="chart_div" style="padding: 10px; width: 400px;"></div>
-                <!-- OTHER GRAPHN BUTTONS....
+           <div id="chart_div" style="padding: 10px; width: 75%; height: 400px;"></div>
+            <!-- OTHER GRAPHN BUTTONS....
             <div id="btn-group">
               <button class="button button-blue" id="none">No Format</button>
               <button class="button button-blue" id="scientific">Scientific Notation</button>

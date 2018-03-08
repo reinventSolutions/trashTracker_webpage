@@ -3,30 +3,30 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="images/trashTracker.png"/>
+    <link rel="icon" href="../images/trashTracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
-    <link rel="stylesheet" href="css/stylesheet.css" >
+    <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
-    <link rel="stylesheet" href="css/stylesheet2.css">
+    <link rel="stylesheet" href="../css/stylesheet2.css">
       <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
 <!--LOGIN-->
-<div class="container-fuild" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+<div class="container" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
     <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-        <img src="images/trashtracker.png" width="100px">
+        <img src="../images/trashtracker.png" width="100px">
         Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
 </div><!--container-fuild-->
-<!--.GENERAL INFO-->
+
 
 <!--SIGN IN-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px">
@@ -34,7 +34,7 @@
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3>Log into Trash Tracker</h3><br>
     
-    <form action="/login.php" metho="post">
+    <form action="login.php" metho="post">
       <div class="form-group">
         <label for="InputEmail1">Email address</label>
         <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -50,7 +50,7 @@
             <a href="">Forgot Password?</a>
           </p><br>
       </div><br>
-      <a class="btn btn-sm btn-success" role="button" oncick="login()">Log In</a> <br>
+      <input type="submit" class="btn btn-sm btn-success" value="Log In"/> <br>
     </form>
 
     <hr id="bottom_line">
@@ -59,10 +59,80 @@
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
-    <p class="img_center"><img src="images/house.png" class="resize1" width= 300px;></p>
+    <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
   </div><!--.col-sm-->
  </div><!--.row-->
 </div><!--.container-->
+
+
+<!--PHP-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 100px; height: auto;">
+ <div class="row">
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+  <?php
+  // Start the session
+  session_start();
+?> 
+
+<?php
+$servername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
+$username = "reinvent";
+$password = "solutions";
+$dbname = "REINVENTSOLUTIONS";
+
+ /* Connect to MySQL and select the database. */
+  $connection = mysqli_connect($servername, $username, $password);
+
+  if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    else 
+      echo "<p>Connected into database</p>";
+
+    $database = mysqli_select_db($connection, $dbname);  
+    if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
+      else 
+          echo "<p>Connected to the database now select table</p>";
+
+     	  echo "<p>Waiting for login cred</p>";	
+
+		  // Get the user cred entered by the user to use for WHERE clause
+		  echo "<p>Taking in for login cred</p>";	
+          $email = $_POST['userEmail']; //input email
+          //$password = $_POST['userPassword']; //input password
+
+          // Clean up
+          $email = stripcslashes($userEmail);
+          //$password = stripcslashes($userPassword);
+
+          // Display the WHERE clause
+
+          $email_html = htmlspecialchars($userEmail);
+          //$password_html = htmlspecialchars($userPassword);
+
+          // Store query
+		  echo "<p>Checking in for login cred</p>";	
+          $userLogin = "SELECT * FROM users WHERE ID = 'email_html'";
+          $result = mysqli_query($connection, $userLogin);
+          $row = mysqli_fetch_row($result);
+          $pass = $row[0]; //database password
+          $mail = $row[1]; //dataase email
+          $id = $row[2]; //database userID
+
+		  if(!$result){
+		     print "Error - The query could not be executed.";
+		     $error = mysql_error();
+		     print "<p>" . $error . "</p>";
+		     exit;
+		 }
+
+  ?>
+
+  
+
+
+ </div>
+ </div>
+</div>
+
 
 
 <footer><!--FOOTER CONTAINER-->
@@ -84,13 +154,39 @@
 </html>
 
 
+<!--
+PHP STUFF
 
-	<?php
-	// Start the session
-	session_start();
-?> 
+          if($_POST['submit'] !== '' && isset($_POST['submit'])){
+          $password = $_POST['userPassword'];//input password
+          $email = $_POST['userEmail'];//input email
+        
+          $userLogin = "SELECT password, email, ID FROM users WHERE email = '$email'";
+          $result = mysqli_query($connection, $userLogin);
+          $row = mysqli_fetch_row($result);
+          $pass = $row[0]; //database password
+          $mail = $row[1]; //dataase email
+          $id = $row[2]; //database userID
+        
+        if(($password !== '' && $email !== '')&&($pass == $password && $mail == $email)&&($id !== $email)){
+              header("Location: http://localhost/Trash%20Tracker/account.html");//make chages here
+            exit();
+        }
+        else if($id == $email ){
+              header("Location: http://localhost/Trash%20Tracker/signup.html");//make changes here
+            exit();
+        }
+        }
+        else{ 
+          header("Location: http://localhost/Trash%20Tracker/index.html");//make changes here
+          exit();
+        } 
+     
+     mysqli_close($connection);
 
-<?php
+-->
+
+<!--
 
 //Connect to DB
 $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
@@ -114,15 +210,15 @@ if ($result=mysqli_query($connection,$sql))
   $rowcount=mysqli_num_rows($result);
   if ($rowcount == 1)
   {
-	  $row=mysqli_fetch_row($result);
-	  
-		$cookie_ID = "TT_user_login";
-		$cookie_ID_info = $row[0];
-		
-		$cookie_name = "TT_user_name";
-		$cookie_name_info = $row[1];
-		
-		$cookie_email = "TT_user_login";
+    $row=mysqli_fetch_row($result);
+    
+    $cookie_ID = "TT_user_login";
+    $cookie_ID_info = $row[0];
+    
+    $cookie_name = "TT_user_name";
+    $cookie_name_info = $row[1];
+    
+    $cookie_email = "TT_user_login";
         $cookie_email_info = $row[2];
         
         $_SESSION[$cookie_ID] = $cookie_ID_info;
@@ -138,7 +234,7 @@ if ($result=mysqli_query($connection,$sql))
 }
 mysqli_close($connection);
 
-?>
+-->
 
 <!--
     DENISE THUY VY NGUYEN
