@@ -7,10 +7,10 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
     ['Weekly', 'Recycling', 'Trash', 'Greenwaste'],
-    ['W1', 22, 44, 10],
-    ['W2', 60, 60, 25],
-    ['W3', 45, 80, 10],
-    ['W4', 25, 45, 20]
+    ['DD/MM/YY', 22, 44, 10],
+    ['DD/MM/YY', 60, 60, 25],
+    ['DD/MM/YY', 45, 80, 10],
+    ['DD/MM/YY', 25, 45, 20]
   ]);
 
   var options = {
