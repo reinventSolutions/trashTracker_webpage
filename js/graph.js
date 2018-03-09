@@ -7,10 +7,10 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
     ['Weekly', 'Recycling', 'Trash', 'Greenwaste'],
-    ['W1', 22, 44, 10],
-    ['W2', 60, 60, 25],
-    ['W3', 45, 80, 10],
-    ['W4', 25, 45, 20]
+    ['DD/MM/YY', 22, 44, 10],
+    ['DD/MM/YY', 60, 60, 25],
+    ['DD/MM/YY', 45, 80, 10],
+    ['DD/MM/YY', 25, 45, 20]
   ]);
 
   var options = {
@@ -22,8 +22,11 @@ function drawChart() {
         y: {
             all: {
                 range: {
-                    max: 100,
-                    min: 0
+                    y: 100,
+                    y:75,
+                    y:50,
+                    y:25,
+                    y: 0
                 }
             }
         }
@@ -34,6 +37,7 @@ function drawChart() {
         format: 'decimal',
         minValue: 0,
       },
+
     colors: ['#0066ff', '#808080', '#7aac3b']
   };
 

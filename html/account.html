@@ -144,7 +144,20 @@
           <!--Normal Comparison-->
           <div class="col" style="background-color:#FFFFFF; margin: 5px;">
           <h3>How do you stack up?</h3>
-          <p class="img_center"><img src="../images/thumbsUp.png" class="resize1" width= 80px;></p>
+          <div id="thumbupdown" onload='loadImage()'>
+            </div>
+            <script type="text/javascript">
+              function loadImage()
+              {
+                var elem = document.createElement("img")
+                document.getElementById("thumbupdown").appendChild(elem);
+                if(Math.random() < 0.5)
+                elem.src = '../images/thumbDown.png';
+                else
+                elem.src = '../images/thumb.png';
+              }
+              loadImage();
+              </script>
           </div>
           <div class="col-sm-8" style="background-color:#FFFFFF; margin: 5px;">
           <ul class="nav nav-tabs">
