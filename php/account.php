@@ -91,7 +91,7 @@
 
     <div class="row">
     <div class="threel" style="">
-        <img src="../images/recycle.png" width="100px"><br>
+        <img src="../images/blue.png" width="100px"><br>
         NEXT PICK UP: <br>
         MM/DD/YY<br>
       </div>
@@ -122,28 +122,47 @@
              <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
            </span>
            <div id="chart_div" style="padding: 10px; width: 75%; height: 400px;"></div>
-            <!-- OTHER GRAPHN BUTTONS....
+
             <div id="btn-group">
               <button class="button button-blue" id="none">No Format</button>
               <button class="button button-blue" id="scientific">Scientific Notation</button>
               <button class="button button-blue" id="decimal">Decimal</button>
               <button class="button button-blue" id="short">Short</button>
             </div>
+
+            <!---
              <p class="img_center">
             <a class="btn btn-sm btn-primary" href="" role="button">Recycling</a> &nbsp
             <a class="btn btn-sm btn-secondary" href="" role="button">Trash</a> &nbsp
             <a class="btn btn-sm btn-success" href="" role="button">Green Waste</a> &nbsp 
-           </p>
-     -->  
+           </p>-->
+
          </div><!--.col-sm-->
          </div><!--.row-->
         
          <div class="row">
           <!--Normal Comparison-->
           <div class="col" style="background-color:#FFFFFF; margin: 5px;">
-          <h3>How do you stack up?</h3>
-          <p class="img_center"><img src="../images/thumbsUp.png" class="resize1" width= 80px;></p>
+          <h4>How do you stack up?</h4>
+          <div class="thumbs" id="thumbupdown" onload="loadImage()" style="text-align: center;">
+            <script type="text/javascript">
+              loadImage();
+              function loadImage()
+              {
+                var elem = document.createElement("img")
+                document.getElementById("thumbupdown").appendChild(elem).style.width = "50%";
+                if(Math.random() < 0.5)
+                elem.src = '../images/thumb.png';
+                else
+                elem.src = '../images/thumbDown.png';
+                }
+
+
+
+              </script>  
           </div>
+          </div>
+
           <div class="col-sm-8" style="background-color:#FFFFFF; margin: 5px;">
           <ul class="nav nav-tabs">
             <li class="nav-item">
