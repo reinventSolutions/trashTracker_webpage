@@ -143,22 +143,26 @@
          <div class="row">
           <!--Normal Comparison-->
           <div class="col" style="background-color:#FFFFFF; margin: 5px;">
-          <h3>How do you stack up?</h3>
-          <div id="thumbupdown" onload='loadImage()'>
-            </div>
+          <h4>How do you stack up?</h4>
+          <div class="thumbs" id="thumbupdown" onload="loadImage()" style="text-align: center;">
             <script type="text/javascript">
+              loadImage();
               function loadImage()
               {
                 var elem = document.createElement("img")
-                document.getElementById("thumbupdown").appendChild(elem);
+                document.getElementById("thumbupdown").appendChild(elem).style.width = "50%";
                 if(Math.random() < 0.5)
-                elem.src = '../images/thumbDown.png';
-                else
                 elem.src = '../images/thumb.png';
-              }
-              loadImage();
-              </script>
+                else
+                elem.src = '../images/thumbDown.png';
+                }
+
+
+
+              </script>  
           </div>
+          </div>
+
           <div class="col-sm-8" style="background-color:#FFFFFF; margin: 5px;">
           <ul class="nav nav-tabs">
             <li class="nav-item">
