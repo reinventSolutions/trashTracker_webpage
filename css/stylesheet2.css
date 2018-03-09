@@ -29,9 +29,9 @@
     .oneLeft{
         width: auto;
         display: flex;
+        margin-bottom: 20px;
     }
     .onel, .twol, .threel{
-        background-color: aqua;
         display: flex-grow;
         justify-content: flex-start;
 
