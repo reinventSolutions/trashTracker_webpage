@@ -25,13 +25,14 @@
     }
 }
 
+/*Responsive*/
 @media screen and (max-width: 1200px) {
     .oneLeft{
         width: auto;
-        display: flex;
+        display: center;
+        margin-bottom: 20px;
     }
     .onel, .twol, .threel{
-        background-color: aqua;
         display: flex-grow;
         justify-content: flex-start;
 

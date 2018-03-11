@@ -5,12 +5,14 @@ google.charts.load('current', {'packages':['bar']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
+  var data = new google.visualization.DataTable();
   var data = google.visualization.arrayToDataTable([
     ['Weekly', 'Recycling', 'Trash', 'Greenwaste'],
-    ['DD/MM/YY', 22, 44, 10],
-    ['DD/MM/YY', 60, 60, 25],
-    ['DD/MM/YY', 45, 80, 10],
-    ['DD/MM/YY', 25, 45, 20]
+    <?php
+    while($row = mysqli_fetch_assoc($aresult)){
+        echo "['".$row["Bin"]."', ".$row["Estimate"]."],";
+    }
+    ?>
   ]);
 
   var options = {
@@ -22,11 +24,8 @@ function drawChart() {
         y: {
             all: {
                 range: {
-                    y: 100,
-                    y:75,
-                    y:50,
-                    y:25,
-                    y: 0
+                    max: 100,
+                    min: 0
                 }
             }
         }
@@ -37,7 +36,6 @@ function drawChart() {
         format: 'decimal',
         minValue: 0,
       },
-
     colors: ['#0066ff', '#808080', '#7aac3b']
   };
 
