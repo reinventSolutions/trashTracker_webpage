@@ -3,7 +3,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="../images/trashTracker.png"/>
+    <link rel="icon" src="../images/trashTracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
@@ -33,15 +33,15 @@
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3>Log into Trash Tracker</h3><br>
-    
-    <form action="login.php" metho="post">
+    <div>
+    <form action="login.php" method="post">
       <div class="form-group">
         <label for="InputEmail1">Email address</label>
-        <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="InputPassword">Password</label>
-        <input type="password" class="form-control" id="userPassword" placeholder="Password">
+        <input type="password" class="form-control" name= "userPassword" id="userPassword" placeholder="Password">
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="remeberUser">
@@ -52,10 +52,11 @@
       </div><br>
       <input type="submit" class="btn btn-sm btn-success" value="Log In"/> <br>
     </form>
+	</div>
 
     <hr id="bottom_line">
     Or log in as<br> 
-    <a class="btn btn-sm btn-primary" href="../trashTracker_webpage/signup.html" role="button" onclick=""> New User</a> <br>  
+    <a class="btn btn-sm btn-primary" href="signup.php" role="button" onclick=""> New User</a> <br>  
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
@@ -69,10 +70,6 @@
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 100px; height: auto;">
  <div class="row">
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-<?php
-  // Start the session
-  session_start();
-?> 
  </div>
  </div>
 </div>

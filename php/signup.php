@@ -36,24 +36,24 @@
     <h4>Registering to Trash Tracker</h4><br>
 	<div class = "container">
     <!--<form name="userLogin">-->
-	<form enctype = "multipart/form-data" action = "register.php" method = "post">
+	<form action = "register.php" method = "post">
       <div class="form-group">
         <label for="InputID">ID TOKEN</label>
-        <input type="text" class="form-control" name="tokenId" aria-describedby="token" placeholder="Enter ID">
+        <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
       </div>
         <label for="inputName">Name</label>
-        <input type="name" class="form-control" name="name" aria-describedby="name" placeholder="Enter Name">
-    </div>
+        <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Enter Name">
       <div class="form-group">
         <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Enter Email">
+        <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Enter Email">
     </div>
     <div class="form-group">
         <label for="inputUpdatePW">New Password</label>
-        <input type="password" class="form-control" name="password" aria-describedby="updatepassword" placeholder="New Password">
+        <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
     </div>
 	<input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
     </form>
+	</div>
   </div>
   </div>
  </div><!--.row-->
