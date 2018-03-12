@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="utf-8">
@@ -11,65 +11,74 @@
     <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
     <link rel="stylesheet" href="../css/stylesheet2.css">
-      <!-- ICONS https://material.io/icons/#ic_cloud-->
+    <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
-<?php
-  
-  		 $db = @mysqli_connect("reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com","reinvent","solutions")
-         Or die("<div><p>ERROR: Unable to connect to database server.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-		 
-         @mysqli_select_db($db, "REINVENTSOLUTIONS")
-         Or die("<div><p>ERROR: The database is not available. </p>" . "<p>Error Code" . mysqli_errno() . ": " . mysqli_error() . "</p></div>");
-				
-  ?>
-  </body>
-  <!--
-    DENISE THUY VY NGUYEN
-    2/1/2018
-	SCOTTY CARDWELL
-	3/2/2018
-	--> 
+<!--LOGIN-->
+<div class="container-fuild" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+  <div class="row" style="padding: 0 15px"><!--ROW-->
+    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+      <h1>
+        <img src="../images/trashtracker.png" width="100px">
+        Welcome to Trash Tracker     
+      </h1>
+    </div><!--LOGO-->    
+ </div><!--ROW-->
+</div><!--container-fuild-->
+<!--.GENERAL INFO-->
+
+<!--SIGN IN-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 15px; width: 500px; margin-bottom: 80px">
+  <div class="row">      
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+    <h4>Registering to Trash Tracker</h4><br>
+	<div class = "container">
+    <!--<form name="userLogin">-->
+	<form enctype = "multipart/form-data" action = "register.php" method = "post">
+      <div class="form-group">
+        <label for="InputID">ID TOKEN</label>
+        <input type="text" class="form-control" name="tokenId" aria-describedby="token" placeholder="Enter ID">
+      </div>
+        <label for="inputName">Name</label>
+        <input type="name" class="form-control" name="name" aria-describedby="name" placeholder="Enter Name">
+    </div>
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Enter Email">
+    </div>
+    <div class="form-group">
+        <label for="inputUpdatePW">New Password</label>
+        <input type="password" class="form-control" name="password" aria-describedby="updatepassword" placeholder="New Password">
+    </div>
+	<input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
+    </form>
+  </div>
+  </div>
+ </div><!--.row-->
+</div><!--.container-->
+
+
+<footer><!--FOOTER CONTAINER-->
+<nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
+
+          <a class="nav-link" href="contact">Contact Us</a> 
+          |
+          <a class="nav-link" href="">Privacy and Policy</a>
+      </div>
+  </nav><!--END BOTTOM NAVBAR-->
+</footer><!--.FOOTER-->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="js/login.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ </body>
 </html>
 
-
 <!--
-if($_POST['submit'] !== '' && isset($_POST['submit'])){
-			 	$password = $_POST['password'];
-				$email = $_POST['email'];
-				$name = $_POST['name'];
-				$id = $_POST['tokenId'];
-				$SQLstring = "SELECT ID FROM users WHERE ID = '$id'";
-				$q = @mysqli_query($db, $SQLstring)
-				Or die("<div><p>ERROR: Unable to execute query.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");	
-				
-				if(mysqli_num_rows($q) != 0){
-					
-					$selectPass = "SELECT password, email, name, ID FROM users WHERE ID = '$id'";
-					$result = mysqli_query($db, $selectPass);
-					$row = mysqli_fetch_row($result);
-					//variables in case we want future error handling
-					$pass = $row[0];
-					$mail = $row[1];
-					$userName = $row[2];
-					$idCheck = $row[3];
-					
-					if($idCheck == $id){	
-					$query = "UPDATE users SET name = '$name', email = '$email',
-					 password = '$password' WHERE ID = '$id'";
-					$q = mysqli_query($db, $query)
-					Or die("<div><p>ERROR: Unable to execute query.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-					header"Location: http://localhost/Trash%Tracker/index.html"); //make changes here
-					exit();
-					}
-					else{
-						  header("Location: http://localhost/Trash%20Tracker/signup.html");//make changes here
-						exit();
-					}
-					}
-					else{ 
-						echo "<p>Oops, something went wrong. Go back and try again!</p>";} 
-					}
-
+    DENISE THUY VY NGUYEN
+    2/1/2018
 -->

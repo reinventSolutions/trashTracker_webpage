@@ -17,14 +17,22 @@
 <body>
 <?php
   
-       $db = @mysqli_connect("reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com","reinvent","solutions")
-         Or die("<div><p>ERROR: Unable to connect to database server.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-     
-         @mysqli_select_db($db, "REINVENTSOLUTIONS")
-         Or die("<div><p>ERROR: The database is not available. </p>" . "<p>Error Code" . mysqli_errno() . ": " . mysqli_error() . "</p></div>");
-        if($_POST['submit'] !== '' && isset($_POST['submit'])){
+$DBservername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
+$DBusername = "reinvent";
+$DBpassword = "solutions";
+$DBname = "REINVENTSOLUTIONS";
+
+ /* Connect to MySQL and select the database. */
+  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+
+	if (mysqli_connect_errno()) 
+	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    else 
+      echo "<p>Connected into database</p>";
+  
+	   if($_POST['submit'] !== '' && isset($_POST['submit'])){
           $password = $_POST['userPassword'];//input password
-          $email = $_POST['userEmail1'];//input email
+          $email = $_POST['userEmail'];//input email
         
           $userLogin = "SELECT password, email, ID FROM users WHERE email = '$email'";
           $result = mysqli_query($db, $userLogin);
@@ -33,18 +41,18 @@
           $mail = $row[1]; //dataase email
           $id = $row[2]; //database userID
         
-        if(($password !== '' && $email !== '')&&($pass == $password && $mail == $email)&&($id !== $email)){
-              header("Location: http://localhost/Trash%20Tracker/account.html");//make chages here
+        if(($password !== '' && $email !== '')&&($pass == $password && $mail == $email)&&($id !== $password)){
+              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/account.php");//make chages here
             exit();
         }
-        else if($id == $email ){
-              header("Location: http://localhost/Trash%20Tracker/signup.html");//make changes here
+        else if($id == $password ){
+              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/signup.php");//make changes here
             exit();
         }
         }
         else{ 
-          header("Location: http://localhost/Trash%20Tracker/index.html");//make changes here
-          exit();
+			  header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/index.php");//make changes here
+			exit();
         } 
      
      mysqli_close($db);
