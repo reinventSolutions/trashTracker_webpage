@@ -17,63 +17,58 @@
 <body>
 <?php
   
-	$DBservername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
-	$DBusername = "reinvent";
-	$DBpassword = "solutions";
-	$DBname = "REINVENTSOLUTIONS";
+$DBservername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
+$DBusername = "reinvent";
+$DBpassword = "solutions";
+$DBname = "REINVENTSOLUTIONS";
 
-	/* Connect to MySQL and select the database. */
-	$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
-
-	if (mysqli_connect_errno()) 
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    else 
-      echo "<p>Connected into database</p>";
-
+ /* Connect to MySQL and select the database. */
+//  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+//	Or die("<div class='error' ><p>Could not connect to mysql.<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
   
-				if($_POST['submit'] !== '' && isset($_POST['submit'])){
-			 	$password = $_POST['password'];
+//  @mysqli_select_db($DBname, $connection)
+//    Or die("<div class='error'><p>Could not connect to database<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
+//
+	$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+	@mysqli_select_db($connection, $DBname);
+	
+	if(!$connection){
+		header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/signup.php");//make changes here
+			exit();
+	}
+	
+				$password = $_POST['password'];
 				$email = $_POST['email'];
 				$name = $_POST['name'];
-				$id = $_POST['tokenId'];
-				$SQLstring = "SELECT ID FROM users WHERE ID = '$id'";
-				$q = @mysqli_query($db, $SQLstring)
-				Or die("<div><p>ERROR: Unable to execute query.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");	
+				$id = $_POST['tokenId'];		
 				
-				if(mysqli_num_rows($q) != 0){
+				$selectPass = "SELECT password, email, name, ID FROM users WHERE ID = '$id'";
+				$result = @mysqli_query($connection, $selectPass);
+				$row = mysqli_fetch_row($result);
+				//variables in case we want future error handling
+				$pass = $row[0];
+				$mail = $row[1];
+				$userName = $row[2];
+				$idCheck = $row[3];
+				
 					
-					$selectPass = "SELECT password, email, name, ID FROM users WHERE ID = '$id'";
-					$result = mysqli_query($db, $selectPass);
-					$row = mysqli_fetch_row($result);
-					//variables in case we want future error handling
-					$pass = $row[0];
-					$mail = $row[1];
-					$userName = $row[2];
-					$idCheck = $row[3];
-					
-					if($idCheck == $id){	
+				if($idCheck == $id){	
 					$query = "UPDATE users SET name = '$name', email = '$email',
 					 password = '$password' WHERE ID = '$id'";
-					$q = mysqli_query($db, $query)
-					Or die("<div><p>ERROR: Unable to update. Please contact help desk.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-					header"Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/index.php");
-					exit();
-					}
-					else{
-						  header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/index.php");
-						exit();
-					}
-					}
-					else{ 
-						echo "<p>Oops, something went wrong. Go back and try again!</p>";} 
-					}
-?>
+					$q= mysqli_query($connection, $query);	
+				
+				header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/index.php");
+				exit();
+				}
 
- </body>
+ mysqli_close($connection);
+?>
+  </body>
+  
   <!--
     DENISE THUY VY NGUYEN
     2/1/2018
-	SCOTTY CARDWELL
-	3/2/2018
-	--> 
+  SCOTTY CARDWELL
+  3/2/2018
+  --> 
 </html>

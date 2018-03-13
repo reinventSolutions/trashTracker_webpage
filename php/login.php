@@ -23,39 +23,47 @@ $DBpassword = "solutions";
 $DBname = "REINVENTSOLUTIONS";
 
  /* Connect to MySQL and select the database. */
-  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
-
-	if (mysqli_connect_errno()) 
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    else 
-      echo "<p>Connected into database</p>";
+//  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+//	Or die("<div class='error' ><p>Could not connect to mysql.<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
   
-	   if($_POST['submit'] !== '' && isset($_POST['submit'])){
+//  @mysqli_select_db($DBname, $connection)
+//    Or die("<div class='error'><p>Could not connect to database<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
+//
+	$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+	@mysqli_select_db($connection, $DBname);
+	
+//
+  
+	   if($connection){
           $password = $_POST['userPassword'];//input password
           $email = $_POST['userEmail'];//input email
         
           $userLogin = "SELECT password, email, ID FROM users WHERE email = '$email'";
-          $result = mysqli_query($db, $userLogin);
+          $result = @mysqli_query($connection, $userLogin);
           $row = mysqli_fetch_row($result);
           $pass = $row[0]; //database password
           $mail = $row[1]; //dataase email
           $id = $row[2]; //database userID
         
-        if(($password !== '' && $email !== '')&&($pass == $password && $mail == $email)&&($id !== $password)){
-              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/account.php");//make chages here
+		if($id == $password ){
+              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/signup.php");//make changes here
+            exit();
+		}
+        else if(($pass == $password && $mail == $email)&&($id !== $pass)){
+              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/account.php");//make chages here
             exit();
         }
-        else if($id == $password ){
-              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/signup.php");//make changes here
-            exit();
+		else{ 
+			header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/index.php");//make changes here
+			exit();
+        } 
         }
-        }
-        else{ 
-			  header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/dev/php/index.php");//make changes here
+      else{ 
+			header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/index.php");//make changes here
 			exit();
         } 
      
-     mysqli_close($db);
+     mysqli_close($connection);
   ?>
   </body>
   
