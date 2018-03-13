@@ -1,6 +1,10 @@
 <!--
   PHP to pull data from graphs
 -->
+<?php
+session_start();
+?>
+<?php include "dbinfo.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +30,9 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <!--<script type="text/javascript" src="../js/graph.js"></script>-->          
         
-        <!--PHP pulls data into graph-->
+        <!--PHP pulls data into graph
+        https://stackoverflow.com/questions/39658251/how-to-use-php-echo-data-in-order-to-populate-a-google-chart
+        -->
         <?php
             ini_set('track_errors', 1);
             ini_set('display_errors', 1);
@@ -37,18 +43,14 @@
             @ob_end_flush();
             $_SELF=$_SERVER['PHP_SELF'];
             
-            $servername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
-            $username = "reinvent";
-            $password = "solutions";
-            $dbname = "REINVENTSOLUTIONS";
             /* Connect to MySQL and select the database. */
-            $connection = mysqli_connect($servername, $username, $password);
+            $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 
               if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 else 
                   echo "<p>Connected into database</p>";
 
-              $database = mysqli_select_db($connection, $dbname);  
+              $database = mysqli_select_db($connection, $DBname);  
                 if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
                   else 
                       echo "<p>Connected to the database now select table</p>";
@@ -149,8 +151,8 @@
     </li>
   </ul>
   <span class="navbar-text">
-    <a href="login.html"> 
-      <button type="button" class="btn btn-outline-secondary">Logout</button>
+    <a href="logout.php"> 
+      <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
     </a>        
   </span>
   </div>
@@ -165,14 +167,18 @@
   <div class="oneLeft" id="info" style="">
   <div class="row"><!--.row-->
     <div class="onel" style=""><!--LOGO-->
-      <p>Welcome [name] <br/>
-         Street <br/>
-      <p class="img_center">
-        <img src="../images/blue.png" width="100px"><br>
-          NEXT PICK UP: <br>
-        MM/DD/YY<br>
-      </p>
-     </p>              
+    <?php 
+
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
+    <p> Welcome <?php echo $_SESSION["name"]; ?></br>
+    Your Address: 
+    <br/><?php echo $_SESSION["Address"]; ?><br/>
+    <?php echo $_SESSION["City"]; ?><br/>
+    <?php echo $_SESSION["St"]; ?><br/>
+    <?php echo $_SESSION["Zip"]; ?><br/>
+
+    <?php } ?>
+
     </div><!--LOGO-->
   </div><!--.row-->
         
