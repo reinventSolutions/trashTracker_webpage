@@ -1,3 +1,4 @@
+<?php include "dbinfo.php"; ?>
 <html>
 <head>
  <meta charset="utf-8">
@@ -54,26 +55,12 @@
     </form>
 	</div>
 
-    <hr id="bottom_line">
-    Or log in as<br> 
-    <a class="btn btn-sm btn-primary" href="signup.php" role="button" onclick=""> New User</a> <br>  
-
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
     <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
   </div><!--.col-sm-->
  </div><!--.row-->
 </div><!--.container-->
-
-
-<!--PHP-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 100px; height: auto;">
- <div class="row">
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
- </div>
- </div>
-</div>
-
 
 
 <footer><!--FOOTER CONTAINER-->
