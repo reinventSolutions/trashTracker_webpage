@@ -33,7 +33,7 @@ $DBname = "REINVENTSOLUTIONS";
 	@mysqli_select_db($connection, $DBname);
 	
 	if(!$connection){
-		header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/signup.php");//make changes here
+		header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/signup.php");//make changes here
 			exit();
 	}
 	
@@ -57,7 +57,7 @@ $DBname = "REINVENTSOLUTIONS";
 					 password = '$password' WHERE ID = '$id'";
 					$q= mysqli_query($connection, $query);	
 				
-				header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/Scotty_Test/php/index.php");
+				header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/index.php");
 				exit();
 				}
 
