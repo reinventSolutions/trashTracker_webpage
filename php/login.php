@@ -33,14 +33,12 @@ $DBname = "REINVENTSOLUTIONS";
 //
   $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
   @mysqli_select_db($connection, $DBname);
-  
-//
 
      if($connection){
           $password = $_POST['userPassword'];//input password
           $email = $_POST['userEmail'];//input email
         
-          $userLogin = "SELECT password, email, ID, name FROM users WHERE email = '$email'";
+          $userLogin = "SELECT password, email, ID, name FROM Users WHERE email = '$email'";
           $result = @mysqli_query($connection, $userLogin);
           $row = mysqli_fetch_row($result);
           $pass = $row[0]; //database password

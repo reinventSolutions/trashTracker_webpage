@@ -54,18 +54,40 @@ session_start();
                 if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
                   else 
                       echo "<p>Connected to the database now select table</p>";
-
-                      $result = mysqli_query($connection, "SELECT Bin, Estimate FROM Bins"); 
-
+					  
+					  $house = $_SESSION['House'];
+					  $getBins = "SELECT Bin
+								  FROM Bins
+								  WHERE HouseID = ( 
+									SELECT House
+									FROM Houses
+									WHERE House ='$house')";
+										   
+					   $fetchBins = mysqli_query($connection, $getBins);
+					   $storeArray = Array();
+					   while($row = mysqli_fetch_array($fetchBins)){
+						   $storeArray[] = $row[0];
+					   }
+					   
+					   $bin1 = $storeArray[0];
+					   $bin2 = $storeArray[1];
+					   $bin3 = $storeArray[2];
+						
+					  $binData = "SELECT Wk, BinWeight
+					  FROM Weights
+					  WHERE binID = '$bin1' OR binID = '$bin2' OR binID = '$bin3'
+					  LIMIT 12";
+					  
+					  $result = mysqli_query($connection, $binData);
+					  
                       $data = "var data = new google.visualization.DataTable();\n\r"
-                      ."data.addColumn('number', 'Bin');\n\r"
-                      ."data.addColumn('number', 'Estimate');\n\r\n\r"
+                      ."data.addColumn('number', 'Week');\n\r"
+                      ."data.addColumn('number', 'Weight');\n\r\n\r"
                       ."data.addRows([\n\r";
-
                       while($query_data = mysqli_fetch_row($result)) {
-                        $bin = (int)$query_data[0];
-                        $esitmate = (int)$query_data[1];
-                        $data = $data."  [".$bin.", ".$esitmate."],\n\r";
+                        $week = (int)$query_data[0];
+                        $weight = (int)$query_data[1];
+                        $data = $data."  [".$week.", ".$weight."],\n\r";
                       }
                         $data = $data."]);\n\r";
                 //Print data to check if data from database is loaded

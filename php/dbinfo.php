@@ -4,3 +4,5 @@ $DBservername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.a
 $DBusername = "reinvent";
 $DBpassword = "solutions";
 $DBname = "REINVENTSOLUTIONS";
+
+?>
