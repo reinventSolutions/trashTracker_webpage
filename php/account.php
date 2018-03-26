@@ -155,30 +155,20 @@ session_start();
 
 </head>
 
-<body style="background-color:#b4b4b4;"> <!--START OF BODY-->     
+<body> <!--START OF BODY-->     
  <header style="margin-bottom:50px;"> <!--START OF HEADER-->
   <!--START OF NAV-->  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#fff;">
-   <a class="navbar-brand" href="#"></a>
-    <img class="img" src="../images/trashtracker.png" width="40px">
-   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
-    </li>
-  </ul>
-  <span class="navbar-text">
-    <a href="logout.php"> 
-      <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
-    </a>        
-  </span>
-  </div>
- </nav><!--END OF NAV-->
+ <!--HEADER-->
+<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+  <div class="row" style="padding: 0 15px"><!--ROW-->
+    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+      <h1>
+        <img src="../images/trashtracker.png" width="100px">
+        Welcome to Trash Tracker     
+      </h1>
+    </div><!--LOGO-->    
+ </div><!--ROW-->
+</div><!--container-fuild-->
 </header><!--END OF HEADER-->
 
 <!--LEFT CONTAINER--> 
@@ -200,6 +190,10 @@ session_start();
     <?php echo $_SESSION["Zip"]; ?><br/>
 
     <?php } ?>
+    <br/>
+    <a href="logout.php"> 
+      <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
+    </a>     
 
     </div><!--LOGO-->
   </div><!--.row-->
