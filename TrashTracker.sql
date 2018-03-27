@@ -80,3 +80,11 @@ INSERT INTO `users` (`ID`, `password`, `email`, `name`) VALUES
 (11111, 'password', 'Scotty@gmail.com', 'Scotty');
 INSERT INTO `Houses` (`UsernameID`, `House`, `Address`, `City`, `St`, `Zip`) VALUES
 (11111, 099878, '123 Blah Ln', 'San Marcos', 'CA', '92078');
+INSERT INTO `Weights` (`HouseID`, `Weight`, `Con`,`BinType`,`Wk`,`Yr`,`Dte`) VALUES
+(99878, 123, 1, 1, 1, 2018, 1);
+INSERT INTO `Bins` (`Bin`,`WeightID`, `BinType`,`Contamination`,`Number`,`Size`,`Estimate`) VALUES
+(1, 123, '1', 0, 12345, 10, 65);
+INSERT INTO `Bins` (`Bin`,`WeightID`, `BinType`,`Contamination`,`Number`,`Size`,`Estimate`) VALUES
+(2, 123, '2', 0, 67890, 10, 85);
+INSERT INTO `Bins` (`Bin`,`WeightID`, `BinType`,`Contamination`,`Number`,`Size`,`Estimate`) VALUES
+(3, 123, '3', 0, 11121, 10, 95);
