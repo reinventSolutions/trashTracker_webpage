@@ -1,10 +1,7 @@
-<!--
-  PHP to pull data from graphs
--->
 <?php
 session_start();
 ?>
-<?php include "dbinfo.php"; ?>
+<?php include "../../DB/dbinfo.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +53,22 @@ session_start();
                       echo "<p>Connected to the database now select table</p>";
 					  
 					  $house = $_SESSION['House'];
+					  
+					  //BinID info
+					  $binIDquery = "SELECT Bin
+									 FROM Bins
+									 WHERE HouseID = $house";
+									  
+					  $fetchBinsID = mysqli_query($connection, $binIDquery);
+					   $binIDArray = Array();
+					   while($row = mysqli_fetch_array($fetchBinsID)){
+						   $binIDArray[] = $row[0];
+					   }
+					  $binID1 = $binIDArray[0];
+					  $binID2 = $binIDArray[1];
+					  $binID3 = $binIDArray[2];
+					  //BinID info End
+					  
 					  $getBins = "SELECT Bin
 								  FROM Bins
 								  WHERE HouseID = ( 
@@ -92,14 +105,17 @@ session_start();
                         $data = $data."]);\n\r";
                 //Print data to check if data from database is loaded
                 echo $data;
-        ?>
-
-       <!-- Clean up. -->
+        ?>       
+        
+        <!-- Clean up. -->
         <?php
           mysqli_free_result($result);
           mysqli_close($connection);
-          ?>
+        ?>
 
+          <!--
+            PHP to pull data from graphs
+          -->
         <script type="text/javascript">
           /* https://jsfiddle.net/2f3kLtzq/5/
           */
@@ -201,7 +217,7 @@ session_start();
 <div class="row">
 <div class="twol" style=""><!--BIN INFO-->
   <h6>Your bins</h6>
-    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
+    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content= "BIN NUMBER">
       <button type="button" class="">
        <img src="../images/grey.png" width="32px">
       </button>
