@@ -1,3 +1,4 @@
+<?php include "../../DB/dbinfo.php"; ?>
 <html>
 <html lang="en">
 <head>
@@ -11,46 +12,74 @@
     <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
     <link rel="stylesheet" href="../css/stylesheet2.css">
-      <!-- ICONS https://material.io/icons/#ic_cloud-->
+    <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+
 <?php
-  
-       $db = @mysqli_connect("reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com","reinvent","solutions")
-         Or die("<div><p>ERROR: Unable to connect to database server.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-     
-         @mysqli_select_db($db, "REINVENTSOLUTIONS")
-         Or die("<div><p>ERROR: The database is not available. </p>" . "<p>Error Code" . mysqli_errno() . ": " . mysqli_error() . "</p></div>");
-        if($_POST['submit'] !== '' && isset($_POST['submit'])){
+  session_start();
+  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+  @mysqli_select_db($connection, $DBname);
+
+     if($connection){
           $password = $_POST['userPassword'];//input password
-          $email = $_POST['userEmail1'];//input email
+          $email = $_POST['userEmail'];//input email
         
-          $userLogin = "SELECT password, email, ID FROM users WHERE email = '$email'";
-          $result = mysqli_query($db, $userLogin);
+          $userLogin = "SELECT password, email, ID, name FROM Users WHERE email = '$email'";
+          $result = @mysqli_query($connection, $userLogin);
           $row = mysqli_fetch_row($result);
           $pass = $row[0]; //database password
-          $mail = $row[1]; //dataase email
+          $mail = $row[1]; //database email
           $id = $row[2]; //database userID
-        
-        if(($password !== '' && $email !== '')&&($pass == $password && $mail == $email)&&($id !== $email)){
-              header("Location: http://localhost/Trash%20Tracker/account.html");//make chages here
+          $name = $row[3]; //database name
+
+          $_SESSION["name"] = $name;
+
+          $getAddress = "SELECT UsernameID, Address, St, City, Zip, House FROM Houses WHERE UsernameID ='$id'";
+
+          $addressResult = @mysqli_query($connection, $getAddress);
+          $row2 = mysqli_fetch_row($addressResult);
+          $userid = $row2[0];
+          $address = $row2[1];
+          $state = $row2[2];
+          $city = $row2[3];
+          $zip = $row2[4];
+		  $house = $row2[5];
+
+          $_SESSION["Address"] = $address; 
+          $_SESSION["St"] = $state;
+          $_SESSION["City"] = $city;
+          $_SESSION["Zip"] = $zip;
+      $_SESSION["House"] = $house;
+
+    //IF ID TOKEN GIVEN IS == PASSWORD IN DB 
+    if($id == $password ){
+              header("Location: signup.php");//make changes here
+            exit();
+    }
+        else if(($pass == $password && $mail == $email)&&($id !== $pass)){
+              $_SESSION[logged_in] = true;
+              header("Location: account.php");//make chages here
             exit();
         }
-        else if($id == $email ){
-              header("Location: http://localhost/Trash%20Tracker/signup.html");//make changes here
-            exit();
+    else{ 
+      echo "<p>INVALID</p>";
+      header("Location: index.php");//make changes here
+      exit();
+        } 
         }
-        }
-        else{ 
-          header("Location: http://localhost/Trash%20Tracker/index.html");//make changes here
-          exit();
+      else{ 
+        echo "<p>INVALID</p>";
+        header("Location: index.php");//make changes here
+      exit();
         } 
      
-     mysqli_close($db);
+     mysqli_close($connection);
   ?>
-  </body>
   
+  </body>
+
   <!--
     DENISE THUY VY NGUYEN
     2/1/2018

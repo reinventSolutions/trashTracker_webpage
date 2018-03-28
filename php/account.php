@@ -1,6 +1,7 @@
-<!--
-  PHP to pull data from graphs
--->
+<?php
+session_start();
+?>
+<?php include "../../DB/dbinfo.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,9 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <!--<script type="text/javascript" src="../js/graph.js"></script>-->          
         
-        <!--PHP pulls data into graph-->
+        <!--PHP pulls data into graph
+        https://stackoverflow.com/questions/39658251/how-to-use-php-echo-data-in-order-to-populate-a-google-chart
+        -->
         <?php
             ini_set('track_errors', 1);
             ini_set('display_errors', 1);
@@ -37,45 +40,82 @@
             @ob_end_flush();
             $_SELF=$_SERVER['PHP_SELF'];
             
-            $servername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
-            $username = "reinvent";
-            $password = "solutions";
-            $dbname = "REINVENTSOLUTIONS";
             /* Connect to MySQL and select the database. */
-            $connection = mysqli_connect($servername, $username, $password);
+            $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 
               if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 else 
                   echo "<p>Connected into database</p>";
 
-              $database = mysqli_select_db($connection, $dbname);  
+              $database = mysqli_select_db($connection, $DBname);  
                 if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
                   else 
                       echo "<p>Connected to the database now select table</p>";
-
-                      $result = mysqli_query($connection, "SELECT Bin, Estimate FROM Bins"); 
-
+					  
+					  $house = $_SESSION['House'];
+					  
+					  //BinID info
+					  $binIDquery = "SELECT Bin
+									 FROM Bins
+									 WHERE HouseID = $house";
+									  
+					  $fetchBinsID = mysqli_query($connection, $binIDquery);
+					   $binIDArray = Array();
+					   while($row = mysqli_fetch_array($fetchBinsID)){
+						   $binIDArray[] = $row[0];
+					   }
+					  $binID1 = $binIDArray[0];
+					  $binID2 = $binIDArray[1];
+					  $binID3 = $binIDArray[2];
+					  //BinID info End
+					  
+					  $getBins = "SELECT Bin
+								  FROM Bins
+								  WHERE HouseID = ( 
+									SELECT House
+									FROM Houses
+									WHERE House ='$house')";
+										   
+					   $fetchBins = mysqli_query($connection, $getBins);
+					   $storeArray = Array();
+					   while($row = mysqli_fetch_array($fetchBins)){
+						   $storeArray[] = $row[0];
+					   }
+					   
+					   $bin1 = $storeArray[0];
+					   $bin2 = $storeArray[1];
+					   $bin3 = $storeArray[2];
+						
+					  $binData = "SELECT Wk, BinWeight
+					  FROM Weights
+					  WHERE binID = '$bin1' OR binID = '$bin2' OR binID = '$bin3'
+					  LIMIT 12";
+					  
+					  $result = mysqli_query($connection, $binData);
+					  
                       $data = "var data = new google.visualization.DataTable();\n\r"
-                      ."data.addColumn('number', 'Bin');\n\r"
-                      ."data.addColumn('number', 'Estimate');\n\r\n\r"
+                      ."data.addColumn('number', 'Week');\n\r"
+                      ."data.addColumn('number', 'Weight');\n\r\n\r"
                       ."data.addRows([\n\r";
-
                       while($query_data = mysqli_fetch_row($result)) {
-                        $bin = (int)$query_data[0];
-                        $esitmate = (int)$query_data[1];
-                        $data = $data."  [".$bin.", ".$esitmate."],\n\r";
+                        $week = (int)$query_data[0];
+                        $weight = (int)$query_data[1];
+                        $data = $data."  [".$week.", ".$weight."],\n\r";
                       }
                         $data = $data."]);\n\r";
                 //Print data to check if data from database is loaded
                 echo $data;
-        ?>
-
-       <!-- Clean up. -->
+        ?>       
+        
+        <!-- Clean up. -->
         <?php
           mysqli_free_result($result);
           mysqli_close($connection);
-          ?>
+        ?>
 
+          <!--
+            PHP to pull data from graphs
+          -->
         <script type="text/javascript">
           /* https://jsfiddle.net/2f3kLtzq/5/
           */
@@ -128,32 +168,23 @@
             }
           }
         </script>
+
 </head>
 
-<body style="background-color:#b4b4b4;"> <!--START OF BODY-->     
+<body> <!--START OF BODY-->     
  <header style="margin-bottom:50px;"> <!--START OF HEADER-->
   <!--START OF NAV-->  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#fff;">
-   <a class="navbar-brand" href="#"></a>
-    <img class="img" src="../images/trashtracker.png" width="40px">
-   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
-    </li>
-  </ul>
-  <span class="navbar-text">
-    <a href="login.html"> 
-      <button type="button" class="btn btn-outline-secondary">Logout</button>
-    </a>        
-  </span>
-  </div>
- </nav><!--END OF NAV-->
+ <!--HEADER-->
+<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+  <div class="row" style="padding: 0 15px"><!--ROW-->
+    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+      <h1>
+        <img src="../images/trashtracker.png" width="100px">
+        Welcome to Trash Tracker     
+      </h1>
+    </div><!--LOGO-->    
+ </div><!--ROW-->
+</div><!--container-fuild-->
 </header><!--END OF HEADER-->
 
 <!--LEFT CONTAINER--> 
@@ -164,21 +195,29 @@
   <div class="oneLeft" id="info" style="">
   <div class="row"><!--.row-->
     <div class="onel" style=""><!--LOGO-->
-      <p>Welcome [name] <br/>
-         Street <br/>
-      <p class="img_center">
-        <img src="../images/blue.png" width="100px"><br>
-          NEXT PICK UP: <br>
-        MM/DD/YY<br>
-      </p>
-     </p>              
+    <?php 
+
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
+    <p> Welcome <?php echo $_SESSION["name"]; ?></br>
+    Your Address: 
+    <br/><?php echo $_SESSION["Address"]; ?><br/>
+    <?php echo $_SESSION["City"]; ?><br/>
+    <?php echo $_SESSION["St"]; ?><br/>
+    <?php echo $_SESSION["Zip"]; ?><br/>
+
+    <?php } ?>
+    <br/>
+    <a href="logout.php"> 
+      <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
+    </a>     
+
     </div><!--LOGO-->
   </div><!--.row-->
         
 <div class="row">
 <div class="twol" style=""><!--BIN INFO-->
   <h6>Your bins</h6>
-    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
+    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content= "BIN NUMBER">
       <button type="button" class="">
        <img src="../images/grey.png" width="32px">
       </button>
