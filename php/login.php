@@ -1,4 +1,4 @@
-<?php include "dbinfo.php"; ?>
+<?php include "../../DB/dbinfo.php"; ?>
 <html>
 <html lang="en">
 <head>
@@ -12,25 +12,13 @@
     <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
     <link rel="stylesheet" href="../css/stylesheet2.css">
-      <!-- ICONS https://material.io/icons/#ic_cloud-->
+    <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+
 <?php
-  
-session_start();
-/*
-$DBservername = "reinvent-solutions-rds-instance-id.ck1gum76iw9m.us-west-2.rds.amazonaws.com";
-$DBusername = "reinvent";
-$DBpassword = "solutions";
-$DBname = "REINVENTSOLUTIONS";
-  Connect to MySQL and select the database. */
-//  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
-//  Or die("<div class='error' ><p>Could not connect to mysql.<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-  
-//  @mysqli_select_db($DBname, $connection)
-//    Or die("<div class='error'><p>Could not connect to database<br>Error Code" . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
-//
+  session_start();
   $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
   @mysqli_select_db($connection, $DBname);
 
@@ -48,7 +36,7 @@ $DBname = "REINVENTSOLUTIONS";
 
           $_SESSION["name"] = $name;
 
-          $getAddress = "SELECT UsernameID, Address, St, City, Zip FROM Houses WHERE UsernameID ='$id'";
+          $getAddress = "SELECT UsernameID, Address, St, City, Zip, House FROM Houses WHERE UsernameID ='$id'";
 
           $addressResult = @mysqli_query($connection, $getAddress);
           $row2 = mysqli_fetch_row($addressResult);
@@ -57,36 +45,41 @@ $DBname = "REINVENTSOLUTIONS";
           $state = $row2[2];
           $city = $row2[3];
           $zip = $row2[4];
+		  $house = $row2[5];
 
           $_SESSION["Address"] = $address; 
           $_SESSION["St"] = $state;
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
+      $_SESSION["House"] = $house;
 
-        
+    //IF ID TOKEN GIVEN IS == PASSWORD IN DB 
     if($id == $password ){
-              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/signup.php");//make changes here
+              header("Location: signup.php");//make changes here
             exit();
     }
         else if(($pass == $password && $mail == $email)&&($id !== $pass)){
               $_SESSION[logged_in] = true;
-              header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/account.php");//make chages here
+              header("Location: account.php");//make chages here
             exit();
         }
     else{ 
-      header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/index.php");//make changes here
+      echo "<p>INVALID</p>";
+      header("Location: index.php");//make changes here
       exit();
         } 
         }
       else{ 
-      header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/index.php");//make changes here
+        echo "<p>INVALID</p>";
+        header("Location: index.php");//make changes here
       exit();
         } 
      
      mysqli_close($connection);
   ?>
-  </body>
   
+  </body>
+
   <!--
     DENISE THUY VY NGUYEN
     2/1/2018

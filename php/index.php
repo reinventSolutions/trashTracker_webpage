@@ -29,7 +29,7 @@
 
 
 <!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 25px">
+<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3>Log into Trash Tracker</h3><br>
