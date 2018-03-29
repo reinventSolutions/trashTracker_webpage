@@ -172,12 +172,12 @@ session_start();
 </head>
 
 <body> <!--START OF BODY-->     
- <header style="margin-bottom:50px;"> <!--START OF HEADER-->
+ <header style="margin-bottom:20px;"> <!--START OF HEADER-->
   <!--START OF NAV-->  
  <!--HEADER-->
 <div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px 0px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
         <img src="../images/trashtracker.png" width="100px">
         Welcome to Trash Tracker     
@@ -188,11 +188,11 @@ session_start();
 </header><!--END OF HEADER-->
 
 <!--LEFT CONTAINER--> 
-<div class="container" style="margin-bottom: 80px;">
+<div class="container" style="background-color:#818285;">
   <div class="row">
     
   <!--LEFT--> 
-  <div class="oneLeft" id="info" style="">
+  <div class="oneLeft" id="info" style="background-color:#b4b4b4; margin-left: 35px;">
   <div class="row"><!--.row-->
     <div class="onel" style=""><!--LOGO-->
     <?php 
@@ -207,6 +207,10 @@ session_start();
 
     <?php } ?>
     <br/>
+    <a href="settings.php"> 
+      <button type="button" class="btn btn-outline-secondary" href="settings.php">Settings</button>
+    </a>    
+
     <a href="logout.php"> 
       <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
     </a>     
@@ -235,11 +239,19 @@ session_start();
     <h6 class="img_center">Click for more information</h6>
    </div><!--.col-->
   </div><!--.row-->
+  <!--NEXT PICK UP-->
+  <div class="row">
+  <div class="threel" style="">
+    <img src="../images/recycle.png" width="100px"><br>
+    NEXT PICK UP: <br>
+    MM/DD/YY<br>
+  </div>
+ </div>
 
 </div><!--LEFT--> 
 
 <!--RIGHT--> 
-<div class="container" id="info" style="background-color:#f7f7f7;  width:800px; height:auto;">
+<div class="container" id="info" style="background-color:#b4b4b4;  width:800px; height:auto;">
  <div class="row">
     <!--Historical Comparison-->
     <div class="col" style="background-color:#FFFFFF; margin: 5px; height:auto;">
@@ -311,35 +323,22 @@ session_start();
         </p>
      </div><!--.col-sm 8-->
     </div><!--.row-->
+  </div><!--.container-->
+  </div>
+  </div>
         
-    <!--RECYCLE GAME-->
-    <div class="row">
-    <div class="container" style="background-color:#f7f7f7;">  
+ <!--RECYCLE GAME-->
+ <div class="row">
+    <div class="container" style="background-color:rgb(38, 112, 65); margin-top: 10px; margin-bottom: 80px;">  
         <span class="img_center">
-                <h3>Drag and drop each item into the correct bin for points!</h3>
-            </span>
-        </div>
-        <div class="col-sm-6" style="background-color:#FFFFFF; margin: 5px; height:auto;">
-        <p class="img_center" style="padding-top:25px;">
-            <img src="../images/apple.png"><br><br>
-            <img src="../images/grey.png" width="60px"> 
-            <img src="../images/blue.png" width="60px"> 
-            <img src="../images/green.png" width="60px">    
-        </p>
-        <br>
-            <a href=""><i class="material-icons">arrow_back</i>Previous</a>
-            <span class="alignright"><a href="">Next<i class="material-icons">arrow_forward</i></a></span>
-        <br>  
-        </div>
-        <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; height:auto;">
-            <p class="img_center" style="padding-top:25px;">
-            <img src="../images/game/badge.png"><br><br>
-            To date you've gotten 12 correct!<br>
-            <img src="../images/game/stars.png" width="150px"><br><br>
-            </p>
-        </div>      
-        </div><!--.row --> 
-</div><!--.container-->
+         <h3>Trash Tracker Game!</h3>
+        </span>
+        
+    <div class="col" style="background-color:#FFFFFF; margin: 5px 0px; height:500px;">
+    
+   
+    </div>      
+</div><!--.row --> 
 
 <footer><!--FOOTER CONTAINER-->
  <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->

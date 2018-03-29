@@ -36,8 +36,15 @@
     <div>
     <form action="login.php" method="post">
       <div class="form-group">
+	  <!-- Testing Login Errors-->
+	  <div>
+	  <span style = "color: #ff0000;">
+	  <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["loginFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
+	  </span>
+	  </div>
+	  <!-- End Test -->
         <label for="InputEmail1">Email address</label>
-        <input type="email" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="InputPassword">Password</label>
@@ -47,11 +54,14 @@
         <input type="checkbox" class="form-check-input" id="remeberUser">
         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         <p class="alignright">
-            <a href="">Forgot Password?</a>
+            <a href="forgotPassword.php">Forgot Password?</a>
           </p><br>
       </div><br>
-      <input type="submit" class="btn btn-sm btn-success" value="Log In"/> <br>
-    </form>
+     <input type="submit" class="btn btn-sm btn-success" value="Log In"/>
+	 <a href = "signup.php">
+	 <input type="button" class="btn btn-sm btn-success" onclick = "signup.php" value="Sign Up"/><br>
+	 </a>
+	</form>
 	</div>
 
   </div>

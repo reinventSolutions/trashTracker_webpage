@@ -33,25 +33,18 @@
 <div class="container" style="background-color:#b4b4b4; margin-top: 15px; width: 500px; margin-bottom: 80px">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h4>Registering to Trash Tracker</h4><br>
+    <h4>Updating Password to Trash Tracker</h4><br>
 	<div class = "container">
     <!--<form name="userLogin">-->
-	<form action = "register.php" method = "post">
-		  <div>
+	  <div>
 	  <span style = "color: #ff0000;">
 	  <?php $reasons = array("tokenIDinvalid" => "Invalid Token </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
 	  </span>
 	  </div>
+	<form action = "forgotPasswordUpdate.php" method = "post">
       <div class="form-group">
         <label for="InputID">ID TOKEN</label>
         <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
-      </div>
-        <label for="inputName">Name</label>
-        <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Enter Name">
-      <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Enter Email">
-    </div>
     <div class="form-group">
         <label for="inputUpdatePW">New Password</label>
         <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
@@ -63,7 +56,6 @@
   </div>
  </div><!--.row-->
 </div><!--.container-->
-
 
 <footer><!--FOOTER CONTAINER-->
 <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
@@ -82,8 +74,3 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>
 </html>
-
-<!--
-    DENISE THUY VY NGUYEN
-    2/1/2018
--->
