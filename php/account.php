@@ -335,9 +335,89 @@ session_start();
         </span>
         
     <div class="col" style="background-color:#FFFFFF; margin: 5px 0px; height:500px;">
-    
-   
-    </div>      
+    <style>
+	.box001{
+	float: left;
+	width: 75px;
+	height: 15px;
+	margin: 12px;
+	padding: 10px;
+	border: 1px solid black;
+	}
+	.box002{
+	float: left;
+	width: 75px;
+	height: 15px;
+	margin: 12px;
+	padding: 10px;
+	border: 1px solid white;
+	}
+	</style>
+   <p>Score: <text id = "score001">0</text></p>
+
+	<div class = "box002" ondrop = "drop001(event)">
+	<div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
+	</div>
+	<div class = "box002" ondrop = "drop002(event)">
+	<div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
+	</div>
+	<div class = "box002" ondrop = "drop003(event)">
+	<div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">3</div>
+	</div>
+	<div class = "box002" ondrop = "drop001(event)">
+	<div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
+	</div>
+	<div class = "box002" ondrop = "drop002(event)">
+	<div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
+	</div>
+	<br></br><br></br>
+	<div class = "box001" ondrop = "drop006(event)" ondragover = "allowDrop001(event)" id = "place001">1</div>
+	<div class = "box001" ondrop = "drop007(event)" ondragover = "allowDrop002(event)" id = "place002">2</div>
+	<div class = "box001" ondrop = "drop008(event)" ondragover = "allowDrop003(event)" id = "place003">3</div>
+
+	<script>
+	var b = 0;
+	b++;
+	function dragStart001(event){
+	event.dataTransfer.setData("choice001", event.target.id);
+	}
+	function allowDrop001(event){
+	event.preventDefault();
+	}
+	function dragStart002(event){
+	event.dataTransfer.setData("choice002", event.target.id);
+	}
+	function allowDrop002(event){
+	event.preventDefault();
+	}
+	function dragStart003(event){
+	event.dataTransfer.setData("choice003", event.target.id);
+	}
+	function allowDrop003(event){
+	event.preventDefault();
+	}
+
+	function drop006(event){
+	var data = event.dataTransfer.getData("choice001");
+	event.target.appendChild(document.getElementById(data));
+	score001.innerHTML = b++;
+	place001.innerHTML = "1";
+	}
+	function drop007(event){
+	var data = event.dataTransfer.getData("choice002");
+	event.target.appendChild(document.getElementById(data));
+	score001.innerHTML = b++;
+	place002.innerHTML = "2";
+	}
+	function drop008(event){
+	var data = event.dataTransfer.getData("choice003");
+	event.target.appendChild(document.getElementById(data));
+	score001.innerHTML = b++;
+	place003.innerHTML = "3";
+	}
+	</script>
+    </div>    
+	</div>
 </div><!--.row --> 
 
 <footer><!--FOOTER CONTAINER-->
