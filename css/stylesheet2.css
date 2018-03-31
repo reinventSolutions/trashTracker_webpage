@@ -1,31 +1,4 @@
 /*MEDIA QUERIES*/
-@media screen and (max-width: 570px) {
-    .body{
-       width: 90%;
-       margin: auto;       
-       height: auto; overflow: 
-       hidden; // clearing 
-    }
-    .container{
-		width: 90%;
-		margin-left: 5% !important;
-        margin-right: 5% !important;
-	}
-
-    footer{
-        margin-bottom: 80px;
-    }
-}
-
-
- /*IMAGE SCALE*/
- @media screen and (min-width: 500px) and (max-width: 800px) {
-    .resize1{
-        width:100%;
-    }
-}
-
-/**/
 @media screen and (max-width: 1200px) {
     .body{
         width: 90%;
@@ -34,19 +7,47 @@
         hidden; // clearing 
      }
     .oneLeft{
-        width: 80%;
+        width: 90%;
+        margin-bottom: 20px;
         display: flex;
         flex-wrap: row wrap;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        margin-bottom: 20px;
+        justify-content: center;
     }
-    .onel, .twol, .threel {
+    .onel{
         display: flex-shrink;
         justify-content: flex-start;
     }
+    .twol{
+        display: flex-shrink;
+        justify-content: flex-start;
+        padding-top: 50px;
+    }
 }
+
+@media screen and (max-width: 570px) {
+    .body{
+        width: 80%;
+        margin: auto;       
+        height: auto; 
+        overflow: hidden; // clearing 
+     }
+
+     
+    .oneLeft{        
+        width: 100%;
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .onel, .twol, .threel {
+
+    }
+}
+ 
+ 
  
 
 /*https://medium.freecodecamp.org/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053*/
-
