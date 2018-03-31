@@ -3,7 +3,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" src="../images/trashTracker.png"/>
+    <link rel="icon" href="../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
@@ -32,7 +32,7 @@
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h3>Log into Trash Tracker</h3><br>
+    <h3 class="img_center">Log into Trash Tracker</h3><br>
     <div>
     <form action="login.php" method="post">
       <div class="form-group">
@@ -55,18 +55,22 @@
         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         <p class="alignright">
             <a href="forgotPassword.php">Forgot Password?</a>
-          </p><br>
-      </div><br>
-     <input type="submit" class="btn btn-sm btn-success" value="Log In"/>
-	 <a href = "signup.php">
-	 <input type="button" class="btn btn-sm btn-success" onclick = "signup.php" value="Sign Up"/><br>
-	 </a>
+        </p><br/><br/>
+      </div>
+      <br/>
+      <p class="img_center">
+      <input type="submit" class="btn btn-sm btn-success" value="Log In"/>
+      &nbsp;	
+      <a href = "signup.php">
+        <input type="button" class="btn btn-sm btn-success" onclick = "signup.php" value="Sign Up"/><br>
+      </a>
+     </p>
 	</form>
 	</div>
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
-    <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
+    <p class="img_center"><img src="../images/house.png" class="resize1" width= "100%"; style="padding-top:auto; padding-bottom: auto;"></p>
   </div><!--.col-sm-->
  </div><!--.row-->
 </div><!--.container-->

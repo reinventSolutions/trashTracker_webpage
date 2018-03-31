@@ -275,7 +275,7 @@ session_start();
         <span class="alignright">
         <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
         </span>
-        <div id="chart_div" style="padding: 10px; width: 100%; height: 500px;">
+        <div id="chart_div" class="hcGraph" style="height:500px;">
         <!--GRAPH CHART-->
         </div>
         <!--GRAPH CHART BUTTONS    
@@ -358,51 +358,51 @@ session_start();
         
  <!--RECYCLE GAME-->
  <div class="row">
-    <div class="container" style="background-color:rgb(38, 112, 65); margin-top: 10px; margin-bottom: 80px;">  
+ <div class="container" style="background-color:rgb(38, 112, 65); margin-top: 10px; margin-bottom: 80px;">  
         <span class="img_center">
          <h3>Trash Tracker Game!</h3>
         </span>
         
-    <div class="col" style="background-color:#FFFFFF; margin: 5px 0px; height:500px;">
+    <div class="col" style="background-color:#FFFFFF; margin: 5px 0px; height:350px;">
     <style>
-	.box001{
-	float: left;
-	width: 75px;
-	height: 15px;
-	margin: 12px;
-	padding: 10px;
-	border: 1px solid black;
-	}
-	.box002{
-	float: left;
-	width: 75px;
-	height: 15px;
-	margin: 12px;
-	padding: 10px;
-	border: 1px solid white;
-	}
+      .box001{
+      float: left;
+      width: 75px;
+      height: 15px;
+      margin: 12px;
+      padding: 10px;
+      border: 1px solid black;
+      }
+      .box002{
+      float: left;
+      width: 75px;
+      height: 15px;
+      margin: 12px;
+      padding: 10px;
+      border: 1px solid white;
+      }
 	</style>
    <p>Score: <text id = "score001">0</text></p>
 
-	<div class = "box002" ondrop = "drop001(event)">
-	<div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
-	</div>
-	<div class = "box002" ondrop = "drop002(event)">
-	<div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
-	</div>
-	<div class = "box002" ondrop = "drop003(event)">
-	<div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">3</div>
-	</div>
-	<div class = "box002" ondrop = "drop001(event)">
-	<div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
-	</div>
-	<div class = "box002" ondrop = "drop002(event)">
-	<div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
-	</div>
-	<br></br><br></br>
-	<div class = "box001" ondrop = "drop006(event)" ondragover = "allowDrop001(event)" id = "place001">1</div>
-	<div class = "box001" ondrop = "drop007(event)" ondragover = "allowDrop002(event)" id = "place002">2</div>
-	<div class = "box001" ondrop = "drop008(event)" ondragover = "allowDrop003(event)" id = "place003">3</div>
+    <div class = "box002" ondrop = "drop001(event)">
+    <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
+    </div>
+    <div class = "box002" ondrop = "drop002(event)">
+    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
+    </div>
+    <div class = "box002" ondrop = "drop003(event)">
+    <div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">3</div>
+    </div>
+    <div class = "box002" ondrop = "drop001(event)">
+    <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001">1</div>
+    </div>
+    <div class = "box002" ondrop = "drop002(event)">
+    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002">2</div>
+    </div>
+    <br></br><br></br>
+    <div class = "box001" ondrop = "drop006(event)" ondragover = "allowDrop001(event)" id = "place001">1</div>
+    <div class = "box001" ondrop = "drop007(event)" ondragover = "allowDrop002(event)" id = "place002">2</div>
+    <div class = "box001" ondrop = "drop008(event)" ondragover = "allowDrop003(event)" id = "place003">3</div>
 
 	<script>
 	var b = 0;

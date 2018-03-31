@@ -21,8 +21,9 @@
   <div class="row" style="padding: 0 15px"><!--ROW-->
   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-        <img src="../images/trashtracker.png" width="100px">
-        Welcome to Trash Tracker     
+      <a href="index.php">
+            <img src="../images/trashtracker.png" width="100px">
+        </a>        Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
@@ -30,7 +31,7 @@
 <!--.GENERAL INFO-->
 
 <!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; width: 500px; margin-bottom: 80px">
+<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h4>Registering to Trash Tracker</h4><br>
@@ -56,7 +57,11 @@
         <label for="inputUpdatePW">New Password</label>
         <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
     </div>
-	<input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
+    <br/>
+     <p class="img_center">
+	  <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
+     <br/>
+     </p>
     </form>
 	</div>
   </div>

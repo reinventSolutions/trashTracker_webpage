@@ -16,21 +16,22 @@
 </head>
 
 <body>
-<!--LOGIN-->
-<div class="container-fuild" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+<!--HEADER-->
+<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-        <img src="../images/trashtracker.png" width="100px">
+        <a href="account.php">
+            <img src="../images/trashtracker.png" width="100px">
+        </a>
         Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
 </div><!--container-fuild-->
-<!--.GENERAL INFO-->
 
-<!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; width: 500px; margin-bottom: 80px">
+<!--SETTING-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h4>Update Trash Tracker Account</h4><br>
@@ -66,7 +67,11 @@
         <label for="inputUpdatePW">New Password</label>
         <input type="password" class="form-control" name="newPassword" id= "newPassword" aria-describedby="newPassword" placeholder="New Password">
     </div>
-	<input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
+      <br/>
+       <p class="img_center">
+        <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
+        <br/><br/>
+      </p>
     </form>
 	</div>
   </div>

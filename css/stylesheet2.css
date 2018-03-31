@@ -1,12 +1,13 @@
 /*MEDIA QUERIES*/
 @media screen and (max-width: 1200px) {
     .body{
-        width: 90%;
+        width: 100%;
         margin: auto;       
         height: auto; 
         overflow: hidden; // clearing 
      }
-    .oneLeft{
+
+     .oneLeft{
         width: 80%; 
         height: auto; 
         margin-left: 5% !important;
@@ -37,8 +38,25 @@
         height: auto; 
         overflow: hidden; // clearing 
      }
+     .container {
+        width: 90%;
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+     }
 
-    .oneLeft{        
+     .col-sm{
+        width: 90%;
+        margin: auto;       
+        height: auto;    
+     }
+     
+     .hcGraph{
+        padding: 5px; 
+        width: 100%; 
+        height: 300px !important;
+    }
+     
+     .oneLeft{        
         width: 100%;
         margin-left: 5% !important;
         margin-right: 5% !important;
@@ -52,7 +70,7 @@
         margin: 5px 18px 5px;
     }
 }
- 
+
  
 
 /*https://medium.freecodecamp.org/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053*/
