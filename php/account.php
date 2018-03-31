@@ -192,7 +192,7 @@ session_start();
   <div class="row">
     
   <!--LEFT--> 
-  <div class="oneLeft" id="info" style="background-color:#b4b4b4; margin-left: 35px;">
+  <div class="oneLeft" id="info" style="margin-left: 35px;">
   <div class="row"><!--.row-->
     <div class="onel" style=""><!--LOGO-->
     <?php 
@@ -217,35 +217,36 @@ session_start();
 
     </div><!--LOGO-->
   </div><!--.row-->
-        
+
+<!--BIN INFO-->
 <div class="row">
 <div class="twol" style=""><!--BIN INFO-->
   <h6>Your bins</h6>
-    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-content= "BIN NUMBER">
+    <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID1; ?>
       <button type="button" class="">
        <img src="../images/grey.png" width="32px">
       </button>
     </a>
-    <a href="#" title="Recycling" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
+    <a href="#" title="Recycling" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID2; ?>
       <button type="button" class="">
        <img src="../images/blue.png" width="30px">
       </button>
       </a>
-    <a href="#" title="Greenwaste" data-toggle="popover" data-trigger="hover" data-content="BIN NUMBER">
+    <a href="#" title="Greenwaste" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID3; ?>
       <button type="button" class="">
        <img src="../images/green.png" width="30px">
       </button>
     </a>
-    <h6 class="img_center">Click for more information</h6>
+    <h6 class="img_center">Click for more information</h6>  
    </div><!--.col-->
   </div><!--.row-->
   <!--NEXT PICK UP-->
   <div class="row">
   <div class="threel" style="">
-    <img src="../images/recycle.png" width="100px"><br>
-    NEXT PICK UP: <br>
-    MM/DD/YY<br>
-  </div>
+  <img src="../images/recycle.png" width="100px"><br>
+     NEXT PICK UP: <br>
+    <?php echo $_SESSION["NextPickup"]; ?> <br>
+    </div>
  </div>
 
 </div><!--LEFT--> 
@@ -272,7 +273,7 @@ session_start();
         <span class="alignright">
         <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
         </span>
-        <div id="chart_div" style="padding: 10px; width: 100%; height: 400px;">
+        <div id="chart_div" style="padding: 10px; width: 100%;">
         <!--GRAPH CHART-->
         </div>
     

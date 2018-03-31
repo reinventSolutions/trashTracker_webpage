@@ -47,13 +47,22 @@
           $state = $row2[2];
           $city = $row2[3];
           $zip = $row2[4];
-		  $house = $row2[5];
+		      $house = $row2[5];
+
+          $getNextPup = "SELECT NextPickup FROM Routes WHERE HouseID ='$house'";
+
+          $pupResult = @mysqli_query($connection, $getNextPup);
+          $puprow = mysqli_fetch_row($pupResult);
+          $pickup = $puprow[0];
+
+          $_SESSION["NextPickup"] = $pickup;
 
           $_SESSION["Address"] = $address; 
           $_SESSION["St"] = $state;
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
+
 
 		// Testing this code
 		if ($password == ''){
