@@ -3,21 +3,27 @@
     .body{
         width: 90%;
         margin: auto;       
-        height: auto; overflow: 
-        hidden; // clearing 
+        height: auto; 
+        overflow: hidden; // clearing 
      }
     .oneLeft{
-        width: 90%;
+        width: 80%; 
+        height: auto; 
+        margin-left: 5% !important;
+        margin-right: 5% !important;
         margin-bottom: 20px;
         display: flex;
         flex-wrap: row wrap;
         justify-content: center;
     }
     .onel{
-        display: flex-shrink;
+        padding: 20px;
+        margin: 5px 18px 5px;
+        /*display: flex-shrink;*/
         justify-content: flex-start;
     }
     .twol{
+        margin: 5px 18px 5px;
         display: flex-shrink;
         justify-content: flex-start;
         padding-top: 50px;
@@ -26,13 +32,12 @@
 
 @media screen and (max-width: 570px) {
     .body{
-        width: 80%;
+        width: 90%;
         margin: auto;       
         height: auto; 
         overflow: hidden; // clearing 
      }
 
-     
     .oneLeft{        
         width: 100%;
         margin-left: 5% !important;
@@ -40,13 +45,13 @@
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
     }
-    .onel, .twol, .threel {
-
+    .onel, .twol {
+        padding: 10px;
+        margin: 5px 18px 5px;
     }
 }
- 
  
  
 

@@ -45,12 +45,12 @@ session_start();
 
               if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 else 
-                  echo "<p>Connected into database</p>";
+                  //echo "<p>Connected into database</p>";
 
               $database = mysqli_select_db($connection, $DBname);  
                 if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
                   else 
-                      echo "<p>Connected to the database now select table</p>";
+                      //echo "<p>Connected to the database now select table</p>";
 					  
 					  $house = $_SESSION['House'];
 					  
@@ -104,7 +104,7 @@ session_start();
                       }
                         $data = $data."]);\n\r";
                 //Print data to check if data from database is loaded
-                echo $data;
+                //echo $data;
         ?>       
         
         <!-- Clean up. -->
@@ -151,6 +151,7 @@ session_start();
                 },
 
               colors: ['#0066ff', '#808080', '#7aac3b']
+              
             };
 
             var chart = new google.charts.Bar(document.getElementById('chart_div'));
@@ -199,20 +200,20 @@ session_start();
 
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
     <p> Welcome <?php echo $_SESSION["name"]; ?></br>
-    Your Address: 
-    <br/><?php echo $_SESSION["Address"]; ?><br/>
-    <?php echo $_SESSION["City"]; ?><br/>
-    <?php echo $_SESSION["St"]; ?><br/>
+    Your Address: <br/>
+    <?php echo $_SESSION["Address"]; ?><br/>
+    <?php echo $_SESSION["City"]; ?>
+    <?php echo $_SESSION["St"]; ?>
     <?php echo $_SESSION["Zip"]; ?><br/>
-
     <?php } ?>
+    
     <br/>
     <a href="settings.php"> 
-      <button type="button" class="btn btn-outline-secondary" href="settings.php">Settings</button>
+      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" href="settings.php">Settings</button>
     </a>    
-
+    &nbsp;	
     <a href="logout.php"> 
-      <button type="button" class="btn btn-outline-secondary" onclick="logout.php" href="">Logout</button>
+      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" onclick="logout.php" href="">Logout</button>
     </a>     
 
     </div><!--LOGO-->
@@ -236,13 +237,14 @@ session_start();
       <button type="button" class="">
        <img src="../images/green.png" width="30px">
       </button>
-    </a>
-    <h6 class="img_center">Click for more information</h6>  
+    </a><br/>
+    <span class="img_center">Click for more information </span>
    </div><!--.col-->
   </div><!--.row-->
+  
   <!--NEXT PICK UP-->
   <div class="row">
-  <div class="threel" style="">
+  <div class="onel" style="">
   <img src="../images/recycle.png" width="100px"><br>
      NEXT PICK UP: <br>
     <?php echo $_SESSION["NextPickup"]; ?> <br>
@@ -273,16 +275,16 @@ session_start();
         <span class="alignright">
         <a href="">Next Week<i class="material-icons">arrow_forward</i></a>
         </span>
-        <div id="chart_div" style="padding: 10px; width: 100%;">
+        <div id="chart_div" style="padding: 10px; width: 100%; height: 500px;">
         <!--GRAPH CHART-->
         </div>
-    
+        <!--GRAPH CHART BUTTONS    
         <div id="btn-group">
         <button class="button button-blue" id="none">No Format</button>
         <button class="button button-blue" id="scientific">Scientific Notation</button>
         <button class="button button-blue" id="decimal">Decimal</button>
         <button class="button button-blue" id="short">Short</button>
-        </div>
+        </div>-->
         </div><!--.col-sm-->
     </div><!--.row-->        
     
@@ -322,6 +324,32 @@ session_start();
             We calculated the percent of waste you recycled this month, and found that you recycled more and 
             sent less landfill than your neightbors did. 
         </p>
+
+        <!--HOUSES-->
+        <div class="threel">
+          <div class="child">
+           <img src="../images/greenhouse.png" width="50%"></br>
+           House Avg.
+          </div>
+          <div class="child">
+            <img src="../images/greenhouse.png" width="50%"></br>
+           House Avg.
+          </div>
+          <div class="child">
+            <img src="../images/greenhouse.png" width="50%"></br>
+           House Avg.
+          </div>
+          <div class="child">
+            <img src="../images/greenhouse.png" width="50%"></br>
+           House Avg.
+          </div>
+          <div class="child">
+            <img src="../images/greenhouse.png" width="50%"></br>
+           House Avg.
+          </div>
+        </div>
+
+
      </div><!--.col-sm 8-->
     </div><!--.row-->
   </div><!--.container-->
@@ -442,4 +470,6 @@ session_start();
 <!--
     DENISE THUY VY NGUYEN
     2/1/2018
+    SCOTTY - PHP/GAME
+    KEVIN - PHP/SESSIONS
 -->

@@ -26,15 +26,25 @@ nav{
     background-color:#b4b4b4; 
 }
 
-.onel, .twol, .threel{
+.onel, .twol{
     text-align: center;
     margin: 20px; 
     padding: 20px;
+    /* margin: 5px 18px 5px;*/
     border-radius: 10px;
     background-color:#FFFFFF; 
     flex: 1;
 }
-    
+
+.threel{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.child {
+    text-align: center;
+} 
 .col{
     border-radius: 10px;
 }
