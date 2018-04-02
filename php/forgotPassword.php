@@ -17,39 +17,46 @@
 
 <body>
 <!--LOGIN-->
-<div class="container-fuild" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+    <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-        <img src="../images/trashtracker.png" width="100px">
-        Welcome to Trash Tracker     
+      <a href="index.php">
+            <img src="../images/trashtracker.png" width="100px">
+        </a>   
+          Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
 </div><!--container-fuild-->
 <!--.GENERAL INFO-->
 
-<!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; width: 500px; margin-bottom: 80px">
+<!--FORGOT PASSWORD-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h4>Updating Password to Trash Tracker</h4><br>
-	<div class = "container">
+     <h4>Updating Password to Trash Tracker</h4><br>
+    <div class = "container">
     <!--<form name="userLogin">-->
-	  <div>
-	  <span style = "color: #ff0000;">
-	  <?php $reasons = array("tokenIDinvalid" => "Invalid Token </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
+    <div>
+    <br>
+    	<span style = "color: #ff0000;">
+	     <?php $reasons = array("tokenIDinvalid" => "Invalid Token </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
 	  </span>
-	  </div>
-	<form action = "forgotPasswordUpdate.php" method = "post">
-      <div class="form-group">
+  	</div>
+    <form action = "forgotPasswordUpdate.php" method = "post">
+     <div class="form-group">
         <label for="InputID">ID TOKEN</label>
         <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
-    <div class="form-group">
+     </div>
+     <div class="form-group">
         <label for="inputUpdatePW">New Password</label>
         <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
-    </div>
-	<input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
+     </div>
+     <p class="img_center">
+     	 <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
+    </p> 
+    </br>
     </form>
 	</div>
   </div>

@@ -16,10 +16,10 @@
 </head>
 
 <body>
-<!--LOGIN-->
-<div class="container-fuild" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+<!--REGISTER-->
+<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+    <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
       <a href="index.php">
             <img src="../images/trashtracker.png" width="100px">
@@ -30,12 +30,12 @@
 </div><!--container-fuild-->
 <!--.GENERAL INFO-->
 
-<!--SIGN IN-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
+<!--SIGN UP-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h4>Registering to Trash Tracker</h4><br>
-	<div class = "container">
+	<div>
     <!--<form name="userLogin">-->
 	<form action = "register.php" method = "post">
 		  <div>

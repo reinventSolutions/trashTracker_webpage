@@ -176,10 +176,10 @@ session_start();
  <header style="margin-bottom:20px;"> <!--START OF HEADER-->
   <!--START OF NAV-->  
  <!--HEADER-->
-<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
+ <div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px 0px; text-align:center; padding: 15px;"><!--LOGO-->
-      <h1>
+    <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+        <h1>
         <img src="../images/trashtracker.png" width="100px">
         Welcome to Trash Tracker     
       </h1>

@@ -1,7 +1,13 @@
+/*IMAGE SCALE*/
+@media screen and (min-width: 500px) and (max-width: 800px) {
+    .resize1{
+        width:100%;
+    }
+}
 /*MEDIA QUERIES*/
 @media screen and (max-width: 1200px) {
     .body{
-        width: 100%;
+        width: 90%;
         margin: auto;       
         height: auto; 
         overflow: hidden; // clearing 
@@ -31,24 +37,20 @@
     }
 }
 
+/*MOBILE*/
 @media screen and (max-width: 570px) {
     .body{
-        width: 90%;
+        width: 100%;
         margin: auto;       
         height: auto; 
         overflow: hidden; // clearing 
      }
-     .container {
-        width: 90%;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-     }
 
-     .col-sm{
-        width: 90%;
-        margin: auto;       
-        height: auto;    
-     }
+     .container{
+		width: 90%;
+		/*margin-left: 5% !important;
+        margin-right: 5% !important; */
+	}
      
      .hcGraph{
         padding: 5px; 
@@ -57,17 +59,18 @@
     }
      
      .oneLeft{        
-        width: 100%;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
+        width: 90%;
+        /*margin-left: 5% !important;
+        margin-right: 5% !important;*/
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
     }
     .onel, .twol {
+        width: 100%;
         padding: 10px;
-        margin: 5px 18px 5px;
+        /*margin: 5px 18px 5px;*/
     }
 }
 
