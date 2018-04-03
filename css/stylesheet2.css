@@ -1,52 +1,79 @@
-/*MEDIA QUERIES*/
-@media screen and (max-width: 570px) {
-    .body{
-       width: 90%;
-       margin: auto;       
-       height: auto; overflow: 
-       hidden; // clearing 
-    }
-    .container{
-		width: 90%;
-		margin-left: 5% !important;
-        margin-right: 5% !important;
-	}
-
-    footer{
-        margin-bottom: 80px;
-    }
-}
-
-
- /*IMAGE SCALE*/
- @media screen and (min-width: 500px) and (max-width: 800px) {
+/*IMAGE SCALE*/
+@media screen and (min-width: 500px) and (max-width: 800px) {
     .resize1{
         width:100%;
     }
 }
-
-/**/
+/*MEDIA QUERIES*/
 @media screen and (max-width: 1200px) {
     .body{
         width: 90%;
         margin: auto;       
-        height: auto; overflow: 
-        hidden; // clearing 
+        height: auto; 
+        overflow: hidden; // clearing 
      }
-    .oneLeft{
-        width: 80%;
-        display: flex;
-        flex-wrap: row wrap;
+
+     .oneLeft{
+        width: 80%; 
+        height: auto; 
         margin-left: 5% !important;
         margin-right: 5% !important;
         margin-bottom: 20px;
+        display: flex;
+        flex-wrap: row wrap;
+        justify-content: center;
     }
-    .onel, .twol, .threel {
-        display: flex-shrink;
+    .onel{
+        padding: 20px;
+        margin: 5px 18px 5px;
+        /*display: flex-shrink;*/
         justify-content: flex-start;
     }
+    .twol{
+        margin: 5px 18px 5px;
+        display: flex-shrink;
+        justify-content: flex-start;
+        padding-top: 50px;
+    }
 }
+
+/*MOBILE*/
+@media screen and (max-width: 570px) {
+    .body{
+        width: 100%;
+        margin: auto;       
+        height: auto; 
+        overflow: hidden; // clearing 
+     }
+
+     .container{
+		width: 90%;
+		/*margin-left: 5% !important;
+        margin-right: 5% !important; */
+	}
+     
+     .hcGraph{
+        padding: 5px; 
+        width: 100%; 
+        height: 300px !important;
+    }
+     
+     .oneLeft{        
+        width: 90%;
+        /*margin-left: 5% !important;
+        margin-right: 5% !important;*/
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .onel, .twol {
+        width: 100%;
+        padding: 10px;
+        /*margin: 5px 18px 5px;*/
+    }
+}
+
  
 
 /*https://medium.freecodecamp.org/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053*/
-

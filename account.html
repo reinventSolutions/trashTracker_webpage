@@ -45,12 +45,12 @@ session_start();
 
               if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 else 
-                  //echo "<p>Connected into database</p>";
+                  echo "<p>Connected into database</p>";
 
               $database = mysqli_select_db($connection, $DBname);  
                 if (mysqli_connect_errno()) echo "Failed to connect to selected db" . mysqli_connect_error();
                   else 
-                      //echo "<p>Connected to the database now select table</p>";
+                      echo "<p>Connected to the database now select table</p>";
 					  
 					  $house = $_SESSION['House'];
 					  
@@ -104,7 +104,7 @@ session_start();
                       }
                         $data = $data."]);\n\r";
                 //Print data to check if data from database is loaded
-                //echo $data;
+                echo $data;
         ?>       
         
         <!-- Clean up. -->
@@ -240,7 +240,6 @@ session_start();
     <h6 class="img_center">Click for more information</h6>  
    </div><!--.col-->
   </div><!--.row-->
-  
   <!--NEXT PICK UP-->
   <div class="row">
   <div class="onel" style="">
@@ -323,32 +322,6 @@ session_start();
             We calculated the percent of waste you recycled this month, and found that you recycled more and 
             sent less landfill than your neightbors did. 
         </p>
-
-        <!--HOUSES-->
-        <div class="threel">
-          <div class="child">
-           <img src="../images/greenhouse.png" width="50%"></br>
-           House Avg.
-          </div>
-          <div class="child">
-            <img src="../images/greenhouse.png" width="50%"></br>
-           House Avg.
-          </div>
-          <div class="child">
-            <img src="../images/greenhouse.png" width="50%"></br>
-           House Avg.
-          </div>
-          <div class="child">
-            <img src="../images/greenhouse.png" width="50%"></br>
-           House Avg.
-          </div>
-          <div class="child">
-            <img src="../images/greenhouse.png" width="50%"></br>
-           House Avg.
-          </div>
-        </div>
-
-
      </div><!--.col-sm 8-->
     </div><!--.row-->
   </div><!--.container-->

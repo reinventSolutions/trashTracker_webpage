@@ -16,52 +16,62 @@
 </head>
 
 <body>
-<!--REGISTER-->
+<!--HEADER-->
 <div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
     <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-      <a href="index.php">
+        <a href="account.php">
             <img src="../images/trashtracker.png" width="100px">
-        </a>        Welcome to Trash Tracker     
+        </a>
+        Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
 </div><!--container-fuild-->
-<!--.GENERAL INFO-->
 
-<!--SIGN UP-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
+<!--SETTING-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
   <div class="row">      
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h4>Registering to Trash Tracker</h4><br>
-	<div>
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+    <h4>Update Trash Tracker Account</h4><br>
+	<div class = "container">
     <!--<form name="userLogin">-->
-	<form action = "register.php" method = "post">
+	<form action = "updateSettings.php" method = "post">
 		  <div>
 	  <span style = "color: #ff0000;">
-	  <?php $reasons = array("tokenIDinvalid" => "Invalid Token </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
+	  <?php $reasons = array("tokenIDinvalid" => "The information provided is invalid </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
 	  </span>
 	  </div>
+	  <div class = "form-group">
+        <label for="inputName"> Current Name</label>
+        <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Current Name">
+		</div>
       <div class="form-group">
-        <label for="InputID">ID TOKEN</label>
-        <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
-      </div>
-        <label for="inputName">Name</label>
-        <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Enter Name">
+        <label for="inputEmail">Current Email</label>
+        <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Current Email">
+    </div>
+	    <div class="form-group">
+        <label for="inputUpdatePW">Current Password</label>
+        <input type="password" class="form-control" name="password" id= "password" aria-describedby="password" placeholder="Current Password">
+    </div>
+		<div class="form-group">
+	    <label for="inputName">New Name</label>
+        <input type="name" class="form-control" name="newName" id= "newName" aria-describedby="newName" placeholder="New Name">
+		</div>
       <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Enter Email">
+        <label for="inputEmail">New Email</label>
+        <input type="email" class="form-control" name="newEmail" id= "newEmail" aria-describedby="newEmail" placeholder="New Email">
     </div>
     <div class="form-group">
         <label for="inputUpdatePW">New Password</label>
-        <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
+        <input type="password" class="form-control" name="newPassword" id= "newPassword" aria-describedby="newPassword" placeholder="New Password">
     </div>
-    <br/>
-     <p class="img_center">
-	  <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
-     <br/>
-     </p>
+      <br/>
+       <p class="img_center">
+        <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
+        <br/><br/>
+      </p>
     </form>
 	</div>
   </div>
@@ -87,8 +97,3 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>
 </html>
-
-<!--
-    DENISE THUY VY NGUYEN
-    2/1/2018
--->
