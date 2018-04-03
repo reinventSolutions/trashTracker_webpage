@@ -1,6 +1,11 @@
 <?php
 session_start();
+
+if($_SESSION['logged_in'] != true)
+  header("Location: index.php"); ?>
+<!--P2 CHANGES ABOVE ^^^^^ -->
 ?>
+
 <?php include "../../DB/dbinfo.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
