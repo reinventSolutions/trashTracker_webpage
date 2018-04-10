@@ -3,7 +3,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" src="../images/trashTracker.png"/>
+    <link rel="icon" href="../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
@@ -18,7 +18,7 @@
 <!--LOGIN-->
 <div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
   <div class="row" style="padding: 0 15px"><!--ROW-->
-    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
+    <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
         <img src="../images/trashtracker.png" width="100px">
         Welcome to Trash Tracker     
@@ -32,12 +32,19 @@
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h3>Log into Trash Tracker</h3><br>
+    <h3 class="img_center">Log into Trash Tracker</h3><br>
     <div>
     <form action="login.php" method="post">
       <div class="form-group">
+	  <!-- Testing Login Errors-->
+	  <div>
+	  <span style = "color: #ff0000;">
+	  <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["loginFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
+	  </span>
+	  </div>
+	  <!-- End Test -->
         <label for="InputEmail1">Email address</label>
-        <input type="email" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="InputPassword">Password</label>
@@ -47,16 +54,23 @@
         <input type="checkbox" class="form-check-input" id="remeberUser">
         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         <p class="alignright">
-            <a href="">Forgot Password?</a>
-          </p><br>
-      </div><br>
-      <input type="submit" class="btn btn-sm btn-success" value="Log In"/> <br>
-    </form>
+            <a href="forgotPassword.php">Forgot Password?</a>
+        </p><br/><br/>
+      </div>
+      <br/>
+      <p class="img_center">
+      <input type="submit" class="btn btn-sm btn-success" value="Log In"/>
+      &nbsp;	
+      <a href = "signup.php">
+        <input type="button" class="btn btn-sm btn-success" onclick = "signup.php" value="Sign Up"/><br>
+      </a>
+     </p>
+	</form>
 	</div>
 
   </div>
   <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
-    <p class="img_center"><img src="../images/house.png" class="resize1" width= 300px;></p>
+    <p class="img_center"><img src="../images/house.png" class="resize1" width= "100%"; style="padding-top:auto; padding-bottom: auto;"></p>
   </div><!--.col-sm-->
  </div><!--.row-->
 </div><!--.container-->

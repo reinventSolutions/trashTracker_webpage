@@ -25,6 +25,8 @@
      if($connection){
           $password = $_POST['userPassword'];//input password
           $email = $_POST['userEmail'];//input email
+		  
+		  $loginFailed = false;
         
           $userLogin = "SELECT password, email, ID, name FROM Users WHERE email = '$email'";
           $result = @mysqli_query($connection, $userLogin);
@@ -45,32 +47,51 @@
           $state = $row2[2];
           $city = $row2[3];
           $zip = $row2[4];
-		  $house = $row2[5];
+		      $house = $row2[5];
+
+          $getNextPup = "SELECT NextPickup FROM Routes WHERE HouseID ='$house'";
+
+          $pupResult = @mysqli_query($connection, $getNextPup);
+          $puprow = mysqli_fetch_row($pupResult);
+          $pickup = $puprow[0];
+		  
+          $_SESSION["NextPickup"] = $pickup;
 
           $_SESSION["Address"] = $address; 
           $_SESSION["St"] = $state;
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
-      $_SESSION["House"] = $house;
+          $_SESSION["House"] = $house;
+		  $_SESSION["GraphLow"] = 0;
+		  $_SESSION["GraphUp"] = 5;
 
-    //IF ID TOKEN GIVEN IS == PASSWORD IN DB 
-    if($id == $password ){
-              header("Location: signup.php");//make changes here
+
+		// Testing this code
+		if ($password == ''){
+		 $loginFailed = true;
+		 die(header("Location:index.php?loginFailed=true&reason=blank"));
+		}
+	 	else if ($email == ''){
+		 $loginFailed = true;
+		 die(header("Location:index.php?loginFailed=true&reason=blank"));
+		} 
+		//End of testing		
+		//IF ID TOKEN GIVEN IS == PASSWORD IN DB 
+		else if($id == $password ){
+            header("Location: signup.php");//make changes here
             exit();
-    }
+		}
         else if(($pass == $password && $mail == $email)&&($id !== $pass)){
               $_SESSION[logged_in] = true;
               header("Location: account.php");//make chages here
             exit();
         }
-    else{ 
-      echo "<p>INVALID</p>";
-      header("Location: index.php");//make changes here
-      exit();
-        } 
+		else{ 
+		 $loginFailed = true;
+		 die(header("Location:index.php?loginFailed=true&reason=password"));
+        }
         }
       else{ 
-        echo "<p>INVALID</p>";
         header("Location: index.php");//make changes here
       exit();
         } 
