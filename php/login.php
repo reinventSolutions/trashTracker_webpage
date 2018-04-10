@@ -54,7 +54,7 @@
           $pupResult = @mysqli_query($connection, $getNextPup);
           $puprow = mysqli_fetch_row($pupResult);
           $pickup = $puprow[0];
-
+		  
           $_SESSION["NextPickup"] = $pickup;
 
           $_SESSION["Address"] = $address; 
@@ -62,6 +62,8 @@
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
+		  $_SESSION["GraphLow"] = 0;
+		  $_SESSION["GraphUp"] = 5;
 
 
 		// Testing this code
