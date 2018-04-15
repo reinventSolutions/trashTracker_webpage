@@ -1,3 +1,15 @@
+<?php include "../../DB/dbinfo.php"; ?>
+
+<?php
+session_start();
+?>
+
+<?php
+session_start();
+
+if($_SESSION['logged_in'] != true)
+  header("Location: index.php"); 
+?>
     	   <?php
             ini_set('track_errors', 1);
             ini_set('display_errors', 1);
@@ -113,10 +125,7 @@
 				
 				
 				//Print data to check if data from database is loaded
-                echo $data;
-				echo $lower;
-				echo $upper;
-				
+  				
 				$weightArray = array();
 				$storeArray = array();
         ?>
