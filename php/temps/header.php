@@ -1,8 +1,8 @@
 
  <!-- HEADER -->
  <div class="row"></div>
- <div class="" id="id" style="background-color:#4268b4"><!--container-fuild-->
-    <div class="flexNavContainer" style="background-color:#4268b4;">
+ <div class="" id="id" style="background-color:#FFF"><!--container-fuild-->
+    <div class="flexNavContainer" style="background-color:#FFF;">
       <img class="logoresize" src="../images/trashtracker.png" width="250px" class="logo"> 
    </div>
    <div class="row"></div>
