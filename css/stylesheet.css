@@ -2,53 +2,58 @@
 body{
     color: #000000;
     margin: auto;
-    background-color: #818285;
+    /*background-color: #818285;*/
+    background:url("../images/bg/tt_bg2.png");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-repeat: repeat-n;
+    background-size: cover;
 }
 
+/*HEADER*/
+header{
+    margin-bottom:100px;
+}
 nav{
     background-color:rgba(255, 255, 255, 0.527) ;
 }
-
+.logoresize{
+    float: left;
+    margin-left: 20%;
+}
+.flexNavContainer{
+    display: flex-end;
+    flex-direction: column;
+    width: 100%;
+    height: 50px;
+}
+.navChild{
+    flex-direction: column; 
+}
+.threel{
+    padding: 10px;
+    display: flex-end;
+    flex-wrap: nowrap;
+    margin-right: 20%;
+}
+.child {
+    text-align: center;
+}
 .containerBottom{
     margin-left: auto;
     margin-right: auto;
     background-color:#b4b4b4; 
     border-radius: 20px;
 } 
-
+/*MAIN BODY*/
 .container{
     margin-left: auto;
     margin-right: auto;
-    background-color:#b4b4b4; 
-    border-radius: 20px;
-}
-
-.oneLeft{
-    width:auto; 
-    height:auto;
+    background-color:transparent; 
     border-radius: 10px;
-    background-color:#b4b4b4; 
 }
-
-.onel, .twol{
-    text-align: center;
-    margin: 20px; 
-    padding: 20px;
-    /* margin: 5px 18px 5px;*/
-    border-radius: 10px;
-    background-color:#FFFFFF; 
-    flex: 1;
-}
-
-.threel{
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-}
-
-.child {
-    text-align: center;
-} 
 .col{
     border-radius: 10px;
 }
@@ -57,45 +62,118 @@ nav{
     border-radius: 10px;
     width: 100%;
 }
-
+/*LEFT COULMN*/
+.oneLeft{
+    width:auto; 
+    height:auto;
+    border-radius: 10px;
+    background-color:#b4b4b4; 
+}
+.onel{
+    flex-grow: 2;
+    text-align: center;
+    margin: 20px; 
+    padding: 20px;
+    /* margin: 5px 18px 5px;*/
+    border-radius: 10px;
+    background-color:#FFFFFF; 
+} 
+.twol{
+    background-color:#FFFFFF; 
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px; 
+    padding: 20px;
+}
+/*GRAPH*/
 .hcGraph{
     padding: 5px; 
     width: 100%; 
     height: 500px !important;
 }
-
+/*NORMAL COMP*/
+.thumbs{
+    margin: 5px;
+}
+/*NC2*/
+.meow{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+}
+.mew{
+    text-align: center;
+} 
+/*GAME*/
+.box001{
+    float: left;
+    width: 20%;
+    height: auto;
+    margin: 12px;
+    padding: 10px;
+    border: 1px solid white;
+}  
+.box002{
+    float: left;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 10x;
+    border: 1px solid white;
+}
+.gc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color:#FFF;
+}
+.gchild{
+    background-color:#FFF;
+    margin: 5px;
+    text-align: center;
+    border-radius: 20px;
+    text-align: center;
+} 
+/*FOOTER*/
 footer{
     background-color:rgba(255, 255, 255, 0.527) ;
 }
-
+/*STLYING
+colors: ['#0066ff', '#808080', '#7aac3b']
+*/
 .img_center{
     text-align: center;
 }
-
 .img {
     display: block;
     margin: auto;
     padding-top: 15px;
 }
-
-.thumbs{
-    margin: 5px;
-}
-
 .alignright {
     float: right;
     text-align: right;
 }
-
+.alignleft {
+    text-align: left;
+}
 .aligncenter {
     float: center;
     text-align: center;
 }
-
-
+strong{
+    color: #0066ff;
+}
+.name{
+    color: #7aac3b;
+}
 hr{
     border: none; 				/* Make line fill consistent */
     height: 5px; 				/* Set line thickness */
     width: 70%;
     background-color: #000000; 	/* Set fill color of line */
 }
+

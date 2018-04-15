@@ -1,20 +1,39 @@
 <div class="col" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
     <h4>How do you stack up?</h4>
+    <p> We calculated the percent of waste you recycled this month, and found that you recycled more and 
+        sent less landfill than your neightbors did. </p>
     <div class="thumbs" id="thumbupdown" onload="thumbs()" style="text-align: center;">
       <script> thumbs();</script>
     </div><!--.thumbs-->
    </div><!--.col-->
   <!--NORMAL COMP INFO--> 
   <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5;text-align: center;">
-    <ul class="nav nav-tabs">
+	<script>
+	$(document).ready(function(){
+		$("#neighborInput").click(function(){
+			$("#closest").hide();
+			$("#city").hide();
+		});
+		$("#closestInput").click(function(){
+			$("#closest").show();
+			$("#neighborhood").hide();
+			$("#city").hide();
+		});
+		$("#cityInput").click(function(){
+			$("#closest").hide();
+			$("#neighborhood").hide();
+		});
+	});
+	</script>
+	<ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Closest</a>
+        <input type = "button" id = "closestInput" class="nav-item nav-link" value = "Closest"/>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Neighborhood</a>
+        <input type = "button" id = "neighborInput" class="nav-item nav-link" value = "Neighborhood"/>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">City</a>
+        <input type = "button" id = "cityInput" class="nav-item nav-link" value = "City"/>
       </li>
     </ul>
     <!--HOUSE SCRIPT-->

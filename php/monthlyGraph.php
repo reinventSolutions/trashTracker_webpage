@@ -1,6 +1,6 @@
-    	   <?php include "../../DB/dbinfo.php"; ?>
+		   <?php include "../../DB/dbinfo.php"; ?>
 		   <?php session_start(); ?>
-		   <?php
+		   <?php 
             
             /* Connect to MySQL and select the database. */
             $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
@@ -14,8 +14,10 @@
                   else 
                       //echo "<p>Connected to the database now select table</p>";
 					  
-					  $lower = $_SESSION['GraphLow'];
-					  $upper = $_SESSION['GraphUp'];
+					  if (isset($_POST['lowerValue']) && isset($_POST['upperValue'])){
+						$lower = $_POST['lowerValue'];
+						$upper = $_POST['upperValue'];
+					  }		
 					  $house = $_SESSION['House'];
 					  
 					  //BinID info
@@ -46,12 +48,11 @@
 					   while($row = mysqli_fetch_array($fetchBins)){
 						   $storeArray[] = $row[0];
 					   }
+					   
 					   $bin1 = $storeArray[0];
 					   $bin2 = $storeArray[1];
 					   $bin3 = $storeArray[2];
-					   
-					   /*Weekly View*/
-					   $binData1 = "SELECT DISTINCT Wk
+					   $binData3 = "SELECT DISTINCT Wk
 									FROM Weights
 									WHERE (
 									binID = '$bin1'
@@ -60,61 +61,57 @@
 									)
 									AND Wk > '$lower'
 									AND Wk < '$upper'
-									ORDER BY Wk ASC
+									ORDER BY Wk DESC
 									LIMIT 4";
 					 
-					  $binData2 = "SELECT BinWeight 
+					  $binData4 = "SELECT BinWeight 
 								   FROM Weights 
 								   WHERE (binID ='$bin1' OR binID ='$bin2' OR binID ='$bin3') 
 								   AND Wk > '$lower' AND Wk < '$upper' 
-								   ORDER BY Wk, binID ASC
+								   ORDER BY Wk DESC
 								   LIMIT 12";
 					  
-					  $result1 = mysqli_query($connection, $binData1);//weeks
-					  $result2 = mysqli_query($connection, $binData2);//weights
+					  $result3 = mysqli_query($connection, $binData3);//weeks
+					  $result4 = mysqli_query($connection, $binData4);//weights
 					  
-					   $data = "var data = new google.visualization.DataTable();\n\r"
-                      ."data.addColumn('number', 'Week');\n\r"
-                      ."data.addColumn('number', 'Recycling');\n\r\n\r"
-                      ."data.addColumn('number', 'Trash');\n\r\n\r"
-                      ."data.addColumn('number', 'Greenwaste');\n\r\n\r"
-					  ."data.addRows([\n\r";
+					   $data2 = "var data2 = new google.visualization.DataTable();\n\r"
+                      ."data2.addColumn('number', 'Month');\n\r"
+                      ."data2.addColumn('number', 'Recycling');\n\r\n\r"
+                      ."data2.addColumn('number', 'Trash');\n\r\n\r"
+                      ."data2.addColumn('number', 'Greenwaste');\n\r\n\r"
+					  ."data2.addRows([\n\r";
 					  
 					  $weightArray = Array();
-					  while($row1 = mysqli_fetch_array($result2)){
+					  while($row1 = mysqli_fetch_array($result4)){
 						  $weightArray[] = $row1[0];
 					  }
 					  
 					  
 					  $counter = 0;
-                      while($row2 = mysqli_fetch_array($result1)){
+                      while($row2 = mysqli_fetch_array($result3)){
                         $week = $row2[0];
-                        $data = $data." [".$week.", ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
+                        $data2 = $data2." [".$week.", ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
 						echo "\n\r";
 						$counter = $counter + 3;
                       }
-                        $data = $data."]);\n\r";
-					  /*End of Weekly View*/
-					  
-					  echo $data;
+                        $data2 = $data2."]);\n\r";
 				
 				$binIDArray = array();
 				$weightArray = array();
 				$storeArray = array();
 				
 				?>
-				 <script type="text/javascript">
+	  <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        <?php echo $data; ?>
-
+        <?php echo $data2; ?>
     
-        var options = {
+        var options2 = {
           chart: {
             title: 'Trash Tracker',
-            subtitle: 'Weekly Trash View',
+            subtitle: 'Monthly Trash View',
           },
           axes: {
               y: {
@@ -138,9 +135,8 @@
           colors: ['#0066ff', '#808080', '#7aac3b']
         };
 
-        var chart = new google.charts.Bar(document.getElementById('chart_div'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        var chart2 = new google.charts.Bar(document.getElementById('chart_div2'));
+        chart2.draw(data2, google.charts.Bar.convertOptions(options2));       
       }
-	  
     </script>
 	
