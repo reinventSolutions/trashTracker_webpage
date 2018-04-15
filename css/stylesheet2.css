@@ -14,10 +14,8 @@
      }
 
      .oneLeft{
-        width: 80%; 
+        width: auto; 
         height: auto; 
-        margin-left: 5% !important;
-        margin-right: 5% !important;
         margin-bottom: 20px;
         display: flex;
         flex-wrap: row wrap;
@@ -37,14 +35,46 @@
     }
 }
 
+/**/
+
+/*HEADER*/
+@media screen and (max-width: 630px) {
+    header{
+        margin-bottom:50px;
+     }
+     .logoresize{
+         width:200px;
+         margin-left: 0%;
+     }
+     .threel{
+        padding: 10px;
+        display: flex-end;
+        flex-wrap: nowrap;
+        margin-right: 0%;
+    }
+}
+
 /*MOBILE*/
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 590px) {
     .body{
         width: 100%;
         margin: auto;       
         height: auto; 
         overflow: hidden; // clearing 
      }
+     header{
+        margin-bottom:50px;
+     }
+     .logoresize{
+         width:180px;
+         margin-left: 0%;
+     }
+     .threel{
+        padding: 10px;
+        display: flex-end;
+        flex-wrap: nowrap;
+        margin-right: 0%;
+    }
 
      .container{
 		width: 90%;
@@ -59,9 +89,7 @@
     }
      
      .oneLeft{        
-        width: 90%;
-        /*margin-left: 5% !important;
-        margin-right: 5% !important;*/
+        width: 100%;
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
