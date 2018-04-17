@@ -18,22 +18,15 @@
 		$lower = $_POST['lowerValue'];
 		$upper = $_POST['upperValue'];
 	}
-	else{
-		$lower = 0;
-		$upper = 5;
-	}
 	
-		$upperMaxq = "SELECT DISTINCT Wk FROM Weights ORDER BY Wk DESC LIMIT 1";//Max Week #
-		$maxWeek = mysqli_query($connection, $upperMaxq);
-		$row = mysqli_fetch_row($maxWeek);
-		$max = $row[0];
+		$max = 16;
 
 	if($lower < 0){
 		$lower = $max - 5;
 		$upper = $max;  
 	}
 								
-	if($upper > 9){
+	if($upper > 17){
 		$lower = 0;
 		$upper = 5;
 	}
@@ -115,7 +108,6 @@
 							}
 								$data = $data."]);\n\r";
 		/*End of Weekly View*/
-		echo $data;
 
 $binIDArray = array();
 $weightArray = array();
@@ -154,10 +146,10 @@ var options = {
 			minValue: 0,
 		},
 	colors: ['#0066ff', '#808080', '#7aac3b']
+	
 };
 
 var chart = new google.charts.Bar(document.getElementById('chart_div'));
 chart.draw(data, google.charts.Bar.convertOptions(options));
 }
-
 </script>

@@ -4,21 +4,27 @@
         sent less landfill than your neightbors did. </p>
     <div class="thumbs" id="thumbupdown" onload="thumbs()" style="text-align: center;">
       <script> thumbs();</script>
+      <p></p>
     </div><!--.thumbs-->
    </div><!--.col-->
   <!--NORMAL COMP INFO--> 
   <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5;text-align: center;">
 	<script>
 	$(document).ready(function(){
+		$("#closestInput").click(function(){
+			$("#closest").show();
+      $("nav1").show();
+			$("#neighborhood").hide();
+      $("#nav2").hide();
+			$("#city").hide();
+		});
+
 		$("#neighborInput").click(function(){
+      $("#neighborhood").show();
 			$("#closest").hide();
 			$("#city").hide();
 		});
-		$("#closestInput").click(function(){
-			$("#closest").show();
-			$("#neighborhood").hide();
-			$("#city").hide();
-		});
+
 		$("#cityInput").click(function(){
 			$("#closest").hide();
 			$("#neighborhood").hide();
@@ -36,8 +42,8 @@
         <input type = "button" id = "cityInput" class="nav-item nav-link" value = "City"/>
       </li>
     </ul>
+    <div ="nav1">
     <!--HOUSE SCRIPT-->
-    <br/>
       <script>mainRatio();</script>
       <br/><strong>Your Ratio: </strong> 
         <?php echo $_SESSION["HouseCompare"]; ?>%
@@ -78,6 +84,11 @@
         <?php echo $_SESSION["N5"]; ?> 
       </div>
      </div><!--.meow-->
+    </div><!-- nav1 -->
+
+    <div id="nav2">
+      <strong>Neighborhood</strong>
+    </div><!-- nav2 -->
      <!--.5 HOUSES-->
     </div><!--.col-sm 8-->
    </div><!--.row-->

@@ -1,4 +1,3 @@
-
  <!-- HEADER -->
  <div class="row"></div>
  <div class="" id="id" style="background-color:#FFF"><!--container-fuild-->
@@ -9,11 +8,11 @@
   <div class="flexNavContainer" style="background-color:#f8f9fa;"> 
     <div class="threel">
       <p class = "alignright">
-      <a href="settings.php"> 
-       <button type="button" class="btn btn-outline-secondary" href="settings.php">Settings</button>
+      <a href="users/settings.php"> 
+       <button type="button" class="btn btn-outline-secondary" href="users/settings.php">Profile</button>
       </a>    
-      <a href="logout.php"> 
-       <button type="button" class="btn btn-outline-secondary"  onclick="logout.php" href="">Logout</button>
+      <a href="users/logout.php"> 
+       <button type="button" class="btn btn-outline-secondary"  onclick="users/logout.php" href="">Logout</button>
       </a>      
       </p>
   </div>
