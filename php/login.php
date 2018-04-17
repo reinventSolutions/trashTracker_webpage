@@ -26,7 +26,7 @@
           $password = $_POST['userPassword'];//input password
           $email = $_POST['userEmail'];//input email
 		  
-		  $loginFailed = false;
+		      $loginFailed = false;
         
           $userLogin = "SELECT password, email, ID, name FROM Users WHERE email = '$email'";
           $result = @mysqli_query($connection, $userLogin);
@@ -62,9 +62,8 @@
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
-		  $_SESSION["GraphLow"] = 0;
-		  $_SESSION["GraphUp"] = 5;
-
+		  $_SESSION["GraphLow"] = 12;
+		  $_SESSION["GraphUp"] = 17;
 
 		// Testing this code
 		if ($password == ''){

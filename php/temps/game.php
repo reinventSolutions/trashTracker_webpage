@@ -1,63 +1,74 @@
 <div class="container" style="background-color:#b4b4b4;  margin-top: 10px; margin-bottom: 80px; 
-                              width: 80%; padding:10px; text-align:center;">  
+                              height: auto; width: 100%; padding:10px; text-align:center;">  
   <span class="img_center">
     <h3>Trash Tracker Game!</h3>
   </span>
-  <div class="col" style="background-color:#FFF; margin-left: auto; margin-right: auto; margin-bottom:20px; 
-                          height:310px; padding-left:20%; ppadding-right: 20%; text-align:center;"><br/>
+  Drag and drop the trash items into the appropriate bins!
+  <div class="gc" style="margin-left: auto; margin-right: auto; margin-bottom:0px; 
+                          height:auto; padding-left:10%; ppadding-right: 10%; 
+                          border-top-left-radius: 10px; border-top-right-radius: 10px;"><br/>
   <!--DRAGGABLE OBJECTS/ TRASH-->
-  <div class = "box002" ondrop = "drop001(event)">
+  <div class = "gchild" ondrop = "drop001(event)">
     <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001a">
+      <b>Cig</b></br>   
       <img src="../images/game/grey/cig.png" width="50px" id = "target001a">
     </div>
   </div>
-  <div class = "box002" ondrop = "drop002(event)">
-    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002a">
+  <div class = "gchild" ondrop = "drop002(event)">
+   <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002a">
+    <b>Aluminum</b></br>
     <img src="../images/game/blue/aluminum.png" width="50px" id = "target002a">
+   </div>
   </div>
-  </div>
-  <div class = "box002" ondrop = "drop003(event)">
-    <div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">
+  <div class = "gchild" ondrop = "drop003(event)">
+   <div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">
+    <b>Eggshell</b></br>
     <img src="../images/game/green/egg.png" width="50px" id = "target003">
-    </div>
+   </div>
   </div>
-  <div class = "box002" ondrop = "drop001(event)">
-    <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001b">
-      <img src="../images/game/grey/mirror.png" width="50px" id = "target001b">
-    </div>
+  <div class = "gchild" ondrop = "drop001(event)">
+   <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001b">
+     <b>Mirror</b></br>
+     <img src="../images/game/grey/mirror.png" width="50px" id = "target001b">
+   </div>
   </div>
-  <div class = "box002" ondrop = "drop002(event)">
-    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002b">
-      <img src="../images/game/blue/glass.png" width="50px" id = "target002b">
-    </div>
+  <div class = "gchild" ondrop = "drop002(event)">
+   <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002b">
+     <b>Glass</b></br>
+     <img src="../images/game/blue/glass.png" width="50px" id = "target002b">
+   </div>
   </div>
-  <!--.DRAGGABLE OBJECTS/ TRASH-->
-  <br></br><br></br>
-  <!--TRASH CANS-->
+  </div><!--.col -->
+  <!--.TRASH CANS-->
+  <div class="gc" style="margin-left: auto; margin-right: auto; margin-bottom:0x; 
+                          height:auto; padding-left:10%; ppadding-right: 10%;">
   <div class = "box001" ondrop = "drop006(event)" ondragover = "allowDrop001(event)" id = "place001">
-    <img src="../images/grey.png" width="75px">
+    <img src="../images/grey.png" width="75px"><br>
+    <b>Trash</b>
   </div>
   <div class = "box001" ondrop = "drop007(event)" ondragover = "allowDrop002(event)" id = "place002">
-    <img src="../images/blue.png" width="75px">
+    <img src="../images/blue.png" width="75px"><br/>
+    <b>Recycle</b>
   </div>
   <div class = "box001" ondrop = "drop008(event)" ondragover = "allowDrop003(event)" id = "place003">
     <img src="../images/green.png" width="75px">
+    <b>Greenwaste</b>
   </div>
-  </div><!--.col -->     
-  <div class ="row"></div>
-  <!--.TRASH CANS-->
-<div class="col" style="background-color:#FFF">
-<p>
-  <strong class="alignleft">Score:</strong> 
-  <text id = "score001">0</text>
-  <p id="game">
-  
-  </p>
-</p>
-</div><!--.col --> 
-</div><!--.container-->
-</div><!--.col -->     
-</div><!--.row --> 
+  </div><!--.gc -->
+  <!-- score -->
+  <div class="gc" style="margin-left: auto; margin-right: auto; margin-bottom:0px; 
+                          height:auto; padding-left:10%; ppadding-right: 10%;">
+  <p>
+    <strong class="alignleft">Score:</strong> 
+    <text id = "score001">0</text>
+ </div><!-- .gc -->
+ <div class="gc" id="star" style="margin-left: auto; margin-right: auto; margin-bottom:10px; 
+                          height:40px; padding-left:10%; ppadding-right: 10%; 
+                          border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <p></p>
+ </div><!-- .gc -->
+ </div><!--.container-->
+
 	<script>
     var b = 0;
     b++;
@@ -87,10 +98,13 @@
       alert("wrong!");
      }
      else{    
-      alert('Correct');
-     }
+
+    }
      event.target.appendChild(document.getElementById(data));
      score001.innerHTML = b++;
+     var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/starpoint.png';
      //place001.innerHTML = "1";
     }
 
@@ -101,10 +115,13 @@
         alert("wrong!");
       }
       else{    
-        alert('Correct');
+
       }
       event.target.appendChild(document.getElementById(data));
       score001.innerHTML = b++;
+      var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/starpoint.png';
       //place002.innerHTML = "2";
     }
 
@@ -115,10 +132,13 @@
         alert("wrong!");
       }
       else{    
-       alert('Correct');
+
       }
       event.target.appendChild(document.getElementById(data));
       score001.innerHTML = b++;
+      var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/starpoint.png';
       //place003.innerHTML = "3";
     }
 	</script>

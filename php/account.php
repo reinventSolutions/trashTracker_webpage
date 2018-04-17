@@ -29,71 +29,10 @@
     <!--GRAPH-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- BUTTON FUNCTIONS FOR GOOGLE.CHARTS -->
-	  <script type="text/javascript">
-	  $(document).ready(function(){
-      var lower = 0;
-      var upper = 5;
-      $("#weeklyview").click(function(){
-      $("#chart_div").show();//Weekly View
-      $("#weeklybuttons").show();
-      $("#chart_div2").hide();//Monthly View
-      $("#monthlybuttons").hide();
-      $("#chart_div3").hide();//Yearly View
-      $("#yearlybuttons").hide();
-    });
-    $("#nextweek").click(function(e){
-		  $("#DData").empty();
-          $("#chart_div").empty();
-      lower = lower +1;
-      upper = upper +1;
-      if(upper > 9){
-        lower = 0;
-        upper = 5;
-      }
-        $.post("graph2.php", {
-          lowerValue: lower,
-          upperValue: upper
-        }, function(data, status){
-          $("#DData").html(data, status);
-        });
-      });
-      $("#prevweek").click(function(e){
-      lower = lower -1;
-      upper = upper -1;
-      if (lower < 0){
-        lower = 4;
-        upper = 9;
-      }
-        $.post("graph2.php", {
-          lowerValue: lower,
-          upperValue: upper
-        }, function(data, status){
-          $("#DData").empty();
-          $("#chart_div").empty();
-          $("#DData").html(data, status);
-        });
-      });
-      $("#monthlyview").click(function(){
-      $("#chart_div").hide();//Weekly View
-      $("#weeklybuttons").hide();//hide buttons div
-      $("#chart_div2").show();//Monthly View
-      $("#monthlybuttons").show();
-      $("#chart_div3").hide();//Yearly View
-      $("#yearlybuttons").hide();
-      
-        $.post("monthlyGraph.php", {
-          lowerValue: lower,
-          upperValue: upper
-        }, function(data, status){
-          $("#DData").html(data, status);
-        });
-      });
-    })
-	</script>
-		<script type="text/javascript" src="../js/nchouse.js"></script>	
+	<script type="text/javascript" src="../js/button.js"></script>
+	<script type="text/javascript" src="../js/nchouse.js"></script>	
 		<!--FUNCTIONS FOR IMAGE HOUSE FLIPS/THUMBS STACK-->
 		<!-- <script type="text/javascript" src="../js/ratio.js"></script> -->
-		<?php include "graph.php"; ?>
 		<?php include "comparison.php"; ?>
 		<script type = "text/javascript">
         //GENERAL INFO YOUR RATIO 
@@ -188,6 +127,26 @@
           elem.src = '../images/greenhouse.png';
         }
 		</script>
+		<script>
+		$(document).ready(function(){
+			
+		$("#neighborInput").click(function(){
+			$("#nav1").hide();//Closest
+			$("#nav3").hide();//City
+			$("#nav2").fadeIn(1000);
+		});
+		$("#closestInput").click(function(){
+			$("#nav2").hide();//Neighborhood
+			$("#nav3").hide()//City
+			$("#nav1").fadeIn(1000);
+		});
+		$("#cityInput").click(function(){
+			$("#nav1").hide();//Closest
+			$("#nav2").hide();//Neighborhood
+			$("#nav3").fadeIn(1000);
+		});
+	})
+	</script>
 		       
 </head>
 		<div id="DData">
@@ -232,6 +191,8 @@
   $("#yearlybuttons").hide();
   $("#chart_div2").hide();
   $("#chart_div3").hide();
+  $("#nav2").hide();//Neighborhood
+  $("#nav3").hide();//City
   $("#DData").load("graph1.php");
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 

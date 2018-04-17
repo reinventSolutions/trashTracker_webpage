@@ -95,8 +95,6 @@
                       }
                         $data = $data."]);\n\r";
 					  /*End of Weekly View*/
-					  
-					  echo $data;
 				
 				$binIDArray = array();
 				$weightArray = array();

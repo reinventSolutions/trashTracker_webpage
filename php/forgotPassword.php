@@ -1,3 +1,7 @@
+<!-- 1. THIS IS WHERE THEY ENTER RECOVERY EMAIL, SENDS THEM
+      TO forgotPasswordUpdate.php-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,39 +27,31 @@
       <h1>
       <a href="index.php">
             <img src="../images/trashtracker.png" width="100px">
-        </a>   
-          Welcome to Trash Tracker     
+        </a>
+          Welcome to Trash Tracker
       </h1>
-    </div><!--LOGO-->    
+    </div><!--LOGO-->
  </div><!--ROW-->
 </div><!--container-fuild-->
 <!--.GENERAL INFO-->
 
 <!--FORGOT PASSWORD-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
-  <div class="row">      
+  <div class="row">
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-     <h4>Updating Password to Trash Tracker</h4><br>
+     <h4>Recover Password</h4><br>
     <div class = "container">
     <!--<form name="userLogin">-->
     <div>
-    <br>
-    	<span style = "color: #ff0000;">
-	     <?php $reasons = array("tokenIDinvalid" => "Invalid Token </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
-	  </span>
   	</div>
     <form action = "forgotPasswordUpdate.php" method = "post">
      <div class="form-group">
-        <label for="InputID">ID TOKEN</label>
-        <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
-     </div>
-     <div class="form-group">
-        <label for="inputUpdatePW">New Password</label>
-        <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
+        <label for="Recovery">Enter Recovery E-mail</label>
+        <input type="text" class="form-control" name="recoveryEmail" id="recoveryEmail" aria-describedby="recovery" placeholder="Enter Email">
      </div>
      <p class="img_center">
-     	 <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
-    </p> 
+     	 <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Send Recovery Email"/>
+    </p>
     </br>
     </form>
 	</div>
@@ -67,7 +63,7 @@
 <footer><!--FOOTER CONTAINER-->
 <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
 
-          <a class="nav-link" href="contact">Contact Us</a> 
+          <a class="nav-link" href="contact">Contact Us</a>
           |
           <a class="nav-link" href="">Privacy and Policy</a>
       </div>

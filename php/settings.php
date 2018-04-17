@@ -36,18 +36,19 @@
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h4>Update Trash Tracker Account</h4><br>
 	<div class = "container">
-    <!--<form name="userLogin">-->
+	  <!-- Testing Login Errors-->
 	<form action = "updateSettings.php" method = "post">
-		  <div>
+	<div>
 	  <span style = "color: #ff0000;">
-	  <?php $reasons = array("tokenIDinvalid" => "The information provided is invalid </br>", "blank" => "You have left one or more fields blank</br>"); if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
+      <?php $reasons = array("tokenIDinvalid" => "The information provided is invalid </br>", "blank" => "You have left one or more fields blank</br>"); 
+                            if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
 	  </span>
-	  </div>
-	  <div class = "form-group">
+	</div>
+	<div class = "form-group">
         <label for="inputName"> Current Name</label>
         <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Current Name">
 		</div>
-      <div class="form-group">
+    <div class="form-group">
         <label for="inputEmail">Current Email</label>
         <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Current Email">
     </div>
@@ -59,7 +60,7 @@
 	    <label for="inputName">New Name</label>
         <input type="name" class="form-control" name="newName" id= "newName" aria-describedby="newName" placeholder="New Name">
 		</div>
-      <div class="form-group">
+    <div class="form-group">
         <label for="inputEmail">New Email</label>
         <input type="email" class="form-control" name="newEmail" id= "newEmail" aria-describedby="newEmail" placeholder="New Email">
     </div>

@@ -1,3 +1,4 @@
+<?php include "graph.php" ?>
 <?php
 //NORMAL COMP AVG
 $neighborq = "SELECT N1, N2, N3, N4, N5 FROM Houses WHERE House = '$house'";

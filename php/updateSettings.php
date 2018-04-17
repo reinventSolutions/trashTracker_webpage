@@ -7,7 +7,7 @@ session_start();
 	@mysqli_select_db($connection, $DBname);
 	
 	if(!$connection){
-		header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/signup.php");//make changes here
+		header("Location: signup.php");//make changes here
 			exit();
 	}
 	
@@ -32,15 +32,13 @@ session_start();
 					die(header("Location:settings.php?updateFailed=true&reason=blank"));
 					}
 				
-				
 				else if(($pass == $password)&&($mail = $email)&&($name = $userName)){	
 					$query = "UPDATE Users SET name = '$newName', email = '$newEmail',
 					 password = '$newPassword' WHERE name = '$name' AND email = '$email' AND password = '$password'";
 					$q= mysqli_query($connection, $query);	
-					
 					$_SESSION["name"] = $newName;
-				
-				header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/account.php");
+//					echo <script type="text/javascript">alert('Success');</script>;
+					header("Location: account.php");
 				exit();
 				}
 				else{

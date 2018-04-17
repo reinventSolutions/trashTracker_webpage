@@ -1,22 +1,9 @@
-<script>
-	$(document).ready(function(){
-		$("#neighborInput").click(function(){
-			$("#closest").hide();
-			$("#city").hide();
-		});
-		$("#closestInput").click(function(){
-			$("#closest").show();
-			$("#neighborhood").hide();
-			$("#city").hide();
-		});
-		$("#cityInput").click(function(){
-			$("#closest").hide();
-			$("#neighborhood").hide();
-		});
-	});
-	</script>
-
-  <div class="col" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
+  <script>
+  $("#nav1").hide();//Closest
+  $("#nav2").hide();//Neighborhood
+  $("#nav3").hide();//City
+  </script>
+  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
     <h4>How do you stack up?</h4>
     <p> We calculated the percent of waste you recycled this month, and found that you recycled more and 
         sent less landfill than your neightbors did. </p>
@@ -25,7 +12,7 @@
     </div><!--.thumbs-->
    </div><!--.col-->
   <!--NORMAL COMP INFO--> 
-  <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5;text-align: center;">
+  <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5px;text-align: center;">
 	
 	<ul class="nav nav-tabs">
       <li class="nav-item">
@@ -39,11 +26,11 @@
       </li>
     </ul>
     <!--HOUSE SCRIPT-->
-	<div id = "closest">
     <br/>
     <span id="mr">
       <script>mainRatio();</script>
-    </span>  
+    </span> 
+	<div id = "nav1">	
       <br/><strong>Your Ratio: </strong> 
         <?php echo $_SESSION["HouseCompare"]; ?>%
       <br>
@@ -84,11 +71,23 @@
       </div>
      </div>
 	 
+	 </div> <!-- NAV1 DIV END-->
+	 <div id = "nav2">
+      <br/><strong>Your Ratio: </strong> 
+        <?php echo $_SESSION["HouseCompare"]; ?>%
+      <br>
+      <p style="text-align:left">
+		We calculated the percent of waste you recycled this month, and found that you recycled more and 
+        sent less landfill than those with the same route as you did.
+      </p>
+      <p class="img_center">
+        <strong>Neighborhood Average: </strong> 
+        <?php echo $_SESSION["NCompare"]; ?>%
+      </p>
+      <!--ALL HOUSES ON SAME ROUTE-->
+
 	 </div>
-	 <div id = "neighborhood">
-	 
-	 </div>
-	 <div id = "city">
+	 <div id = "nav3">
 	 
 	 </div>
 
