@@ -34,17 +34,17 @@
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
     <h3 class="img_center">Log into Trash Tracker</h3><br>
     <div>
-    <form action="login.php" method="post">
+    <form action="users/login.php" method="post">
       <div class="form-group">
-	  <!-- Testing Login Errors-->
-	  <div>
-	  <span style = "color: #ff0000;">
-      <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>", "success" => "Successfully updated your new password!</br>"); 
-                        if($_GET["loginFailed"] == true || $_GET["updatefailed"] == false) echo $reasons[$_GET["reason"]]; ?>
-	  </span>
-	  </div>
-	  <!-- End Test -->
-        <label for="InputEmail1">Email address</label>
+      <!-- Testing Login Errors-->
+      <div>
+      <span style = "color: #ff0000;">
+        <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>", "success" => "Successfully updated your new password!</br>"); 
+                          if($_GET["loginFailed"] == true || $_GET["updatefailed"] == false) echo $reasons[$_GET["reason"]]; ?>
+      </span>
+      </div>
+	    <!-- End Test -->
+        <label for="InputEmail1">Email Address</label>
         <input type="text" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
@@ -65,8 +65,8 @@
        <hr>
       <p class="img_center">
       <strong> New User </strong><br/>
-        <a href = "signup.php">
-          <input type="button" class="btn btn-sm btn-success" onclick = "signup.php" value="Sign Up"/><br>
+        <a href = "users/signup.php">
+          <input type="button" class="btn btn-sm btn-success" onclick = "users/signup.php" value="Sign Up"/><br>
         </a>
        </p>
 	</form>

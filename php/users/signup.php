@@ -4,13 +4,13 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="../images/trashtracker.png"/>
+    <link rel="icon" href="../../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
-    <link rel="stylesheet" href="../css/stylesheet.css" >
+    <link rel="stylesheet" href="../../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
-    <link rel="stylesheet" href="../css/stylesheet2.css">
+    <link rel="stylesheet" href="../../css/stylesheet2.css">
     <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -21,14 +21,13 @@
   <div class="row" style="padding: 0 15px"><!--ROW-->
     <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
       <h1>
-      <a href="index.php">
-            <img src="../images/trashtracker.png" width="100px">
+      <a href="../index.php">
+            <img src="../../images/trashtracker.png" width="100px">
         </a>        Welcome to Trash Tracker     
       </h1>
     </div><!--LOGO-->    
  </div><!--ROW-->
 </div><!--container-fuild-->
-<!--.GENERAL INFO-->
 
 <!--SIGN UP-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
@@ -81,7 +80,6 @@
 </footer><!--.FOOTER-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script type="text/javascript" src="js/login.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

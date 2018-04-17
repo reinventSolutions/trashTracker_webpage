@@ -4,31 +4,24 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="../images/trashtracker.png"/>
+    <link rel="icon" href="../../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
-    <link rel="stylesheet" href="../css/stylesheet.css" >
+    <link rel="stylesheet" href="../../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
-    <link rel="stylesheet" href="../css/stylesheet2.css">
+    <link rel="stylesheet" href="../../css/stylesheet2.css">
     <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
 <!--HEADER-->
-<div class="container-fluid" id="id" style="background-color:#b4b4b4;"><!--container-fuild-->
-  <div class="row" style="padding: 0 15px"><!--ROW-->
-    <div class="col" style="background-color:#FFFFFF; margin: 5px; text-align:center; padding: 15px;"><!--LOGO-->
-      <h1>
-        <a href="account.php">
-            <img src="../images/trashtracker.png" width="100px">
-        </a>
-        Welcome to Trash Tracker     
-      </h1>
-    </div><!--LOGO-->    
- </div><!--ROW-->
-</div><!--container-fuild-->
+<header style=""> <!--START OF HEADER-->
+    <!--START OF NAV-->  
+    <?php include "header.php"; ?>
+  </header><!--END OF HEADER-->
+  
 
 <!--SETTING-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
@@ -70,13 +63,14 @@
     </div>
       <br/>
        <p class="img_center">
+        <a type = "submit" name = "submit" class="btn btn-sm btn-success" href="../account.php" value = "Return"/>Return</a> &nbsp;
         <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
         <br/><br/>
       </p>
-    </form>
+  </form><!-- form-group -->
 	</div>
-  </div>
-  </div>
+  </div><!--.container-->
+  </div><!-- col-sm -->
  </div><!--.row-->
 </div><!--.container-->
 

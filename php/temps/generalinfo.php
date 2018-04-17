@@ -16,12 +16,12 @@
       <?php echo $_SESSION["St"]; ?>
       <?php echo $_SESSION["Zip"]; ?><br/>
     <?php } ?><br/>
-    <a href="settings.php"> 
-      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" href="settings.php">Settings</button>
+    <a href="users/settings.php"> 
+      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" href="users/settings.php">Profile</button>
     </a>    
     &nbsp;	
-    <a href="logout.php"> 
-      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" onclick="logout.php" href="">Logout</button>
+    <a href="users/logout.php"> 
+      <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" onclick="users/logout.php" href="">Logout</button>
     </a>     
    </div><!--.INFO-->
   </div><!--.row-->

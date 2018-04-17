@@ -29,11 +29,11 @@
     <br/>
     <span id="mr">
       <script>mainRatio();</script>
-    </span> 
-	<div id = "nav1">	
+    </span> 	
       <br/><strong>Your Ratio: </strong> 
         <?php echo $_SESSION["HouseCompare"]; ?>%
       <br>
+	  <div id = "nav1">
       <p style="text-align:left">
         We calculated the percent of waste you recycled this month, and found that you recycled more and 
         sent less landfill than your neightbors did. 
@@ -72,10 +72,7 @@
      </div>
 	 
 	 </div> <!-- NAV1 DIV END-->
-	 <div id = "nav2">
-      <br/><strong>Your Ratio: </strong> 
-        <?php echo $_SESSION["HouseCompare"]; ?>%
-      <br>
+	  <div id = "nav2">
       <p style="text-align:left">
 		We calculated the percent of waste you recycled this month, and found that you recycled more and 
         sent less landfill than those with the same route as you did.

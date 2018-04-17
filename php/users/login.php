@@ -1,11 +1,11 @@
-<?php include "../../DB/dbinfo.php"; ?>
+<?php include "../../../DB/dbinfo.php"; ?>
 <html>
 <html lang="en">
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trash Tracker</title>
-    <link rel="icon" href="../images/trashtracker.png"/>
+    <link rel="icon" href="../../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--CSS-->
@@ -47,9 +47,14 @@
           $state = $row2[2];
           $city = $row2[3];
           $zip = $row2[4];
-		      $house = $row2[5];
+		  $house = $row2[5];
 
-          $getNextPup = "SELECT NextPickup FROM Routes WHERE HouseID ='$house'";
+          $getNextPup = "SELECT NextPickup FROM Routes WHERE RouteNumber = 
+		  (SELECT RouteNum
+		  FROM Houses
+		  WHERE House ='$house')";
+		  
+		  
 
           $pupResult = @mysqli_query($connection, $getNextPup);
           $puprow = mysqli_fetch_row($pupResult);
@@ -68,11 +73,11 @@
 		// Testing this code
 		if ($password == ''){
 		 $loginFailed = true;
-		 die(header("Location:index.php?loginFailed=true&reason=blank"));
+		 die(header("Location: ../index.php?loginFailed=true&reason=blank"));
 		}
 	 	else if ($email == ''){
 		 $loginFailed = true;
-		 die(header("Location:index.php?loginFailed=true&reason=blank"));
+		 die(header("Location: ../index.php?loginFailed=true&reason=blank"));
 		} 
 		//End of testing		
 		//IF ID TOKEN GIVEN IS == PASSWORD IN DB 
@@ -82,16 +87,16 @@
 		}
         else if(($pass == $password && $mail == $email)&&($id !== $pass)){
               $_SESSION[logged_in] = true;
-              header("Location: account.php");//make chages here
+              header("Location: ../account.php");//make chages here
             exit();
         }
 		else{ 
 		 $loginFailed = true;
-		 die(header("Location:index.php?loginFailed=true&reason=password"));
+		 die(header("Location: ../index.php?loginFailed=true&reason=password"));
         }
         }
       else{ 
-        header("Location: index.php");//make changes here
+        header("Location: ../index.php");//make changes here
       exit();
         } 
      

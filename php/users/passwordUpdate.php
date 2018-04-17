@@ -53,8 +53,6 @@
 		$updatePass = "UPDATE Users SET password ='$newPassword' WHERE email = '$email'";
 		$query = mysqli_query($connection, $updatePass);
 		header("Location: ../index.php?updateFailed=false&reason=success");
-
 	}
-
   mysqli_close($connection);
 ?>

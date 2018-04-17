@@ -193,7 +193,9 @@
   $("#chart_div3").hide();
   $("#nav2").hide();//Neighborhood
   $("#nav3").hide();//City
+  $("#chart_div").fadeOut(250);
   $("#DData").load("graph1.php");
+  $("#chart_div").fadeIn(1000);
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
           integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -2,39 +2,42 @@
 				RECOVERY PASSWORD, HEADER TO updatePassword.php-->
 
 <?php
-    include "../../../DB/dbinfo.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    require '../../../PHPMailer/src/Exception.php';
-    require '../../..//PHPMailer/src/PHPMailer.php';
-    require '../../..//PHPMailer/src/SMTP.php';
-?>
+require_once 'PHPMailer/src/Exception.php';
+require_once 'PHPMailer/src/PHPMailer.php';
+require_once 'PHPMailer/src/SMTP.php';
 
-<?php
+include "../../../DB/dbinfo.php";
+
 	$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 	@mysqli_select_db($connection, $DBname);
 
 	if(!$connection){
-		header("Location: ../signup.php");//make changes here
+		header("Location: ../index.php");//make changes here
 			exit();
 	}
-        $email = $_POST['recoveryEmail'];
-        $updateFail = false;
-        $selectPass = "SELECT password FROM Users WHERE email = '$email'";
-        $result = mysqli_query($connection, $selectPass);
-        $row = mysqli_fetch_row($result);
-        $pass = $row[0];
-        
-        if($_POST['recoveryEmail'] == ''){
-            header("Location: forgotPassword.php?updateFail=false&reason=blank");
-        }
-        else if($pass == null){
-            header("Location: forgotPassword.php?updateFail=false&reason=error");
-        }
-        else{   
-            header("Location: updatepassword.php");
-            mysqli_close($connection);
-        }
-function assign_rand_value($num) {
+    $email = $_POST['recoveryEmail'];
+
+    $selectPass = "SELECT password FROM Users WHERE email = '$email'";
+    $result = mysqli_query($connection, $selectPass);
+    $row = mysqli_fetch_row($result);
+    $pass = $row[0];
+/*    
+    if($_POST['recoveryEmail'] == ''){
+        header("Location: forgotPassword.php?updateFail=false&reason=blank");
+    }
+    else if($pass == null){
+        header("Location: forgotPassword.php?updateFail=false&reason=error");
+    }
+    else{   
+        header("Location: updatepassword.php");
+        mysqli_close($connection);
+    }
+*/
+    function assign_rand_value($num) {
+
     // accepts 1 - 36
     switch($num) {
         case "1"  : $rand_value = "a"; break;
@@ -90,48 +93,49 @@ function get_rand_alphanumeric($length) {
 }
 
 $str = get_rand_alphanumeric(8);
+
 $pass = $str;
+
 $updatequery = "UPDATE Users SET password = '$pass' WHERE email = '$email'";
 $q= mysqli_query($connection, $updatequery);
 
-$to      = '$email';
-$subject = 'Trash Tracker Password Recovery';
-$headers = 'From: reinv3nt.solutions@gmail.com' . "\r\n" .
-    'Please Do not reply to this e-mail'. "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-    mail($to, $subject, "Your temporary password is: {$pass}", $headers);
-    //require "../../../PHPMailer-master\PHPMailer.php";
-    use PHPMailer\PHPMailer\PHPMailer;
-
-    //Load Composer's autoloader
-    require '../../../vendor/autoload.php';
 
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
     //Server settings
-    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'trueb003@cougars.csusm.edu';                 // SMTP username
-    $mail->Password = 'KEtr2124';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+    $mail->Username = 'kevin.truebe@gmail.com';                 // SMTP username
+    $mail->Password = 'k67j8@O69Yoz';                           // SMTP password
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = '465';
 
     //Recipients
-    $mail->setFrom('trueb003@cougars.csusm.edu', 'Kevin Truebe');
-    $mail->addAddress('$email', 'Trash Tracker User');     // Add a recipient
+    $mail->setFrom('kevin.truebe@gmail.com');
+    $mail->addAddress('trueb003@cougars.csusm.edu');     // Add a recipient
+    //$mail->addAddress('ellen@example.com');               // Name is optional
+    //$mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
 
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Trash Tracker Temporary Password';
-    $mail->Body    = 'Your Trash Tracker Temporary Password is '. $pass .' ';
+    $mail->Subject = 'Trash Tracker Temp Password';
+    $mail->Body    = 'Your Trash Tracker Temporary Password is '. $pass .' ';    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
+
+header("Location: updatepassword.php");
+mysqli_close($connection);
+
 ?>

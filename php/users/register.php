@@ -1,10 +1,10 @@
-<?php include "../../DB/dbinfo.php"; ?>
+<?php include "../../../DB/dbinfo.php"; ?>
 <?php
 	$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 	@mysqli_select_db($connection, $DBname);
 	
 	if(!$connection){
-		header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/signup.php");//make changes here
+		header("Location: signup.php");//make changes here
 			exit();
 	}
 	
@@ -25,7 +25,7 @@
 				
 				if (($password == '')||($id == '')||($name == '')||($email == '')){
 					$updateFailed = true;
-					die(header("Location:signup.php?updateFailed=true&reason=blank"));
+					die(header("Location: signup.php?updateFailed=true&reason=blank"));
 					}
 				
 				else if($idCheck == $id){	
@@ -33,7 +33,7 @@
 					 password = '$password' WHERE ID = '$id'";
 					$q= mysqli_query($connection, $query);	
 				
-				header("Location: http://ec2-54-201-184-63.us-west-2.compute.amazonaws.com/TrashTracker/php/index.php");
+				header("Location: ../index.php");
 				exit();
 				}
 				else{
