@@ -30,8 +30,7 @@
 			$("#neighborhood").hide();
 		});
 	});
-  </script>
-  <!--
+	</script>
 	<ul class="nav nav-tabs">
       <li class="nav-item">
         <input type = "button" id = "closestInput" class="nav-item nav-link" value = "Closest"/>
@@ -42,24 +41,7 @@
       <li class="nav-item">
         <input type = "button" id = "cityInput" class="nav-item nav-link" value = "City"/>
       </li>
-    </ul>-->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="closestInput" data-toggle="tab" href="" role="tab" aria-controls="home" aria-selected="true">Closest</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="neighborInput" data-toggle="tab" href="" role="tab" aria-controls="profile" aria-selected="false">Neighborhood</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="cityInput" data-toggle="tab" href="" role="tab" aria-controls="contact" aria-selected="false">City</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="" role="tabpanel" aria-labelledby="home-tab"></div>
-  <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="profile-tab"></div>
-  <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="contact-tab"></div>
-</div>
-   
+    </ul>
     <div ="nav1">
     <!--HOUSE SCRIPT-->
       <script>mainRatio();</script>

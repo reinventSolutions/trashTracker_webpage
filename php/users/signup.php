@@ -30,10 +30,13 @@
 </div><!--container-fuild-->
 
 <!--SIGN UP-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
-  <div class="row">      
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h4>Registering to Trash Tracker</h4><br>
+<div class="container" style="background-color:#b4b4b4; margin-top: 20px;  
+                              padding: 20px; width: 80%;">
+  <div class="card border-dark mb-3" style="max-width: auto;">
+  <div class="card-header"><h4 class="img_center">Registering to Trash Tracker</h4></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Happy to see you sign up today!</h5>
+    <p class="card-text">   
 	<div>
     <!--<form name="userLogin">-->
 	<form action = "register.php" method = "post">
@@ -43,28 +46,24 @@
 	  </span>
 	  </div>
       <div class="form-group">
-        <label for="InputID">ID TOKEN</label>
+        <label for="InputID"><b class="name">ID TOKEN</b></label>
         <input type="text" class="form-control" name="tokenId" id="tokenId" aria-describedby="token" placeholder="Enter ID">
       </div>
-        <label for="inputName">Name</label>
+        <label for="inputName"><b class="name">Name</b></label>
         <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Enter Name">
       <div class="form-group">
-        <label for="inputEmail">Email</label>
+        <label for="inputEmail"><b class="name">Email</b></label>
         <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Enter Email">
     </div>
     <div class="form-group">
-        <label for="inputUpdatePW">New Password</label>
+        <label for="inputUpdatePW"><b class="name">New Password</b></label>
         <input type="password" class="form-control" name="password" id= "password" aria-describedby="updatepassword" placeholder="New Password">
     </div>
     <br/>
      <p class="img_center">
 	  <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> <br>
-     <br/>
      </p>
     </form>
-	</div>
-  </div>
-  </div>
  </div><!--.row-->
 </div><!--.container-->
 

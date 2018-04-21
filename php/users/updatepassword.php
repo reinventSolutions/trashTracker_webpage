@@ -37,14 +37,13 @@
 <!--.GENERAL INFO-->
 
 <!--NEW PASSWORD-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
-  <div class="row">
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-     <h4>Create New Password</h4><br>
-    <div class = "container">
-    <!--<form name="userLogin">-->
-    <div>
-  	</div>
+<div class="container" style="background-color:#b4b4b4; margin-top: 20px;  
+                              padding: 20px; width: 80%;">
+ <div class="card border-dark mb-3" style="max-width: auto;">
+  <div class="card-header"><h4 class="img_center">Create New Password</h4></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title"><h5>Let's update your password!</h5>
+    <p class="card-text"><p> *** Please check your email for a temporary password to update your settings</p>
     <form action = "passwordUpdate.php" method = "post">
     <div>
     <span style = "color: #ff0000;">
@@ -61,17 +60,17 @@
 
      <div class="form-group">
         <label for="Recovery">Enter Recovery Password</label>
-        <input type="text" class="form-control" name="recoveryPassword" id="recoveryPassword" aria-describedby="recovery" placeholder="Enter Recovery Password">
+        <input type="password" class="form-control" name="recoveryPassword" id="recoveryPassword" aria-describedby="recovery" placeholder="Enter Recovery Password">
      </div>
 
      <div class="form-group">
         <label for="Recovery">Enter New Password</label>
-        <input type="text" class="form-control" name="newPassword" id="newPassword" aria-describedby="recovery" placeholder="Enter Email">
+        <input type="password" class="form-control" name="newPassword" id="newPassword" aria-describedby="recovery" placeholder="Enter Email">
      </div>
 
      <div class="form-group">
         <label for="Recovery">Confirm New Password</label>
-        <input type="text" class="form-control" name="confirmPassword" id="confirmPassword" aria-describedby="recovery" placeholder="Enter Email">
+        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" aria-describedby="recovery" placeholder="Enter Email">
      </div>
 
      <p class="img_center">
@@ -79,10 +78,7 @@
     </p>
 
     </form>
-
-	</div>
-  </div>
-  </div>
+    </div>
  </div><!--.row-->
 </div><!--.container-->
 

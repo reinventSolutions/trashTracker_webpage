@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/stylesheet2.css">
       <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +33,7 @@
 <!--SIGN IN-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 25px 10px; height:auto;">
     <h3 class="img_center">Log into Trash Tracker</h3><br>
     <div>
     <form action="users/login.php" method="post">
@@ -39,32 +41,43 @@
       <!-- Testing Login Errors-->
       <div>
       <span style = "color: #ff0000;">
-        <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>", "success" => "Successfully updated your new password!</br>"); 
+        <?php $reasons = array("password" => "Wrong Username or Password</br>", "blank" => "You have left one or more fields blank</br>", 
+		                       "success" => "Successfully updated your new password</br>",
+							   "register" => "Account successfully created</br>"); 
                           if($_GET["loginFailed"] == true || $_GET["updatefailed"] == false) echo $reasons[$_GET["reason"]]; ?>
       </span>
       </div>
 	    <!-- End Test -->
-        <label for="InputEmail1">Email Address</label>
+        <label for="InputEmail1"><strong class="name">Email Address</strong></label>
         <input type="text" class="form-control" name= "userEmail" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
-        <label for="InputPassword">Password</label>
+        <label for="InputPassword"><strong class="name">Password</strong></label>
         <input type="password" class="form-control" name= "userPassword" id="userPassword" placeholder="Password">
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="remeberUser">
         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-        <p class="alignright">
+		<p class="alignright">
             <a href="users/forgotPassword.php">Forgot Password?</a>
-        </p><br/><br/>
-      </div>
-      <br/>
+    </p>       		
+    <p class = ""><a type = "checkbox" id = "needhelp"><font color = "#0066ff">Need Help?</font></a></p>
+		 <div id = "help">
+        For first time users, please enter into email and password the information provied by Trash Tracker pamplet to begin resgistration into the website.
+        <br/><br/>
+        For registed users, If you have forgotten your password please select "Forgot Password?" and we will help by sending you a temporary password to email address provided upon registration.
+        <br/><br/>
+        If you are continue to experience difficulties logging into the website or registering please contact us at <b>(760)750-3022</b>.
+        <br/><br/>
+		    <p class = ""><a type = "checkbox" color = "red" id = "hidehelp"><font color = "#0066ff">Hide</font></a></p>
+		 </div>
+    </div>
       <p class="img_center">
         <input type="submit" class="btn btn-sm btn-success" value="Log In"/>
       </p>
        <hr>
+      <h3 style="color: #0066ff; text-align:center;"> New User </h3>
       <p class="img_center">
-      <strong> New User </strong><br/>
         <a href = "users/signup.php">
           <input type="button" class="btn btn-sm btn-success" onclick = "users/signup.php" value="Sign Up"/><br>
         </a>
@@ -92,7 +105,17 @@
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS 
   <script type="text/javascript" src="js/login.js"></script>-->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script>
+  $("#help").hide();
+  $(document).ready(function(){
+	$('#needhelp').click(function(){
+	$("#help").show();
+	});	
+	$('#hidehelp').click(function(){
+	$("#help").hide();
+	});	
+	})
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>

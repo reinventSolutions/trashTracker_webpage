@@ -11,10 +11,48 @@
       <a href="../account.php"> 
        <button type="button" class="btn btn-outline-secondary" href="../account.php">Return</button>
       </a>    
+<!-- asfd 
       <a href="../users/logout.php"> 
        <button type="button" class="btn btn-outline-secondary"  onclick="../users/logout.php" href="">Logout</button>
-      </a>      
-      </p>
+      </a>
+      --> 
+      <a href="#" data-toggle="modal" data-target="#logoutModal"> 
+          <button type="button" class="btn btn-outline-secondary">Logout</button>
+     </a>     
+    </p>
   </div>
  </div>
  </div><!--container-fuild-->
+
+<!--LOGOUT MODAL -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <!--LOGOUT HEADER-->
+      <div class="modal-header">
+        <h4>Log Out<i class="fa fa-lock"></i></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="pull-left" aria-hidden="true">x</span>
+        </button>
+      </div>
+      <!--LOGOUT BODY-->
+      <div class="modal-body">
+        <p class="logout_message">
+          <i class="fa fa-question-circle"></i>Are you sure you want to logout? <br />
+        </p>
+        <!--LOGOUT BUTTON-->
+        <div class="actionsBtns">
+          <form action="logout.php" method="post">
+            <input type="hidden" name="" value="" />
+            <!--LOGOUT-->
+            <button type="button" class="btn btn-danger">
+              <a id="logout_link" class="link" href="logout.php">Logout</a>
+            </button>
+            <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+            <!--<button class="btn btn-default" data-dismiss="modal">Cancel</button>-->
+          </form>
+        </div>
+      </div><!--END LOGOUT BODY-->
+    </div>
+  </div>
+</div><!--END LOGOUT CONTAINER-->

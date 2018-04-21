@@ -1,8 +1,10 @@
 <?php include "graph.php" ?>
 <?php
+  $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
+  @mysqli_select_db($connection, $DBname);
 //NORMAL COMP AVG
 $neighborq = "SELECT N1, N2, N3, N4, N5 FROM Houses WHERE House = '$house'";
-$fetchneighbor = mysqli_query ($connection, $neighborq);    
+$fetchneighbor = mysqli_query($connection, $neighborq);    
  while ($query_data = mysqli_fetch_row($fetchneighbor)){
     $N1ID = (int)$query_data[0];
     $N2ID = (int)$query_data[1];

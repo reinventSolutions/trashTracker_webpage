@@ -3,8 +3,12 @@
   <!--LEFT--> 
   <div class="oneLeft" id="info">
   <div class="row"><!--.row-->
-  <!--INFO-->
-   <div class="onel" style="">
+  <!--INFO
+  <div class="genHead" style="">  header 
+  PROFILE
+  </div> .header   
+  -->
+  <div class="onel" style="">
     <?php 
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
       <p> Welcome 
@@ -22,9 +26,9 @@
     &nbsp;	
     <a href="users/logout.php"> 
       <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" onclick="users/logout.php" href="">Logout</button>
-    </a>     
+    </a> 
    </div><!--.INFO-->
-  </div><!--.row-->
+   </div><!--.row-->
 <!--BIN INFO-->
 <div class="row">
 <div class="twol" style=""><!--BIN INFO-->

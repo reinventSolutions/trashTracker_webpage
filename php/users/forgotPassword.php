@@ -34,14 +34,13 @@
 <!--.GENERAL INFO-->
 
 <!--FORGOT PASSWORD-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
-  <div class="row">
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-     <h4>Recover Password</h4><br>
-    <div class = "container">
-    <!--<form name="userLogin">-->
-    <div>
-  	</div>
+<div class="container" style="background-color:#b4b4b4; margin-top: 20px;  
+                              padding: 20px; width: 80%;">
+<div class="card border-dark mb-3" style="max-width: auto;">
+  <div class="card-header"><h4 class="img_center">Recover Password</h4></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Forgot your password?</h5>
+    <p class="card-text">
     <form action = "forgotPasswordUpdate.php" method = "post">
     <div>
 	  <span style = "color: #ff0000;">
@@ -58,11 +57,36 @@
     </p>
     </br>
     </form>
+    </p>
+  </div>
+</div>
+<!--
+  <div class="row">
+   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
+     <h4>Recover Password</h4><br>
+    <div class = "container">
+    <div>
+  	</div>
+    <form action = "forgotPasswordUpdate.php" method = "post">
+    <div>
+	  <span style = "color: #ff0000;">
+	  </span>
+	  </div>
+     <div class="form-group">
+        <label for="Recovery">Enter Recovery E-mail</label>
+        <input type="text" class="form-control" name="recoveryEmail" id="recoveryEmail" aria-describedby="recovery" placeholder="Enter Email">
+     </div>
+     <p class="img_center">
+     	 <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Send Recovery Email"/>
+    </p>
+    </br>
+    </form>
 	</div>
   </div>
   </div>
- </div><!--.row-->
-</div><!--.container-->
+ </div> row
+</div>container
+-->
 
 <footer><!--FOOTER CONTAINER-->
 <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
