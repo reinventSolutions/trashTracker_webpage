@@ -67,6 +67,7 @@
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
+		  $_SESSION["Email"] = $mail;
 		  $_SESSION["GraphLow"] = 12;
 		  $_SESSION["GraphUp"] = 17;
 

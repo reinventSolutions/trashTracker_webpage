@@ -69,21 +69,33 @@ nav{
     border-radius: 10px;
     background-color:#b4b4b4; 
 }
+.genHead{
+    text-align: center;
+    background-color:#808080;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.gout{
+    background-color: #000000;
+}
 .onel{
     flex-grow: 2;
     text-align: center;
     margin: 20px; 
-    padding: 20px;
     /* margin: 5px 18px 5px;*/
     border-radius: 10px;
     background-color:#FFFFFF; 
+    padding-bottom:5px;
 } 
 .twol{
+    width: 200px;
     background-color:#FFFFFF; 
     border-radius: 10px;
     text-align: center;
     margin: 20px; 
-    padding: 20px;
+    padding-bottom:5px;
+    /* padding: 20px; */
 }
 /*GRAPH*/
 .hcGraph{
@@ -95,6 +107,13 @@ nav{
 .thumbs{
     margin: 5px;
 }
+
+.hcHead{
+    text-align: center;
+    background-color:#808080;
+    width: 100%;
+}
+
 /*NC2*/
 .meow{
     display: flex;
@@ -167,8 +186,20 @@ colors: ['#0066ff', '#808080', '#7aac3b']
 strong{
     color: #0066ff;
 }
+
+.swhite{
+    text-emphasis: strong;
+    color: #FFF;
+}
+
 .name{
     color: #7aac3b;
+}
+.bad{
+    color: #fdad2a;
+}
+.good{
+    color: #539639;
 }
 hr{
     border: none; 				/* Make line fill consistent */

@@ -1,7 +1,7 @@
-<?php include "../../DB/dbinfo.php"; ?>
-<?php session_start(); ?>
-<?php
-		
+    	   <?php include "../../DB/dbinfo.php"; ?>
+		   <?php session_start(); ?>
+		   <?php
+	
 		/* Connect to MySQL and select the database. */
 		$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 
@@ -113,43 +113,68 @@ $binIDArray = array();
 $weightArray = array();
 $storeArray = array();
 mysqli_close($connection);
-?>
-<script type="text/javascript">
-google.charts.load('current', {'packages':['bar']});
-google.charts.setOnLoadCallback(drawChart);
+				?>
+				 <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-<?php echo $data; ?>
-
-var options = {
-	chart: {
-		title: 'Trash Tracker',
-		subtitle: 'Weekly Trash View',
-	},
-	axes: {
-			y: {
-					all: {
-							range: {
-									y: 100,
-									y:75,
-									y:50,
-									y:25,
-									y: 0
-							}
-					}
-			}
-	},
-	bars: 'vertical',
-	vAxis: {
-			title: 'Total weight in pounds',
-			format: 'decimal',
-			minValue: 0,
-		},
-	colors: ['#0066ff', '#808080', '#7aac3b']
+      function init() {
+    <?php echo $data; ?>
+        var options = {
+          chart: {
+            title: 'Trash Tracker',
+            subtitle: 'Weekly Trash View',
+          },
+          axes: {
+              y: {
+                  all: {
+                      range: {
+                          y: 100,
+                          y:75,
+                          y:50,
+                          y:25,
+                          y: 0
+                      }
+                  }
+              }
+          },
+          bars: 'vertical',
+          vAxis: {
+              title: 'Total weight in pounds',
+              format: 'decimal',
+              minValue: 0,
+            },
+			animation{
+				"startup": true,
+				duration: 1000,
+				easing: 'out',
+			},
+          colors: ['#0066ff', '#808080', '#7aac3b']
+        };
+	  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+	  var button1 = document.getElementById('nextweek');
+	  var button2 = document.getElementById('prevweek');
+	  
+	  	  function drawChart(){
+			  button.disabled = true;
+			  google.visualization.events.addListener(chart, 'ready', function(){
+				  button.disabled = false;
+			  });
+			chart.draw(data, google.visualization.ColumnChart.convertOptions(options));  
+		  }
+		  button1.onclick = function(){
+			  var newValue = 100 - data.getValue(0,1);
+			  data.setValue(0,1,newValue);
+			  drawChart();
+		  }
+		  
+		  button2.onclick = function(){
+			  var newValue = 100 - data.getValue(0,1);
+			  data.setValue(0,1,newValue);
+			  drawChart();
+		  }
+		  
+		drawChart();
+      };
+    </script>
 	
-};
-
-var chart = new google.charts.Bar(document.getElementById('chart_div'));
-chart.draw(data, google.charts.Bar.convertOptions(options));
-}
-</script>

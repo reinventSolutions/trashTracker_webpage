@@ -128,4 +128,5 @@ if($_SESSION['logged_in'] != true)
   				
 				$weightArray = array();
 				$storeArray = array();
+				mysqli_close($connection);
         ?>

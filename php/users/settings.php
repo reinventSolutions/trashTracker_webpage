@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,53 +25,64 @@
   
 
 <!--SETTING-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 15px; margin-bottom: 80px; width: 80%;">
-  <div class="row">      
-   <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 15px 10px; height:auto;">
-    <h4>Update Trash Tracker Account</h4><br>
-	<div class = "container">
-	  <!-- Testing Login Errors-->
+<div class="container" style="background-color:#b4b4b4; margin-top: 20px;  
+                              padding: 20px; width: 80%;">
+<div class="card border-dark mb-3" style="max-width: auto;">
+  <div class="card-header"><h4 class="img_center">Update Trash Tracker Account</h4></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Change some profile information?</h5>
+    <p class="card-text">
+    	  <!-- Testing Login Errors-->
 	<form action = "updateSettings.php" method = "post">
 	<div>
 	  <span style = "color: #ff0000;">
-      <?php $reasons = array("tokenIDinvalid" => "The information provided is invalid </br>", "blank" => "You have left one or more fields blank</br>"); 
+      <?php $reasons = array("password" => "Your password has been updated </br>", "blank" => "No fields have information to update</br>",
+							"email" => "Your email has been updated </br>", "name" => "Your name has been updated </br>", "update" => "Your information has been updated </br>"); 
                             if($_GET["updateFailed"] == true) echo $reasons[$_GET["reason"]]; ?>
 	  </span>
 	</div>
-	<div class = "form-group">
-        <label for="inputName"> Current Name</label>
-        <input type="name" class="form-control" name="name" id= "name" aria-describedby="name" placeholder="Current Name">
-		</div>
-    <div class="form-group">
-        <label for="inputEmail">Current Email</label>
-        <input type="email" class="form-control" name="email" id= "email" aria-describedby="email" placeholder="Current Email">
-    </div>
-	    <div class="form-group">
-        <label for="inputUpdatePW">Current Password</label>
-        <input type="password" class="form-control" name="password" id= "password" aria-describedby="password" placeholder="Current Password">
-    </div>
 		<div class="form-group">
-	    <label for="inputName">New Name</label>
-        <input type="name" class="form-control" name="newName" id= "newName" aria-describedby="newName" placeholder="New Name">
+	<div>
+	<span class="name"><b>Current Name:</b></span> <?php echo $_SESSION['name']; ?>
+	<br></br>
+	</div>	
+	    <label for="inputName">
+        <span class="name"><b>New Name</b></span>
+      </label>
+        <input type="name" class="form-control" name="newName" id= "newName" 
+                            aria-describedby="newName" placeholder="New Name">
 		</div>
     <div class="form-group">
-        <label for="inputEmail">New Email</label>
-        <input type="email" class="form-control" name="newEmail" id= "newEmail" aria-describedby="newEmail" placeholder="New Email">
+	<div>
+  <span class="name"><b>Current Email:</b></span>
+    <?php echo $_SESSION['Email']; ?>
+	<br></br>
+	</div>
+        <label for="inputEmail">
+         <span class="name"><b>New Email</span><b>
+        </label>
+        <input type="email" class="form-control" name="newEmail" id= "newEmail" 
+                    aria-describedby="newEmail" placeholder="New Email">
     </div>
     <div class="form-group">
-        <label for="inputUpdatePW">New Password</label>
-        <input type="password" class="form-control" name="newPassword" id= "newPassword" aria-describedby="newPassword" placeholder="New Password">
+	<br>
+        <label for="inputUpdatePW">
+          <span class="name"><b>New Password<span></b>
+        </label>
+        <input type="password" class="form-control" name="newPassword" id= "newPassword" 
+                  aria-describedby="newPassword" placeholder="New Password">
     </div>
-      <br/>
+    <br><br>
        <p class="img_center">
         <a type = "submit" name = "submit" class="btn btn-sm btn-success" href="../account.php" value = "Return"/>Return</a> &nbsp;
-        <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update and Return"/> 
+        <input type = "submit" name = "submit" class="btn btn-sm btn-success" value = "Update"/> 
         <br/><br/>
       </p>
   </form><!-- form-group -->
+    </p>
+  </div>
 	</div>
   </div><!--.container-->
-  </div><!-- col-sm -->
  </div><!--.row-->
 </div><!--.container-->
 

@@ -100,42 +100,45 @@ $updatequery = "UPDATE Users SET password = '$pass' WHERE email = '$email'";
 $q= mysqli_query($connection, $updatequery);
 
 
-$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-try {
+
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    $brk = "<br><br>";
+
     //Server settings
-    //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->Host = "smtp.gmail.com";  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'kevin.truebe@gmail.com';                 // SMTP username
-    $mail->Password = 'k67j8@O69Yoz';                           // SMTP password
+    $mail->Username = "reinv3nt.solutions@gmail.com";                 // SMTP username
+    $mail->Password = "helloworld18";                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = '465';
+    $mail->Port = 465;
 
     //Recipients
-    $mail->setFrom('kevin.truebe@gmail.com');
-    $mail->addAddress('trueb003@cougars.csusm.edu');     // Add a recipient
+    $mail->setFrom('reinv3nt.solutions@gmail.com');
+    $mail->addAddress($email);     // Add a recipient    
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Trash Tracker Temp Password';
+    //$logo = "<img src="cid:logoimg" width="50px">";
+    $mail->Body = 'Hello, '.$brk.' Your Trash Tracker Temporary Password is <b> '.$pass.'</b> '.$brk.' Best Regards, '.$brk.' Trash Tracker ';
+    //.$brk.' <img src="cid:logoimg" width="50px">';
+    //$mail->AddEmbeddedImage('trashtracker.png', 'logoimg');
+    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+
+
+    header("Location: updatepassword.php");
+    mysqli_close($connection);
+
     //$mail->addAddress('ellen@example.com');               // Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
     //$mail->addBCC('bcc@example.com');
 
     //Attachments
-    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-    //Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Trash Tracker Temp Password';
-    $mail->Body    = 'Your Trash Tracker Temporary Password is '. $pass .' ';    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-}
-
-header("Location: updatepassword.php");
-mysqli_close($connection);
-
+    //$mail->addAttachment('../../images/trashtracker.png');         // Add attachments
 ?>
+

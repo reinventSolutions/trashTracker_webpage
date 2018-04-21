@@ -99,7 +99,7 @@
 				$binIDArray = array();
 				$weightArray = array();
 				$storeArray = array();
-				
+				mysqli_close($connection);
 				?>
 				 <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});

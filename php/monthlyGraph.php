@@ -1,6 +1,6 @@
-		   <?php include "../../DB/dbinfo.php"; ?>
+    	   <?php include "../../DB/dbinfo.php"; ?>
 		   <?php session_start(); ?>
-		   <?php 
+		   <?php
             
             /* Connect to MySQL and select the database. */
             $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
@@ -14,11 +14,20 @@
                   else 
                       //echo "<p>Connected to the database now select table</p>";
 					  
-					  if (isset($_POST['lowerValue']) && isset($_POST['upperValue'])){
-						$lower = $_POST['lowerValue'];
-						$upper = $_POST['upperValue'];
-					  }		
 					  $house = $_SESSION['House'];
+					  
+					  $minWeek= "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk ASC LIMIT 1";
+					  $min = mysqli_query($connection, $minWeek);//Lowest Week
+					  $minRow = mysqli_fetch_row($min);
+					  $monthLow = $minRow[0];
+					  
+					  
+					  $numOfMonths = "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk DESC LIMIT 1";
+					  $upperFloor = mysqli_query($connection, $numOfMonths);//HIGHEST MONTH AVAIL
+					  $row = mysqli_fetch_row($upperFloor);
+					  $monthUp2 = $row[0]; //should be 16
+					  $monthUp = $monthUp2/4; //makes 16/4 = 4
+					  //$monthLow = 0;
 					  
 					  //BinID info
 					  $binIDquery = "SELECT Bin
@@ -48,31 +57,31 @@
 					   while($row = mysqli_fetch_array($fetchBins)){
 						   $storeArray[] = $row[0];
 					   }
-					   
 					   $bin1 = $storeArray[0];
 					   $bin2 = $storeArray[1];
 					   $bin3 = $storeArray[2];
-					   $binData3 = "SELECT DISTINCT Wk
+					   
+					   /*Weekly View*/
+					   $binData1 = "SELECT DISTINCT Wk
 									FROM Weights
 									WHERE (
 									binID = '$bin1'
 									OR binID = '$bin2'
 									OR binID ='$bin3'
 									)
-									AND Wk > '$lower'
-									AND Wk < '$upper'
-									ORDER BY Wk DESC
-									LIMIT 4";
-					 
-					  $binData4 = "SELECT BinWeight 
+									AND Wk >= '$monthLow'
+									AND Wk <= '$monthUp'
+									ORDER BY Wk ASC";
+									
+					 //Gets all bin weights
+					  $binData2 = "SELECT BinWeight 
 								   FROM Weights 
 								   WHERE (binID ='$bin1' OR binID ='$bin2' OR binID ='$bin3') 
-								   AND Wk > '$lower' AND Wk < '$upper' 
-								   ORDER BY Wk DESC
-								   LIMIT 12";
+								   AND Wk >= '$monthLow' AND Wk <= '$monthUp2' 
+								   ORDER BY Wk, binID ASC";
 					  
-					  $result3 = mysqli_query($connection, $binData3);//weeks
-					  $result4 = mysqli_query($connection, $binData4);//weights
+					  $result1 = mysqli_query($connection, $binData1);//weeks
+					  $result2 = mysqli_query($connection, $binData2);//weights
 					  
 					   $data2 = "var data2 = new google.visualization.DataTable();\n\r"
                       ."data2.addColumn('number', 'Month');\n\r"
@@ -82,31 +91,45 @@
 					  ."data2.addRows([\n\r";
 					  
 					  $weightArray = Array();
-					  while($row1 = mysqli_fetch_array($result4)){
+					  while($row1 = mysqli_fetch_array($result2)){
 						  $weightArray[] = $row1[0];
 					  }
-					  
-					  
-					  $counter = 0;
-                      while($row2 = mysqli_fetch_array($result3)){
-                        $week = $row2[0];
-                        $data2 = $data2." [".$week.", ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
+					
+					$counter = 0;
+					$counter3 = 0;
+					$weightArray2 = Array();
+					while($counter3 < ($monthUp2 + 4)){
+					$weightArray2[$counter3] = $weightArray[$counter] + $weightArray[$counter+3] + $weightArray[$counter+6] + $weightArray[$counter+9];
+							$counter = $counter + 1;
+							$counter3 = $counter3 + 1;
+						if($counter % 3 == 0){
+							$weightArray2[$counter3] = $weightArray[$counter] + $weightArray[$counter+3] + $weightArray[$counter+6] + $weightArray[$counter+9];
+							$counter = $counter + 9;}
+					}				  
+					  				  
+					  $counter2 = 0;
+                      while($row2 = mysqli_fetch_array($result1)){
+                        $monthnum = $row2[0];
+                        $data2 = $data2." [".$monthnum.", ".$weightArray2[$counter2].", ".$weightArray2[$counter2 + 1].", ".$weightArray2[$counter2 + 2]."],\n\r";
 						echo "\n\r";
-						$counter = $counter + 3;
+						$counter2 = $counter2 + 3;
                       }
                         $data2 = $data2."]);\n\r";
+					  /*End of Weekly View*/
 				
 				$binIDArray = array();
 				$weightArray = array();
+				$weightArray2 = array();
 				$storeArray = array();
-				
-				?>
-	  <script type="text/javascript">
+				mysqli_close($connection);
+	?>
+				 <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         <?php echo $data2; ?>
+
     
         var options2 = {
           chart: {
@@ -132,11 +155,12 @@
               format: 'decimal',
               minValue: 0,
             },
+			
           colors: ['#0066ff', '#808080', '#7aac3b']
         };
 
         var chart2 = new google.charts.Bar(document.getElementById('chart_div2'));
-        chart2.draw(data2, google.charts.Bar.convertOptions(options2));       
+        chart2.draw(data2, google.charts.Bar.convertOptions(options2));
       }
+	  
     </script>
-	

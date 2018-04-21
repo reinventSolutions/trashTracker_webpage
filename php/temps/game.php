@@ -1,8 +1,8 @@
 <div class="container" style="background-color:#b4b4b4;  margin-top: 10px; margin-bottom: 80px; 
                               height: auto; width: 100%; padding:10px; text-align:center;">  
-  <span class="img_center">
-    <h3>Trash Tracker Game!</h3>
-  </span>
+                              <div class="hcHead" style="">   
+   <strong class ="swhite">TRASH TRACKER GAME</strong><br/>
+  </div>
   Drag and drop the trash items into the appropriate bins!
   <div class="gc" style="margin-left: auto; margin-right: auto; margin-bottom:0px; 
                           height:auto; padding-left:10%; ppadding-right: 10%; 
@@ -63,8 +63,9 @@
     <text id = "score001">0</text>
  </div><!-- .gc -->
  <div class="gc" id="star" style="margin-left: auto; margin-right: auto; margin-bottom:10px; 
-                          height:40px; padding-left:10%; ppadding-right: 10%; 
+                          height:40px; padding-left:10%; ppadding-right: 10%; padding-bottom: 20px;
                           border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <text id = "wrng"></text><br>
   <p></p>
  </div><!-- .gc -->
  </div><!--.container-->
@@ -95,7 +96,8 @@
     function drop006(event){
      var data = event.dataTransfer.getData("choice001");  
      if(data === ""){
-      alert("wrong!");
+      wrng.innerHTML = 'wrong';
+      //alert("wrong!");
      }
      else{    
 

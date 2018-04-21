@@ -58,7 +58,51 @@
         else
          elem.src = '../images/thumbDown.png';
         }
+        function ttext1(){
+          var owner = <?php echo $housecompare ?>;
+          var neighbor = <?php echo $neighborcomparison?>;
+          //var less = "less";
+          //var more = "more";
+          var elem = document.getElementById("tratio1");
+        if(neighbor < owner)
+          elem.innerHTML = "<b>more</b>";
+        else
+          elem.innerHTML = "<b>less</b>";
+        }
+        function ttext2(){
+          var owner = <?php echo $housecompare ?>;
+          var neighbor = <?php echo $neighborcomparison?>;
+          //var less = "less";
+          //var more = "more";
+          var elem = document.getElementById("tratio2");
+        if(neighbor < owner)
+           elem.innerHTML = "<b>less</b>";
+        else
+           elem.innerHTML = "<b>more</b>";
+        }
         //MAIN RATIO 
+        function nctext1(){
+          var owner = <?php echo $housecompare ?>;
+          var neighbor = <?php echo $neighborcomparison?>;
+          //var less = "less";
+          //var more = "more";
+          var elem = document.getElementById("ncratio1");
+        if(neighbor < owner)
+          elem.innerHTML = "<b>more</b>";
+        else
+          elem.innerHTML = "<b>less</b>";
+        }
+        function nctext2(){
+          var owner = <?php echo $housecompare ?>;
+          var neighbor = <?php echo $neighborcomparison?>;
+          //var less = "less";
+          //var more = "more";
+          var elem = document.getElementById("ncratio2");
+        if(neighbor < owner)
+           elem.innerHTML = "<b>less</b>";
+        else
+           elem.innerHTML = "<b>more</b>";
+        }
         function mainRatio(){
           var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
@@ -149,32 +193,36 @@
 	</script>
 		       
 </head>
-		<div id="DData">
 
-		</div> 
+<!--BEGIN MAIN CONTENT-->
 
 <body><!--START OF BODY-->     
   <header style=""> <!--START OF HEADER-->
     <!--START OF NAV-->  
     <?php include "temps/header.php"; ?>
   </header><!--END OF HEADER-->
-  
-  <!-- GENERAL INFO--> 
-  <?php include "temps/generalinfo.php"; ?>
+
+  <!-- GENERAL INFO
+  php include "temps/gen2.php"; 
+  --> 
+  <?php include "temps/gen2.php"; ?>
   
   <!--RIGHT--> 
-<div class="container" id="info" style="background-color:#b4b4b4; padding: 25px; width:850px; height:auto;">
+  <div class="container" id="info" style="background-color:#b4b4b4; padding: 25px; width:850px; height:auto;">
    <div class="row">
    <!--Historical Comparison-->
     <?php include "temps/historicalComp.php"; ?>
+	<div id="DData">
+
+	</div> 
 
 
    <div class="row">
    <!--Normal Comparison-->
    <?php include "closest.php"; ?>
 
-<!--RECYCLE GAME-->
-<?php include "temps/game.php"; ?>
+  <!--RECYCLE GAME-->
+  <?php include "temps/game.php"; ?>
 
 <footer><!--FOOTER CONTAINER-->
  <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
