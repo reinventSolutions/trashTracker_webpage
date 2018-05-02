@@ -16,7 +16,8 @@
 			exit();
 	}
 	
-				$password = $_POST['password'];
+				$password1 = $_POST['password'];
+				$password = password_hash($password1, PASSWORD_DEFAULT);
 				$email = $_POST['email'];
 				$name = $_POST['name'];
 				$id = $_POST['tokenId'];
@@ -33,7 +34,7 @@
 				$userName = $row[2];
 				$idCheck = $row[3];
 				
-				if (($password == '')||($id == '')||($name == '')||($email == '')){
+				if (($password1 == '')||($id == '')||($name == '')||($email == '')){
 					$updateFailed = true;
 					die(header("Location: signup.php?updateFailed=true&reason=blank"));
 					}

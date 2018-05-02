@@ -63,9 +63,9 @@
     </p>       		
     <p class = ""><a type = "checkbox" id = "needhelp"><font color = "#0066ff">Need Help?</font></a></p>
 		 <div id = "help">
-        For first time users, please enter into email and password the information provied by Trash Tracker pamplet to begin resgistration into the website.
+        For first time users, please enter the email and password the information provided by Trash Tracker pamplet to begin resgistration into the website.
         <br/><br/>
-        For registed users, If you have forgotten your password please select "Forgot Password?" and we will help by sending you a temporary password to email address provided upon registration.
+        For registered users, If you have forgotten your password please select "Forgot Password?" and we will help by sending you a temporary password to email address provided upon registration.
         <br/><br/>
         If you are continue to experience difficulties logging into the website or registering please contact us at <b>(760)750-3022</b>.
         <br/><br/>

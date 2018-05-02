@@ -21,7 +21,7 @@
 					  //BinID info
 					  $binIDquery = "SELECT Bin
 									 FROM Bins
-									 WHERE HouseID = $house";
+									 WHERE HouseID = '".$house."'";
 									  
 					  $fetchBinsID = mysqli_query($connection, $binIDquery);
 					   $binIDArray = Array();
@@ -39,7 +39,7 @@
 								  WHERE HouseID = ( 
 									SELECT House
 									FROM Houses
-									WHERE House ='$house')";
+									WHERE House ='".$house."')";
 										   
 					   $fetchBins = mysqli_query($connection, $getBins);
 					   $storeArray = Array();
@@ -51,7 +51,7 @@
 					   $bin3 = $storeArray[2];
 					   
 					   /*Weekly View*/
-					   $binData1 = "SELECT DISTINCT Wk
+					   $binData1 = "SELECT DISTINCT WeightDate
 									FROM Weights
 									WHERE (
 									binID = '$bin1'
@@ -74,7 +74,7 @@
 					  $result2 = mysqli_query($connection, $binData2);//weights
 					  
 					   $data = "var data = new google.visualization.DataTable();\n\r"
-                      ."data.addColumn('number', 'Week');\n\r"
+                      ."data.addColumn('string', 'Week');\n\r"
                       ."data.addColumn('number', 'Recycling');\n\r\n\r"
                       ."data.addColumn('number', 'Trash');\n\r\n\r"
                       ."data.addColumn('number', 'Greenwaste');\n\r\n\r"
@@ -89,12 +89,15 @@
 					  $counter = 0;
                       while($row2 = mysqli_fetch_array($result1)){
                         $week = $row2[0];
-                        $data = $data." [".$week.", ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
+                        $data = $data." ['".$week."', ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
 						echo "\n\r";
 						$counter = $counter + 3;
                       }
                         $data = $data."]);\n\r";
 					  /*End of Weekly View*/
+				
+				//Print data to check if data from database is loaded
+				//echo $data;
 				
 				$binIDArray = array();
 				$weightArray = array();

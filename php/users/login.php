@@ -24,10 +24,10 @@
 
      if($connection){
           $password = $_POST['userPassword'];//input password
-          $email = $_POST['userEmail'];//input email
-		  
+          $email = $_POST['userEmail'];
+
 		      $loginFailed = false;
-        
+
           $userLogin = "SELECT password, email, ID, name FROM Users WHERE email = '$email'";
           $result = @mysqli_query($connection, $userLogin);
           $row = mysqli_fetch_row($result);
@@ -49,27 +49,34 @@
           $zip = $row2[4];
 		  $house = $row2[5];
 
-          $getNextPup = "SELECT NextPickup FROM Routes WHERE RouteNumber = 
+          $getNextPup = "SELECT NextPickup FROM Routes WHERE RouteNumber =
 		  (SELECT RouteNum
 		  FROM Houses
 		  WHERE House ='$house')";
-		  
-		  
 
+		  $numOfMonths = "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk DESC LIMIT 1";
+		  $upperFloor = mysqli_query($connection, $numOfMonths);//HIGHEST MONTH AVAIL
+		  $row = mysqli_fetch_row($upperFloor);
+          $highWeek = $row[0];
+		 
+		  $low = $highWeek - 4;
+		  $up = $highWeek + 1;
+		  
+		  
           $pupResult = @mysqli_query($connection, $getNextPup);
           $puprow = mysqli_fetch_row($pupResult);
           $pickup = $puprow[0];
-		  
+
           $_SESSION["NextPickup"] = $pickup;
 
-          $_SESSION["Address"] = $address; 
+          $_SESSION["Address"] = $address;
           $_SESSION["St"] = $state;
           $_SESSION["City"] = $city;
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
 		  $_SESSION["Email"] = $mail;
-		  $_SESSION["GraphLow"] = 12;
-		  $_SESSION["GraphUp"] = 17;
+		  $_SESSION["GraphLow"] = $low;
+		  $_SESSION["GraphUp"] = $up;
 
 		// Testing this code
 		if ($password == ''){
@@ -79,31 +86,31 @@
 	 	else if ($email == ''){
 		 $loginFailed = true;
 		 die(header("Location: ../index.php?loginFailed=true&reason=blank"));
-		} 
-		//End of testing		
-		//IF ID TOKEN GIVEN IS == PASSWORD IN DB 
+		}
+		//End of testing
+		//IF ID TOKEN GIVEN IS == PASSWORD IN DB
 		else if($id == $password ){
             header("Location: signup.php");//make changes here
             exit();
 		}
-        else if(($pass == $password && $mail == $email)&&($id !== $pass)){
+        else if((password_verify($password, $pass) && $mail == $email)&&($id !== $pass)){
               $_SESSION[logged_in] = true;
               header("Location: ../account.php");//make chages here
             exit();
         }
-		else{ 
+		else{
 		 $loginFailed = true;
 		 die(header("Location: ../index.php?loginFailed=true&reason=password"));
         }
         }
-      else{ 
+      else{
         header("Location: ../index.php");//make changes here
       exit();
-        } 
-     
+        }
+
      mysqli_close($connection);
   ?>
-  
+
   </body>
 
   <!--
@@ -111,5 +118,5 @@
     2/1/2018
   SCOTTY CARDWELL
   3/2/2018
-  --> 
+  -->
 </html>

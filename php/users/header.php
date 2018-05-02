@@ -16,9 +16,9 @@
        <button type="button" class="btn btn-outline-secondary"  onclick="../users/logout.php" href="">Logout</button>
       </a>
       --> 
-      <a href="#" data-toggle="modal" data-target="#logoutModal"> 
-          <button type="button" class="btn btn-outline-secondary">Logout</button>
-     </a>     
+      <a href="#" class="btn btn-outline-secondary" data-toggle="modal" data-target="#logoutModal">
+        Logout
+     </a>    
     </p>
   </div>
  </div>
@@ -45,9 +45,7 @@
           <form action="logout.php" method="post">
             <input type="hidden" name="" value="" />
             <!--LOGOUT-->
-            <button type="button" class="btn btn-danger">
-              <a id="logout_link" class="link" href="logout.php">Logout</a>
-            </button>
+              <a id="logout_link" class="btn btn-danger" href="logout.php">Logout</a>
             <button type="button" class="btn" data-dismiss="modal">Cancel</button>
             <!--<button class="btn btn-default" data-dismiss="modal">Cancel</button>-->
           </form>

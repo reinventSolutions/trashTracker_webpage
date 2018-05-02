@@ -1,20 +1,20 @@
 <div class="container"><!--MAIN CONTAINER-->
   <div class="row">
-  <!--LEFT--> 
+  <!--LEFT-->
   <div class="oneLeft" id="info">
   <div class="row"><!--.row-->
   <!--INFO
-  <div class="genHead" style="">  header 
+  <div class="genHead" style="">  header
   PROFILE
-  </div> .header   
+  </div> .header
   -->
   <div class="twol" style="">
-  <div class="genHead" style="">   
+  <div class="genHead" style="">
     <strong class ="swhite">PROFILE</strong>
   </div>
-    <?php 
+    <?php
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
-      <p> Welcome 
+      <p> Welcome
         <span class="name"><?php echo $_SESSION["name"]; ?></span>
       </br>
       <strong>Your Address:</strong> <br/>
@@ -23,13 +23,13 @@
       <?php echo $_SESSION["St"]; ?>
       <?php echo $_SESSION["Zip"]; ?><br/>
     <?php } ?><br/>
-    <a href="users/settings.php"> 
+    <a href="users/settings.php">
       <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" href="users/settings.php">Profile</button>
-    </a>    
-    &nbsp;	
-    <a href="#" data-toggle="modal" data-target="#logoutModal"> 
+    </a>
+    &nbsp;
+    <a href="#" data-toggle="modal" data-target="#logoutModal">
           <button type="button" class="btn btn-outline-secondary">Logout</button>
-     </a> 
+     </a>
    </div><!--.INFO-->
   </div><!--.row-->
 
@@ -55,9 +55,7 @@
           <form action="users/logout.php" method="post">
             <input type="hidden" name="" value="" />
             <!--LOGOUT-->
-            <button type="button" class="btn btn-danger">
-              <a id="logout_link" class="link" href="users/logout.php">Logout</a>
-            </button>
+              <a class="btn btn-danger" id="logout_link" href="users/logout.php">Logout</a>
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
             <!--<button class="btn btn-default" data-dismiss="modal">Cancel</button>-->
           </form>
@@ -67,25 +65,25 @@
   </div>
 </div><!--END LOGOUT CONTAINER-->
 
-   
+
 <!--BIN INFO-->
 <div class="row">
 <div class="onel" style=""><!--BIN INFO-->
-<div class="genHead" style="">   
+<div class="genHead" style="">
   <strong class ="swhite">BIN INFO</strong><br/>
 </div>
     <a href="#" title="Trash" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID1; ?>
-     <button type="button" class=""> 
+     <button type="button" class="">
       <img src="../images/grey.png" width="32px">
      </button>
     </a>
     <a href="#" title="Recycling" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID2; ?>
-      <button type="button" class=""> 
+      <button type="button" class="">
         <img src="../images/blue.png" width="30px">
       </button>
     </a>
     <a href="#" title="Greenwaste" data-toggle="popover" data-trigger="hover" data-html='true' data-content =<?php echo $binID3; ?>
-      <button type="button" class="">   
+      <button type="button" class="">
        <img src="../images/green.png" width="30px">
       </button>
     </a><br/>
@@ -96,18 +94,26 @@
 <!--NEXT PICK UP-->
 <div class="row">
   <div class="twol" style="">
-  <div class="genHead" style="">   
+  <div class="genHead" style="">
     <strong class ="swhite">NEXT PICK UP</strong>
   </div>
   <img src="../images/recycle.png" width="100px"><br>
-    <?php echo $_SESSION["NextPickup"]; ?> <br>
+  <!-- https://phppot.com/php/dates-and-time-in-php/ -->
+  <?php
+    date_default_timezone_set("America/Los_Angeles");
+    echo '<br>';
+    $current_date = date('l-m-d-Y');
+    // Will print current date in mm-dd-yyyy format 
+    echo $current_date;
+  ?> 
+  <br>
   </div>
  </div>
 <!--.NEXT PICK UP-->
 <!--RATIO-->
  <div class="row">
   <div class="onel" id= "yourratiobig">
-  <div class="genHead" style="">   
+  <div class="genHead" style="">
     <strong class ="swhite">YOUR RATIO</strong>
   </div>
   <strong>Your recycling score is:</strong>
@@ -118,4 +124,4 @@
   </div><!--.onel-->
  </div><!--.row-->
 <!--.RATIO-->
-</div><!--.LEFT--> 
+</div><!--.LEFT-->

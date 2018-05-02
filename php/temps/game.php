@@ -8,31 +8,31 @@
                           height:auto; padding-left:10%; ppadding-right: 10%; 
                           border-top-left-radius: 10px; border-top-right-radius: 10px;"><br/>
   <!--DRAGGABLE OBJECTS/ TRASH-->
-  <div class = "gchild" ondrop = "drop001(event)">
+  <div class = "gchild" id="cig" ondrop = "drop001(event)">
     <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001a">
       <b>Cig</b></br>   
       <img src="../images/game/grey/cig.png" width="50px" id = "target001a">
     </div>
   </div>
-  <div class = "gchild" ondrop = "drop002(event)">
+  <div class = "gchild" id="aluminum" ondrop = "drop002(event)">
    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002a">
     <b>Aluminum</b></br>
     <img src="../images/game/blue/aluminum.png" width="50px" id = "target002a">
    </div>
   </div>
-  <div class = "gchild" ondrop = "drop003(event)">
+  <div class = "gchild" id="egg" ondrop = "drop003(event)">
    <div ondragstart = "dragStart003(event)" draggable = "true" id = "target003">
     <b>Eggshell</b></br>
     <img src="../images/game/green/egg.png" width="50px" id = "target003">
    </div>
   </div>
-  <div class = "gchild" ondrop = "drop001(event)">
+  <div class = "gchild" id="mirror" ondrop = "drop001(event)">
    <div ondragstart = "dragStart001(event)" draggable = "true" id = "target001b">
      <b>Mirror</b></br>
      <img src="../images/game/grey/mirror.png" width="50px" id = "target001b">
    </div>
   </div>
-  <div class = "gchild" ondrop = "drop002(event)">
+  <div class = "gchild" id="glass" ondrop = "drop002(event)">
    <div ondragstart = "dragStart002(event)" draggable = "true" id = "target002b">
      <b>Glass</b></br>
      <img src="../images/game/blue/glass.png" width="50px" id = "target002b">
@@ -71,21 +71,29 @@
  </div><!--.container-->
 
 	<script>
+     $('#cig').fadeIn('slow');
+  
+    
+    //SCORE 
     var b = 0;
-    b++;
+    var current;
+
     function dragStart001(event){
+      current = event.target.id;
       event.dataTransfer.setData("choice001", event.target.id);
     }
     function allowDrop001(event){
       event.preventDefault();
     }
     function dragStart002(event){
+      current = event.target.id;
       event.dataTransfer.setData("choice002", event.target.id);
     }
     function allowDrop002(event){
       event.preventDefault();
     }
     function dragStart003(event){
+      current = event.target.id;
       event.dataTransfer.setData("choice003", event.target.id);
     }
     function allowDrop003(event){
@@ -95,52 +103,84 @@
     //WASTE
     function drop006(event){
      var data = event.dataTransfer.getData("choice001");  
+     
      if(data === ""){
-      wrng.innerHTML = 'wrong';
       //alert("wrong!");
+     $('#'+current).hide();
+      score001.innerHTML = b--;
+      var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/badstarpoint.png';
      }
-     else{    
-
-    }
-     event.target.appendChild(document.getElementById(data));
-     score001.innerHTML = b++;
-     var elem = document.createElement("img")
+     else{
+      event.target.appendChild(document.getElementById(data));
+      score001.innerHTML = b++;
+      var elem = document.createElement("img")
       document.getElementById("star").appendChild(elem).style.width = "5%";
       elem.src = '../images/game/starpoint.png';
-     //place001.innerHTML = "1";
+     //place001.innerHTML = "1";    
+    }
+    loadNext();
     }
 
     //RECYCLE
     function drop007(event){
       var data = event.dataTransfer.getData("choice002");
       if(data === ""){
-        alert("wrong!");
+        $('#'+current).hide();
+      score001.innerHTML = b--;
+      var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/badstarpoint.png';      
       }
       else{    
-
-      }
-      event.target.appendChild(document.getElementById(data));
+        event.target.appendChild(document.getElementById(data));
       score001.innerHTML = b++;
       var elem = document.createElement("img")
       document.getElementById("star").appendChild(elem).style.width = "5%";
       elem.src = '../images/game/starpoint.png';
+      }
+
+      loadNext();
       //place002.innerHTML = "2";
     }
 
-    //GREENWASTE
-    function drop008(event){
+    //GREENWASTEEEEE
+    function drop008(event){ 
       var data = event.dataTransfer.getData("choice003");
       if(data === ""){
-        alert("wrong!");
-      }
+      $('#'+current).hide();
+      
+      score001.innerHTML = b--;
+      var elem = document.createElement("img")
+      document.getElementById("star").appendChild(elem).style.width = "5%";
+      elem.src = '../images/game/badstarpoint.png';    }
       else{    
-
-      }
-      event.target.appendChild(document.getElementById(data));
+        event.target.appendChild(document.getElementById(data));
       score001.innerHTML = b++;
       var elem = document.createElement("img")
       document.getElementById("star").appendChild(elem).style.width = "5%";
       elem.src = '../images/game/starpoint.png';
+      }
+     
       //place003.innerHTML = "3";
+      loadNext();
+    }
+
+    var trashCounter = 1;
+    function loadNext(){
+      if(trashCounter == 1){
+        $('#aluminum').fadeIn('slow');
+      }
+      if(trashCounter == 2){
+        $('#egg').fadeIn('slow');
+      }
+      if(trashCounter == 3){
+        $('#mirror').fadeIn('slow');
+      }
+      if(trashCounter == 4){
+        $('#glass').fadeIn('slow');
+      }
+      trashCounter++;
     }
 	</script>

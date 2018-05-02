@@ -8,8 +8,11 @@
 <div class="hcHead" style="">   
    <strong class ="swhite">NORMAL COMPARISON</strong><br/>
 </div>
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
-    <h4>How do you stack up?</h4>
+  <div class="col" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
+  <h4>How do you stack up?</h4>
+    <div class="thumbs" id="thumbupdown" onload="thumbs()" style="text-align: center;">
+      <script> thumbs();</script>
+    </div><!--.thumbs-->
     <p id > We calculated the percent of waste you recycled this month, and found that you recycled 
     <span id="tratio1">
       <script> ttext1();</script>
@@ -17,9 +20,6 @@
     <span id="tratio2">
       <script> ttext2();</script>
     </span> landfill than your neightbors did. </p>
-    <div class="thumbs" id="thumbupdown" onload="thumbs()" style="text-align: center;">
-      <script> thumbs();</script>
-    </div><!--.thumbs-->
    </div><!--.col-->
   <!--NORMAL COMP INFO--> 
   <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5px;text-align: center;">
@@ -66,27 +66,27 @@
        <div class="mew" id="orangegreenhouse1">
         <script> switchImageN1(); </script>
         <br>
-        <?php echo $_SESSION["N1"]; ?> 
+        <?php echo $_SESSION["N1add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse2">
         <script> switchImageN2(); </script>
         <br>
-        <?php echo $_SESSION["N2"]; ?> 
+        <?php echo $_SESSION["N2add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse3">
         <script> switchImageN3(); </script>
         <br>
-        <?php echo $_SESSION["N3"]; ?>
+        <?php echo $_SESSION["N3add"]; ?>
       </div>
       <div class="mew" id="orangegreenhouse4">
         <script> switchImageN4(); </script>
         <br>
-        <?php echo $_SESSION["N4"]; ?> 
+        <?php echo $_SESSION["N4add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse5">
         <script> switchImageN5(); </script>
         <br>
-        <?php echo $_SESSION["N5"]; ?> 
+        <?php echo $_SESSION["N5add"]; ?> 
       </div>
      </div>
 	 

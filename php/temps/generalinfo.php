@@ -1,17 +1,17 @@
 <div class="container"><!--MAIN CONTAINER-->
   <div class="row">
-  <!--LEFT--> 
+  <!--LEFT-->
   <div class="oneLeft" id="info">
   <div class="row"><!--.row-->
   <!--INFO
-  <div class="genHead" style="">  header 
+  <div class="genHead" style="">  header
   PROFILE
-  </div> .header   
+  </div> .header
   -->
   <div class="onel" style="">
-    <?php 
+    <?php
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){?>
-      <p> Welcome 
+      <p> Welcome
         <span class="name"><?php echo $_SESSION["name"]; ?></span>
       </br>
       <strong>Your Address:</strong> <br/>
@@ -20,13 +20,13 @@
       <?php echo $_SESSION["St"]; ?>
       <?php echo $_SESSION["Zip"]; ?><br/>
     <?php } ?><br/>
-    <a href="users/settings.php"> 
+    <a href="users/settings.php">
       <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" href="users/settings.php">Profile</button>
-    </a>    
-    &nbsp;	
-    <a href="users/logout.php"> 
+    </a>
+    &nbsp;
+    <a href="users/logout.php">
       <button type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px;" onclick="users/logout.php" href="">Logout</button>
-    </a> 
+    </a>
    </div><!--.INFO-->
    </div><!--.row-->
 <!--BIN INFO-->
@@ -56,8 +56,9 @@
 <div class="row">
   <div class="onel" style="">
   <img src="../images/recycle.png" width="100px"><br>
-    <strong>Next Pick Up:</strong> <br>
-    <?php echo $_SESSION["NextPickup"]; ?> <br>
+    <strong>Next Pick Up YOU SUCK:</strong> <br>
+    <?php $startdate = strtotime("Tuesday"); ?>
+    <?php echo $startdate; ?> <br>
   </div>
  </div>
 <!--.NEXT PICK UP-->
@@ -66,10 +67,10 @@
   <div class="onel" id= "yourratiobig">
    <p class="img_center">
      <script>ratioInfo();</script>
-     <strong>Your Ratio:</strong> <br>    
+     <strong>Your Ratio:</strong> <br>
      <?php echo $_SESSION["HouseCompare"]; ?>%<br>
    </p>
   </div><!--.onel-->
  </div><!--.row-->
 <!--.RATIO-->
-</div><!--.LEFT--> 
+</div><!--.LEFT-->

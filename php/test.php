@@ -104,6 +104,14 @@ if($_SESSION['logged_in'] != true)
 <div id="chart_div" class="hcGraph" style="height:500px;">    
 </div>
 
+      <?php
+        print "<b>Welcome to my home page <br /> <br />";
+        print "Today is:</b> ";
+        print date("l, F jS");
+        print "<br />";
+      ?>
+
+
  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
  <script src="js/general.js"></script>
 

@@ -19,20 +19,22 @@
 					  $minWeek= "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk ASC LIMIT 1";
 					  $min = mysqli_query($connection, $minWeek);//Lowest Week
 					  $minRow = mysqli_fetch_row($min);
-					  $monthLow = $minRow[0];
+					  $monthLow = $minRow[0];//3 for now
 					  
 					  
 					  $numOfMonths = "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk DESC LIMIT 1";
 					  $upperFloor = mysqli_query($connection, $numOfMonths);//HIGHEST MONTH AVAIL
 					  $row = mysqli_fetch_row($upperFloor);
-					  $monthUp2 = $row[0]; //should be 16
-					  $monthUp = $monthUp2/4; //makes 16/4 = 4
+					  $monthUp2 = $row[0]; //should be 15
+					  $monthUp = ceil($monthUp2/4); //ceil of this makes 15/4 = 4
+					  $monthUp3 = $monthLow + 3;
+					  
 					  //$monthLow = 0;
 					  
 					  //BinID info
 					  $binIDquery = "SELECT Bin
 									 FROM Bins
-									 WHERE HouseID = $house";
+									 WHERE HouseID = '".$house."'";
 									  
 					  $fetchBinsID = mysqli_query($connection, $binIDquery);
 					   $binIDArray = Array();
@@ -50,7 +52,7 @@
 								  WHERE HouseID = ( 
 									SELECT House
 									FROM Houses
-									WHERE House ='$house')";
+									WHERE House ='".$house."')";
 										   
 					   $fetchBins = mysqli_query($connection, $getBins);
 					   $storeArray = Array();
@@ -70,7 +72,7 @@
 									OR binID ='$bin3'
 									)
 									AND Wk >= '$monthLow'
-									AND Wk <= '$monthUp'
+									AND Wk <= '$monthUp3'
 									ORDER BY Wk ASC";
 									
 					 //Gets all bin weights
@@ -80,11 +82,11 @@
 								   AND Wk >= '$monthLow' AND Wk <= '$monthUp2' 
 								   ORDER BY Wk, binID ASC";
 					  
-					  $result1 = mysqli_query($connection, $binData1);//weeks
+					  $result1 = mysqli_query($connection, $binData1);//months
 					  $result2 = mysqli_query($connection, $binData2);//weights
 					  
 					   $data2 = "var data2 = new google.visualization.DataTable();\n\r"
-                      ."data2.addColumn('number', 'Month');\n\r"
+                      ."data2.addColumn('string', 'Month');\n\r"
                       ."data2.addColumn('number', 'Recycling');\n\r\n\r"
                       ."data2.addColumn('number', 'Trash');\n\r\n\r"
                       ."data2.addColumn('number', 'Greenwaste');\n\r\n\r"
@@ -109,8 +111,45 @@
 					  				  
 					  $counter2 = 0;
                       while($row2 = mysqli_fetch_array($result1)){
-                        $monthnum = $row2[0];
-                        $data2 = $data2." [".$monthnum.", ".$weightArray2[$counter2].", ".$weightArray2[$counter2 + 1].", ".$weightArray2[$counter2 + 2]."],\n\r";
+                        $monthnum = $row2[0] - 2;
+						if($monthnum == 1){
+							$monthnum = 'Jan';
+						}
+						if($monthnum == 2){
+							$monthnum = 'Feb';
+						}
+						if($monthnum == 3){
+							$monthnum = 'Mar';
+						}
+						if($monthnum == 4){
+							$monthnum = 'Apr';
+						}
+						if($monthnum == 5){
+							$monthnum = 'May';
+						}
+						if($monthnum == 6){
+							$monthnum = 'Jun';
+						}
+						if($monthnum == 7){
+							$monthnum = 'Jul';
+						}
+						if($monthnum == 8){
+							$monthnum = 'Aug';
+						}
+						if($monthnum == 9){
+							$monthnum = 'Sep';
+						}
+						if($monthnum == 10){
+							$monthnum = 'Oct';
+						}
+						if($monthnum == 11){
+							$monthnum = 'Nov';
+						}
+						if($monthnum == 12){
+							$monthnum = 'Dec';
+						}
+						
+                        $data2 = $data2." ['".$monthnum."', ".$weightArray2[$counter2].", ".$weightArray2[$counter2 + 1].", ".$weightArray2[$counter2 + 2]."],\n\r";
 						echo "\n\r";
 						$counter2 = $counter2 + 3;
                       }

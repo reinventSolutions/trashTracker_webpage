@@ -1,10 +1,20 @@
-<?php include "../../DB/dbinfo.php"; ?>
-<?php session_start();?>
+<?
+if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we expired?
+    //redirect to logout.php
+    header('Location: logout.php'); //change yoursite.com to the name of you site!!
+} else{ //if we haven't expired:
+    $_SESSION['last_activity'] = time(); //this was the moment of last activity.
+}
 
-<?php
-  session_start();
+$_SESSION['last_activity'] = time(); //your last activity was now, having logged in.
+$_SESSION['expire_time'] = 1*10*1; //expire time in seconds: three hours (you must change this
+
+php include "../../DB/dbinfo.php";
+
+session_start();
+
   if($_SESSION['logged_in'] != true)
-    header("Location: index.php"); 
+    header("Location: index.php");
 ?>
 
 <!DOCTYPE html>
@@ -29,19 +39,19 @@
     <!--GRAPH-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- BUTTON FUNCTIONS FOR GOOGLE.CHARTS -->
-	<script type="text/javascript" src="../js/button.js"></script>
-	<script type="text/javascript" src="../js/nchouse.js"></script>	
+    <script type="text/javascript" src="../js/button.js"></script>
+    <script type="text/javascript" src="../js/nchouse.js"></script>
 		<!--FUNCTIONS FOR IMAGE HOUSE FLIPS/THUMBS STACK-->
 		<!-- <script type="text/javascript" src="../js/ratio.js"></script> -->
 		<?php include "comparison.php"; ?>
 		<script type = "text/javascript">
-        //GENERAL INFO YOUR RATIO 
+        //GENERAL INFO YOUR RATIO
         ratioInfo();
         function ratioInfo(){
         var owner = "<?php echo $housecompare ?>";
         var neighbor = "<?php echo $neighborcomparison?>";
         var elem = document.createElement("img")
-        document.getElementById("yourratiobig").appendChild(elem).style.width = "50%";
+        document.getElementById("yourratiobig").appendChild(elem).style.width = "25%";
         if(owner < neighbor)
           elem.src = '../images/orangehouse.png';
         else
@@ -52,7 +62,7 @@
           var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
           var elem = document.createElement("img")
-          document.getElementById("thumbupdown").appendChild(elem).style.width = "50%";
+          document.getElementById("thumbupdown").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
          elem.src = '../images/thumb.png';
         else
@@ -80,7 +90,7 @@
         else
            elem.innerHTML = "<b>more</b>";
         }
-        //MAIN RATIO 
+        //MAIN RATIO
         function nctext1(){
           var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
@@ -117,7 +127,7 @@
         }
         switchImageN1();
         function switchImageN1(){
-          var owner = <?php echo $housecompare ?>; 
+          var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse1").appendChild(elem).style.width = "25%";
@@ -128,7 +138,7 @@
         }
         switchImageN2();
         function switchImageN2(){
-          var owner = "<?php echo $housecompare ?>"; 
+          var owner = "<?php echo $housecompare ?>";
           var neighbor = "<?php echo $neighborcomparison?>";
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse2").appendChild(elem).style.width = "25%";
@@ -139,7 +149,7 @@
         }
         switchImageN3();
         function switchImageN3(){
-          var owner = "<?php echo $housecompare ?>"; 
+          var owner = "<?php echo $housecompare ?>";
           var neighbor = "<?php echo $neighborcomparison?>";
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse3").appendChild(elem).style.width = "25%";
@@ -150,7 +160,7 @@
         }
         switchImageN4();
         function switchImageN4(){
-          var owner = "<?php echo $housecompare ?>"; 
+          var owner = "<?php echo $housecompare ?>";
           var neighbor = "<?php echo $neighborcomparison?>";
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse4").appendChild(elem).style.width = "25%";
@@ -161,7 +171,7 @@
         }
         switchImageN5();
         function switchImageN5(){
-          var owner = "<?php echo $housecompare ?>"; 
+          var owner = "<?php echo $housecompare ?>";
           var neighbor = "<?php echo $neighborcomparison?>";
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse5").appendChild(elem).style.width = "25%";
@@ -173,7 +183,7 @@
 		</script>
 		<script>
 		$(document).ready(function(){
-			
+
 		$("#neighborInput").click(function(){
 			$("#nav1").hide();//Closest
 			$("#nav3").hide();//City
@@ -191,30 +201,30 @@
 		});
 	})
 	</script>
-		       
+
 </head>
 
 <!--BEGIN MAIN CONTENT-->
 
-<body><!--START OF BODY-->     
+<body><!--START OF BODY-->
   <header style=""> <!--START OF HEADER-->
-    <!--START OF NAV-->  
+    <!--START OF NAV-->
     <?php include "temps/header.php"; ?>
   </header><!--END OF HEADER-->
 
   <!-- GENERAL INFO
-  php include "temps/gen2.php"; 
-  --> 
+  php include "temps/gen2.php";
+  -->
   <?php include "temps/gen2.php"; ?>
-  
-  <!--RIGHT--> 
+
+  <!--RIGHT-->
   <div class="container" id="info" style="background-color:#b4b4b4; padding: 25px; width:850px; height:auto;">
    <div class="row">
    <!--Historical Comparison-->
     <?php include "temps/historicalComp.php"; ?>
 	<div id="DData">
 
-	</div> 
+	</div>
 
 
    <div class="row">
@@ -226,7 +236,7 @@
 
 <footer><!--FOOTER CONTAINER-->
  <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
-    <a class="nav-link" href="http://trackingtrash.com/" target="blank">Contact Us</a> 
+    <a class="nav-link" href="http://trackingtrash.com/" target="blank">Contact Us</a>
     |
     <a class="nav-link" href="">Privacy and Policy</a>
   </nav><!--END BOTTOM NAVBAR-->
@@ -245,9 +255,9 @@
   $("#DData").load("graph1.php");
   $("#chart_div").fadeIn(1000);
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
           integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>
 </html>
