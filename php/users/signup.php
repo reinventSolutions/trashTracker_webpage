@@ -1,3 +1,15 @@
+<!-- 
+    #######################################################
+    FILENAME: signup.php
+    OVERVIEW: PHP page for Trash Tracker's new users.
+    PURPOSE: Will allow users to input ID token, name, email
+    and password. If ID token is in the database and  sign 
+    up is successful redirect to index.php.
+    If not will display error. 
+    Update and Return button calls register.php to validate 
+    ID token.
+    #######################################################
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

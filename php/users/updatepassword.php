@@ -1,5 +1,4 @@
 <!--  Three Fields, Recovery Password, New Password and Confirm Password-->
-
 <!-- 3. THIS IS WHERE THEY ENTER RECOVERY PASSWORD AND NEW PASSWORD AND CONFIRM Password
         SENDS THEM TO passwordUpdate.php IN FORM-->
 
@@ -55,22 +54,26 @@
     </div>
       <div class="form-group">
          <label for="Recovery">Enter Email</label>
-         <input type="text" class="form-control" name="recoveryEmail" id="recoveryEmail" aria-describedby="recovery" placeholder="Enter Email">
+         <input type="text" class="form-control" name="recoveryEmail" id="recoveryEmail" 
+                aria-describedby="recovery" placeholder="Enter Email">
       </div>
 
      <div class="form-group">
         <label for="Recovery">Enter Recovery Password</label>
-        <input type="password" class="form-control" name="recoveryPassword" id="recoveryPassword" aria-describedby="recovery" placeholder="Enter Recovery Password">
+        <input type="password" class="form-control" name="recoveryPassword" id="recoveryPassword" 
+               aria-describedby="recovery" placeholder="Enter Recovery Password">
      </div>
 
      <div class="form-group">
         <label for="Recovery">Enter New Password</label>
-        <input type="password" class="form-control" name="newPassword" id="newPassword" aria-describedby="recovery" placeholder="Enter Email">
+        <input type="password" class="form-control" name="newPassword" id="newPassword" 
+               aria-describedby="recovery" placeholder="Enter new password">
      </div>
 
      <div class="form-group">
         <label for="Recovery">Confirm New Password</label>
-        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" aria-describedby="recovery" placeholder="Enter Email">
+        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" 
+               aria-describedby="recovery" placeholder="Confirm Password">
      </div>
 
      <p class="img_center">

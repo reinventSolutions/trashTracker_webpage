@@ -11,7 +11,23 @@ body{
     background-repeat: repeat-n;
     background-size: cover;
 }
-
+.splasher{
+    background-color: #fefcfe;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    width: 100vw;
+    height: 100vh;   
+    text-align: center;
+}
+.splashButton{
+    float: center;
+    width:250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 /*HEADER*/
 header{
     margin-bottom:100px;
@@ -104,8 +120,10 @@ nav{
     height: 500px !important;
 }
 /*NORMAL COMP*/
-.thumbs{
-    margin: 5px;
+#thumbs{
+    padding:0;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
 .hcHead{
@@ -131,7 +149,7 @@ nav{
     height: auto;
     margin: 12px;
     padding: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }  
 .box002{
     float: left;
@@ -139,7 +157,7 @@ nav{
     height: auto;
     margin: 5px;
     padding: 10x;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 .gc{
     display: flex;
@@ -156,11 +174,29 @@ nav{
     text-align: center;
     border-radius: 20px;
     text-align: center;
+    display: none;
 } 
+/*
+#cig{
+    display: none;
+}
+#aluminum{
+    display: none;    
+}
+#egg{
+    display: none;
+}
+#mirror{
+    display: none;
+}
+#glass{
+    display: none;
+}*/
 /*FOOTER*/
 footer{
     background-color:rgba(255, 255, 255, 0.527) ;
 }
+
 /*STLYING
 colors: ['#0066ff', '#808080', '#7aac3b']
 */
@@ -207,4 +243,4 @@ hr{
     width: 70%;
     background-color: #000000; 	/* Set fill color of line */
 }
-
+/* TRANSITION */

@@ -1,6 +1,18 @@
-<!-- 2. THIS WILL TAKE THEIR RECOVERY EMAIL AND MAIL THEM A RANDOM
-				RECOVERY PASSWORD, HEADER TO updatePassword.php-->
-
+<!-- 
+    #######################################################
+    /*
+     2. THIS WILL TAKE THEIR RECOVERY EMAIL AND MAIL THEM A RANDOM
+        RECOVERY PASSWORD, HEADER TO updatePassword.php
+    */
+    FILENAME: forgetPassword.php
+    OVERVIEW: PHP page for Trash Tracker's user's retreve 
+    thier password.
+    PURPOSE: Will allow users to input email related to their 
+    account to set a new password. An email will be sent to 
+    their account with a token password. 
+    Send Recovery Email button calls forgotPasswordUpdate.php
+    #######################################################
+-->
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

@@ -1,28 +1,64 @@
+<!-- 
+    #######################################################
+    FILENAME: closest.php
+    OVERVIEW: Displays Normal Comparison
+    PURPOSE: Closest neighbors, neighborhood, and city 
+    comparison.
+    #######################################################
+-->
+<!-- CONTENT FOR NORM COMP -->
 <?php include "routeavg.php"; ?>
 <?php include "cityavg.php"; ?>
+
+<!-- NC DIVS -->
 <script>
   $("#nav1").hide();//Closest
   $("#nav2").hide();//Neighborhood
   $("#nav3").hide();//City
 </script>
 <div class="hcHead" style="">   
-   <strong class ="swhite">NORMAL COMPARISON</strong><br/>
+   <strong class ="swhite">COMPARISON WITH OTHERS</strong><br/>
 </div>
-  <div class="col-sm" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
-    <h4>How do you stack up?</h4>
-    <p id > We calculated the percent of waste you recycled this month, and found that you recycled 
-    <span id="tratio1">
+<!-- THUMBS -->
+<div class="col" id="thumbs" style="background-color:#FFFFFF; margin: 5px; text-align: center;">
+<div id="thumb1" style="background-color:#FFFFFF;">
+  <!--thumbs-->
+  <h4>How do you stack up?</h4>
+    <div class="thumbs" id="thumbupdown" onload="thumbs()" style="">
+      <script>thumbs();</script>
+      <br>
+      <span id="tratio1">
       <script> ttext1();</script>
-    </span> and sent 
-    <span id="tratio2">
-      <script> ttext2();</script>
-    </span> landfill than your neightbors did. </p>
-    <div class="thumbs" id="thumbupdown" onload="thumbs()" style="text-align: center;">
-      <script> thumbs();</script>
+    </span> 
     </div><!--.thumbs-->
-   </div><!--.col-->
-  <!--NORMAL COMP INFO--> 
-  <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5px;text-align: center;">
+  </div><!--.col-->
+
+  <div class="col" id="thumb2" style="background-color:#FFFFFF;">
+  <!--thumbs-->
+  <b>How do you stack up with all <br> those in your neighborhood?</b>
+    <div class="thumbs" id="thumbs2" onload="thumbsN()" style="">
+      <script> thumbsN();</script>
+      <br>
+      <span id="tratio2">
+      <script> ttext2();</script>
+      </span> 
+    </div><!--.thumbs-->
+  </div><!--.col-->
+  
+  <div class="col" id="thumb3" style="background-color:#FFFFFF;">
+  <!--thumbs-->
+  <h6>How do you stack up in the city?</h6>
+    <div class="thumbs" id="thumbs3" onload="thumbs()" style="">
+      <script> thumbsC();</script>
+      <br>
+      <span id="tratio3">
+      <script> ttext3();</script>    
+      </span> 
+    </div><!--.thumbs-->
+  </div><!--.col-->
+  </div>
+
+<div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5px;text-align: center;">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="closestInput" data-toggle="tab" href="" role="tab" aria-controls="home" aria-selected="true">Closest</a>
@@ -34,11 +70,11 @@
       <a class="nav-link" id="cityInput" data-toggle="tab" href="" role="tab" aria-controls="contact" aria-selected="false">City</a>
     </li>
   </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="" role="tabpanel" aria-labelledby="home-tab"></div>
-  <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="profile-tab"></div>
-  <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="contact-tab"></div>
-</div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="" role="tabpanel" aria-labelledby="home-tab"></div>
+    <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="profile-tab"></div>
+    <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="contact-tab"></div>
+  </div>
     <!--HOUSE SCRIPT-->
     <br/>
     <span id="mr">
@@ -66,27 +102,27 @@
        <div class="mew" id="orangegreenhouse1">
         <script> switchImageN1(); </script>
         <br>
-        <?php echo $_SESSION["N1"]; ?> 
+        <?php echo $_SESSION["N1add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse2">
         <script> switchImageN2(); </script>
         <br>
-        <?php echo $_SESSION["N2"]; ?> 
+        <?php echo $_SESSION["N2add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse3">
         <script> switchImageN3(); </script>
         <br>
-        <?php echo $_SESSION["N3"]; ?>
+        <?php echo $_SESSION["N3add"]; ?>
       </div>
       <div class="mew" id="orangegreenhouse4">
         <script> switchImageN4(); </script>
         <br>
-        <?php echo $_SESSION["N4"]; ?> 
+        <?php echo $_SESSION["N4add"]; ?> 
       </div>
       <div class="mew" id="orangegreenhouse5">
         <script> switchImageN5(); </script>
         <br>
-        <?php echo $_SESSION["N5"]; ?> 
+        <?php echo $_SESSION["N5add"]; ?> 
       </div>
      </div>
 	 
@@ -103,8 +139,8 @@
         <?php echo $_SESSION["houseCount"]; ?>
       </p>
       <!--ALL HOUSES ON SAME ROUTE-->
-
 	 </div>
+
 	 <div id = "nav3">
 	   <p style="text-align:left">
 		We calculated the percentage of waste for those in the same city as you for the week, and here is the average for those in the same city.

@@ -27,12 +27,12 @@
 </nav>
   <div class="container">
   <p class="title"> Upload Results </p>
-    <form enctype = "multipart/form-data" method = "post" action = "upload.php">
+    <form enctype = "multipart/form-data" method = "post" action = "TrashTrackerUpload.php">
       <label for="exampleInputEmail1">Number of lines to input</label>
         <input type="number" class="form-control" name = "number" aria-describedby="emailHelp" placeholder="Number"><br />
        <div class="form-group"> 
       <label for="file-upload" class = "custom-file-upload" accept = ".csv, .xls, .xlsx">Attach File</label><br />
-       <input type="file" id = "file-upload" name = "file-upload" size = "20" placeholder = "Filename"><br />
+       <input type="file" id = "file-upload" name = "file-upload" placeholder = "Filename"><br />
        <p class="help-block">Only .csv files can be imported at this time.</p>
        </div> 
     <div class="col-md-4 center-block">

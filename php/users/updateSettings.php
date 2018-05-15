@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+	FILENAME: updateSettings.php
+	OVERVIEW: PHP to update user profile settings.
+	PURPOSE: Updates user information in the database. Sends
+	an email to the user.
+    #######################################################
+-->
 <?php include "../../../DB/dbinfo.php"; ?>
 <?php
 	session_start();
@@ -23,7 +31,8 @@
 		exit();
 	}
 	
-		$newPassword = $_POST['newPassword'];
+		$newPassword1 = $_POST['newPassword'];
+		$newPassword = password_hash($newPassword1, PASSWORD_DEFAULT);
 		$newName = $_POST['newName'];
 		$newEmail = $_POST['newEmail'];
 		$updateFailed = false;
@@ -38,8 +47,9 @@
 		$userName = $row[2];
 		
 		//if a field has input
-		if($newPassword != '' || $newEmail != '' || $newName != ''){		
-			if($newPassword != '' && $newPassword != $pass){
+		if($newPassword1 != '' || $newEmail != '' || $newName != ''){		
+			if($newPassword1 != '' && $newPassword != $pass){
+				
 				$query = "UPDATE Users SET password = '$newPassword' WHERE email = '$current'";
 				$q = mysqli_query($connection, $query);	
 				if($newEmail == '' && $newName == ''){

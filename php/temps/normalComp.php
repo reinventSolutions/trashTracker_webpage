@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+    FILENAME: normalComp.php
+    OVERVIEW: Displays Normal Comparison
+    PURPOSE: Closest neighbors, neighborhood, and city 
+    comparison.
+    #######################################################
+-->
 <div class="col" style="background-color:#FFFFFF; margin: 5px;"><br/><!--thumbs-->
     <h4>How do you stack up?</h4>
     <p> We calculated the percent of waste you recycled this month, and found that you recycled more and 
@@ -10,17 +18,18 @@
   <!--NORMAL COMP INFO--> 
   <div class="col-sm-8" id ="yourratio" style="background-color:#FFFFFF; margin: 5;text-align: center;">
 	<script>
+	// May not need this at all
 	$(document).ready(function(){
 		$("#closestInput").click(function(){
 			$("#closest").show();
-      $("nav1").show();
+            $("nav1").show();
 			$("#neighborhood").hide();
-      $("#nav2").hide();
+            $("#nav2").hide();
 			$("#city").hide();
 		});
 
 		$("#neighborInput").click(function(){
-      $("#neighborhood").show();
+            $("#neighborhood").show();
 			$("#closest").hide();
 			$("#city").hide();
 		});
@@ -31,18 +40,7 @@
 		});
 	});
   </script>
-  <!--
-	<ul class="nav nav-tabs">
-      <li class="nav-item">
-        <input type = "button" id = "closestInput" class="nav-item nav-link" value = "Closest"/>
-      </li>
-      <li class="nav-item">
-        <input type = "button" id = "neighborInput" class="nav-item nav-link" value = "Neighborhood"/>
-      </li>
-      <li class="nav-item">
-        <input type = "button" id = "cityInput" class="nav-item nav-link" value = "City"/>
-      </li>
-    </ul>-->
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="closestInput" data-toggle="tab" href="" role="tab" aria-controls="home" aria-selected="true">Closest</a>

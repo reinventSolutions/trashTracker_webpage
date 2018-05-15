@@ -1,3 +1,10 @@
+<!-- 
+    #######################################################
+    FILENAME: graph.php
+    OVERVIEW: Displays Weekly
+    PURPOSE: Pulls and passes data for comparison.php 
+    #######################################################
+-->
 <?php include "../../DB/dbinfo.php"; ?>
 
 <?php
@@ -40,13 +47,14 @@ if($_SESSION['logged_in'] != true)
 					  //BinID info
 					  $binIDquery = "SELECT Bin
 									 FROM Bins
-									 WHERE HouseID = $house";
+									 WHERE HouseID = '".$house."'";
 									  
 					  $fetchBinsID = mysqli_query($connection, $binIDquery);
+					   //Or die("<div><p>ERROR: Unable to execute query 1.</p>" . "<p>Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p></div>");
 					   $binIDArray = Array();
 					   while($row = mysqli_fetch_array($fetchBinsID)){
-						   $binIDArray[] = $row[0];
-             }
+					      $binIDArray[] = $row[0];
+					    }
              
 					  $binID1 = $binIDArray[0];
 					  $binID2 = $binIDArray[1];
@@ -58,7 +66,7 @@ if($_SESSION['logged_in'] != true)
 								  WHERE HouseID = ( 
 									SELECT House
 									FROM Houses
-									WHERE House ='$house')";
+									WHERE House ='".$house."')";
 										   
 					   $fetchBins = mysqli_query($connection, $getBins);
 					   $storeArray = Array();
@@ -70,7 +78,7 @@ if($_SESSION['logged_in'] != true)
 					   $bin2 = $storeArray[1];
 					   $bin3 = $storeArray[2];
 						
-					   $binData1 = "SELECT DISTINCT Wk
+					   $binData1 = "SELECT DISTINCT WeightDate
 									FROM Weights
 									WHERE (
 									binID = '$bin1'
@@ -85,7 +93,7 @@ if($_SESSION['logged_in'] != true)
 					  $binData2 = "SELECT BinWeight 
 								   FROM Weights 
 								   WHERE (binID ='$bin1' OR binID ='$bin2' OR binID ='$bin3') 
-								   AND Wk > '$lower' AND Wk < '$upper' 
+								   AND Wk >= '$lower' AND Wk <= '$upper' 
 								   ORDER BY Wk, binID ASC 
 								   LIMIT 12";
 					  
@@ -101,7 +109,7 @@ if($_SESSION['logged_in'] != true)
 					  */
 					  
 					   $data = "var data = new google.visualization.DataTable();\n\r"
-                      ."data.addColumn('number', 'Week');\n\r"
+                      ."data.addColumn('string', 'Week');\n\r"
                       ."data.addColumn('number', 'Recycling');\n\r\n\r"
                       ."data.addColumn('number', 'Trash');\n\r\n\r"
                       ."data.addColumn('number', 'Greenwaste');\n\r\n\r"
@@ -116,7 +124,7 @@ if($_SESSION['logged_in'] != true)
 					  $counter = 0;
                       while($row2 = mysqli_fetch_array($result1)){
                         $week = $row2[0];
-                        $data = $data." [".$week.", ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
+                        $data = $data." ['".$week."', ".$weightArray[$counter].", ".$weightArray[$counter + 1].", ".$weightArray[$counter + 2]."],\n\r";
 						echo "\n\r";
 						$counter = $counter + 3;
                       }
@@ -125,7 +133,8 @@ if($_SESSION['logged_in'] != true)
 				
 				
 				//Print data to check if data from database is loaded
-  				
+				//echo $data;
+				
 				$weightArray = array();
 				$storeArray = array();
 				mysqli_close($connection);

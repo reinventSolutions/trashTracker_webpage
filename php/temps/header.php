@@ -11,20 +11,17 @@
       <a href="users/settings.php"> 
        <button type="button" class="btn btn-outline-secondary" href="users/settings.php">Profile</button>
       </a>    
-      <!-- faaf 
-      <a href="users/logout.php"> 
-       <button type="button" class="btn btn-outline-secondary"  onclick="users/logout.php" href="">Logout</button>
-      </a>-->
-      <a href="#" data-toggle="modal" data-target="#logoutModal"> 
-          <button type="button" class="btn btn-outline-secondary">Logout</button>
-     </a>         
+      
+      <a href="#" class="btn btn-outline-secondary" data-toggle="modal" data-target="#logoutModal">
+        Logout
+     </a>
       </p>
   </div>
  </div>
  </div><!--container-fuild-->
 
  <!--LOGOUT MODAL -->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <!--LOGOUT HEADER-->
@@ -44,10 +41,8 @@
           <form action="users/logout.php" method="post">
             <input type="hidden" name="" value="" />
             <!--LOGOUT-->
-            <button type="button" class="btn btn-danger">
-              <a id="logout_link" class="link" href="users/logout.php">Logout</a>
-            </button>
-            <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-danger" id="logout_link" href="users/logout.php">Logout</a>
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
             <!--<button class="btn btn-default" data-dismiss="modal">Cancel</button>-->
           </form>
         </div>
