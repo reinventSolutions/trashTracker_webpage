@@ -25,7 +25,7 @@
   
 
 <!--SETTING-->
-<div class="container" style="background-color:#b4b4b4; margin-top: 20px;  
+<div class="container" style="background-color:#b4b4b4; margin-top: 20px; margin-bottom: 100px;  
                               padding: 20px; width: 80%;">
 <div class="card border-dark mb-3" style="max-width: auto;">
   <div class="card-header"><h4 class="img_center">Update Trash Tracker Account</h4></div>

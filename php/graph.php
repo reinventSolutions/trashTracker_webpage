@@ -1,3 +1,10 @@
+<!-- 
+    #######################################################
+    FILENAME: graph.php
+    OVERVIEW: Displays Weekly
+    PURPOSE: Pulls and passes data for comparison.php 
+    #######################################################
+-->
 <?php include "../../DB/dbinfo.php"; ?>
 
 <?php
@@ -86,7 +93,7 @@ if($_SESSION['logged_in'] != true)
 					  $binData2 = "SELECT BinWeight 
 								   FROM Weights 
 								   WHERE (binID ='$bin1' OR binID ='$bin2' OR binID ='$bin3') 
-								   AND Wk > '$lower' AND Wk < '$upper' 
+								   AND Wk >= '$lower' AND Wk <= '$upper' 
 								   ORDER BY Wk, binID ASC 
 								   LIMIT 12";
 					  

@@ -1,5 +1,18 @@
-<!-- 1. THIS IS WHERE THEY ENTER RECOVERY EMAIL, SENDS THEM
-      TO forgotPasswordUpdate.php-->
+<!-- 
+    #######################################################
+    /*
+      1.THIS IS WHERE THEY ENTER RECOVERY EMAIL, SENDS THEM
+      TO forgotPasswordUpdate.php
+    */
+    FILENAME: forgetPassword.php
+    OVERVIEW: PHP page for Trash Tracker's user's retreve 
+    thier password.
+    PURPOSE: Will allow users to input email related to their 
+    account to set a new password. An email will be sent to 
+    their account with a token password. 
+    Send Recovery Email button calls forgotPasswordUpdate.php
+    #######################################################
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

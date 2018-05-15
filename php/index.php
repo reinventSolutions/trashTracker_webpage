@@ -1,3 +1,13 @@
+<!-- 
+    #######################################################
+    FILENAME: index.php
+    OVERVIEW: Login page for Trash Tracker
+    PURPOSE: Users to log in, sign up, or retreive password.
+    New Users calls users/signup.php
+    Forget password calls users/forgotPassword.php
+    Login calls users/login.php
+    #######################################################
+-->
 <html>
 <head>
  <meta charset="utf-8">
@@ -10,7 +20,7 @@
     <link rel="stylesheet" href="../css/stylesheet.css" >
     <!--CSS MEDIA QUERY-->
     <link rel="stylesheet" href="../css/stylesheet2.css">
-      <!-- ICONS https://material.io/icons/#ic_cloud-->
+    <!-- ICONS https://material.io/icons/#ic_cloud-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,15 +39,14 @@
  </div><!--ROW-->
 </div><!--container-fuild-->
 
-
 <!--SIGN IN-->
 <div class="container" style="background-color:#b4b4b4; margin-top: 25px; margin-bottom: 15%">
   <div class="row">      
    <div class="col-sm" style="background-color:#FFFFFF; margin: 5px; padding: 25px 10px; height:auto;">
-    <h3 class="img_center">Log into Trash Tracker</h3><br>
-    <div>
+    <h3 class="img_center">Log in to Trash Tracker</h3><br>
+    <div width="75%">
     <form action="users/login.php" method="post">
-      <div class="form-group">
+      <div class="form-group" >
       <!-- Testing Login Errors-->
       <div>
       <span style = "color: #ff0000;">
@@ -63,13 +72,16 @@
     </p>       		
     <p class = ""><a type = "checkbox" id = "needhelp"><font color = "#0066ff">Need Help?</font></a></p>
 		 <div id = "help">
-        For first time users, please enter the email and password the information provided by Trash Tracker pamplet to begin resgistration into the website.
-        <br/><br/>
-        For registered users, If you have forgotten your password please select "Forgot Password?" and we will help by sending you a temporary password to email address provided upon registration.
-        <br/><br/>
-        If you are continue to experience difficulties logging into the website or registering please contact us at <b>(760)750-3022</b>.
-        <br/><br/>
-		    <p class = ""><a type = "checkbox" color = "red" id = "hidehelp"><font color = "#0066ff">Hide</font></a></p>
+     For first time users, please enter the email and password information 
+     provided on your Trash Tracker pamphlet to begin registration into the website. 
+     <br/>
+     For registered users, If you have forgotten your password please select "Forgot Password?" and we will 
+     help by sending you a temporary password to the email address provided upon registration. 
+     <br/>
+     If you continue to experience difficulties logging into the 
+     website or registering please contact us at <b>(760)750-3022</b>.
+      <br/>
+		  <p class = ""><a type = "checkbox" color = "red" id = "hidehelp"><font color = "#0066ff">Hide</font></a></p>
 		 </div>
     </div>
       <p class="img_center">
@@ -86,8 +98,10 @@
 	</div>
 
   </div>
-  <div class="col-sm-6" style="background-color:#b4b4b4; margin: 5px; padding: 10px;">
-    <p class="img_center"><img src="../images/house.png" class="resize1" width= "100%"; style="padding-top:auto; padding-bottom: auto;"></p>
+  <div class="col" style="background-color:#FFF; margin: 5px; padding: 10px; width:20%; padding-top:5%;">
+    <p class="img_center"><img src="../images/homeBins.png" class="" width= "55%"></p>
+    <!-- <p class="img_center"><img src="../images/house.png" class="" width= "55%"></p> -->
+
   </div><!--.col-sm-->
  </div><!--.row-->
 </div><!--.container-->
@@ -96,24 +110,24 @@
 <footer><!--FOOTER CONTAINER-->
 <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
 
-          <a class="nav-link" href="contact">Contact Us</a> 
+          <a class="nav-link" href="http://trackingtrash.com/" target="blank">Contact Us</a> 
           |
           <a class="nav-link" href="">Privacy and Policy</a>
       </div>
   </nav><!--END BOTTOM NAVBAR-->
 </footer><!--.FOOTER-->
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS 
-  <script type="text/javascript" src="js/login.js"></script>-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- Jquery for NEED HELP  -->
   <script>
   $("#help").hide();
   $(document).ready(function(){
-	$('#needhelp').click(function(){
-	$("#help").show();
-	});	
-	$('#hidehelp').click(function(){
-	$("#help").hide();
-	});	
+	  $('#needhelp').click(function(){
+	    $("#help").show();
+	  });	
+	  $('#hidehelp').click(function(){
+	    $("#help").hide();
+	  });	
 	})
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -123,5 +137,7 @@
 
 <!--
     DENISE THUY VY NGUYEN
+    KEVIN TRUEBE
+    SCOTTY CARDWELL
     2/1/2018
 -->

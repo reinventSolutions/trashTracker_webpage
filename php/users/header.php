@@ -1,4 +1,12 @@
- <!-- HEADER -->
+<!-- 
+    #######################################################
+    FILENAME: header.php
+    OVERVIEW: PHP page for Trash Tracker's index and related 
+    header, "Welcome to Trash Tracker".
+    PURPOSE: Header for entry of Trash Tracker.
+    #######################################################
+-->
+<!-- HEADER -->
  <div class="row"></div>
  <div class="" id="id" style="background-color:#FFF"><!--container-fuild-->
     <div class="flexNavContainer" style="background-color:#FFF;">

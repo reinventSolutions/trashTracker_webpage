@@ -1,3 +1,14 @@
+<!-- 
+    #######################################################
+    FILENAME: register.php
+    OVERVIEW: PHP page for Trash Tracker's new users.
+	PURPOSE: Will validate users input ID tokenIf ID token 
+	is in the database will allow user to sign up, and 
+	redirect to index.php. Also sends out an email to the 
+	users email that they have just registered. If not will 
+	display error and stay on signup.php. 
+    #######################################################
+-->
 <?php include "../../../DB/dbinfo.php"; ?>
 <?php
 

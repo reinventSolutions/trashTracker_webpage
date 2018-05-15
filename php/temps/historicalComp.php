@@ -1,7 +1,14 @@
+<!-- 
+    #######################################################
+    FILENAME: historicalComp.php
+    OVERVIEW: Displays Weekly, Monthly, &Yearly View
+    PURPOSE: Gets called in account.php 
+    #######################################################
+-->
 <!--Historical Comparison-->
 <div class="hcHead" style="">   
-   <strong class ="swhite">HISTORICAL COMPARISON</strong><br/>
-  </div>
+   <strong class ="swhite">HISTORICAL SELF-COMPARISON</strong><br/>
+</div>
 <div class="col" style="background-color:#FFFFFF; margin: 5px; height:auto;">
      <!-- <ul class="nav nav-tabs">
         <li class="nav-item">

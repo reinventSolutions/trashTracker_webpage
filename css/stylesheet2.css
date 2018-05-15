@@ -12,7 +12,6 @@
         height: auto; 
         overflow: hidden; // clearing 
      }
-
      .oneLeft{
         width: auto; 
         height: auto; 
@@ -32,8 +31,6 @@
         justify-content: flex-start;
     }
 }
-
-/**/
 
 /*HEADER*/
 @media screen and (max-width: 630px) {
@@ -65,7 +62,7 @@
      }
      .logoresize{
          width:180px;
-         margin-left: 0%;
+         margin-left: 2%;
      }
      .threel{
         padding: 10px;
@@ -73,13 +70,12 @@
         flex-wrap: nowrap;
         margin-right: 0%;
     }
-
      .container{
-		width: 90%;
+        width: 90%;
+        margin-bottom: 50px;
 		/*margin-left: 5% !important;
         margin-right: 5% !important; */
 	}
-     
      .hcGraph{
         padding: 5px; 
         width: 100%; 
@@ -97,8 +93,17 @@
         width: 100%;
         /*margin: 5px 18px 5px;*/
     }
+    #thumbs{
+        padding-top: 10%;
+        padding-bottom: 10%;s
+    }
 }
 
- 
+/* HIDES GAME */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+    #ttGame{ 
+        display: none; 
+    }   /* hide it elsewhere */
+}
 
 /*https://medium.freecodecamp.org/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053*/

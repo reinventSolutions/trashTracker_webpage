@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+    FILENAME: comparison.php
+    OVERVIEW: PHP for 5 cloest neighborhood
+    PURPOSE: Passes db info to closest.php for closest ratio.
+    #######################################################
+-->
+<!-- PHP FOR NORM COMP -->
 <?php include "graph.php" ?>
 <?php
   $connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
@@ -65,7 +73,6 @@ $_SESSION["N5add"] = $N5add;
     $_SESSION["N5"] = $N5ID;
  }
 */
- 
  $comparison = "SELECT (
                   SELECT SUM( BinWeight )
                   FROM Weights
@@ -101,8 +108,14 @@ $_SESSION["N5add"] = $N5add;
     $housecomp = mysqli_query($connection, $comparison);
     $housecomprow = mysqli_fetch_row($housecomp);
     $housecomparison = $housecomprow[0];
-    $housecompare = $housecomparison*100;
-    $housecompare = number_format($housecompare,0);
+	if($housecomparison == 1){
+		$housecompare = 0;
+	}
+	else{
+		$housecompare = $housecomparison*100;
+		}
+	//$housecompare = number_format($housecompare,0);
+    $housecompare = floor($housecompare);//We were off by 1% probably though rounding
 
 
     $_SESSION["HouseCompare"] = $housecompare;

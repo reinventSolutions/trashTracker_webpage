@@ -1,6 +1,13 @@
+<!-- 
+    #######################################################
+    FILENAME: cityAvg.php
+    OVERVIEW: City comparison
+    PURPOSE: PHP page that gets database information 
+	city comparison.
+    #######################################################
+-->
 <?php include "../../DB/dbinfo.php"; ?>
 <?php
-
 		/* Connect to MySQL and select the database. */
 		$connection = mysqli_connect($DBservername, $DBusername, $DBpassword);
 

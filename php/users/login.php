@@ -1,3 +1,12 @@
+<!-- 
+    #######################################################
+    FILENAME: login.php
+    OVERVIEW: PHP page for Trash Tracker login credentials.
+    PURPOSE: Will check users email and password and direct
+    to account.php if credentials are in the database, if 
+    not will display error. 
+    #######################################################
+-->
 <?php include "../../../DB/dbinfo.php"; ?>
 <html>
 <html lang="en">
@@ -60,7 +69,7 @@
           $highWeek = $row[0];
 		 
 		  $low = $highWeek - 4;
-		  $up = $highWeek + 1;
+		  $up = $highWeek;
 		  
 		  
           $pupResult = @mysqli_query($connection, $getNextPup);
@@ -75,8 +84,8 @@
           $_SESSION["Zip"] = $zip;
           $_SESSION["House"] = $house;
 		  $_SESSION["Email"] = $mail;
-		  $_SESSION["GraphLow"] = $low;
-		  $_SESSION["GraphUp"] = $up;
+		  $_SESSION["GraphLow"] = 14;
+		  $_SESSION["GraphUp"] = 19;
 
 		// Testing this code
 		if ($password == ''){
@@ -95,7 +104,7 @@
 		}
         else if((password_verify($password, $pass) && $mail == $email)&&($id !== $pass)){
               $_SESSION[logged_in] = true;
-              header("Location: ../account.php");//make chages here
+              header("Location: ../splash.php");//make chages here
             exit();
         }
 		else{
@@ -114,9 +123,7 @@
   </body>
 
   <!--
-    DENISE THUY VY NGUYEN
-    2/1/2018
-  SCOTTY CARDWELL
-  3/2/2018
+    SCOTTY CARDWELL
+    3/2/2018
   -->
 </html>

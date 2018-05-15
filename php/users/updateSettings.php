@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+	FILENAME: updateSettings.php
+	OVERVIEW: PHP to update user profile settings.
+	PURPOSE: Updates user information in the database. Sends
+	an email to the user.
+    #######################################################
+-->
 <?php include "../../../DB/dbinfo.php"; ?>
 <?php
 	session_start();

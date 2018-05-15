@@ -1,4 +1,12 @@
-    	   <?php include "../../DB/dbinfo.php"; ?>
+<!-- 
+    #######################################################
+    FILENAME: graph1.php
+    OVERVIEW: Displays Weekly
+    PURPOSE: 	Draws the chart on initial page load and pulls 
+		data using sessions for historicalComp.php weekly view. 
+    #######################################################
+-->
+			<?php include "../../DB/dbinfo.php"; ?>
 		   <?php session_start(); ?>
 		   <?php
             

@@ -1,3 +1,13 @@
+<!--  
+    #######################################################
+    FILENAME: account.php
+    OVERVIEW: PHP page for Trash Tracker main page.
+    PURPOSE: Data visualization for User Portal. Calls in 
+    different PHP pages with itself. Includes: historicalComp.php,
+    normalComp.php, and game.php and other graph data/ratio 
+    PHP pages.
+    #######################################################
+--> 
 <?
 if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we expired?
     //redirect to logout.php
@@ -12,7 +22,6 @@ $_SESSION['expire_time'] = 1*10*1; //expire time in seconds: three hours (you mu
 php include "../../DB/dbinfo.php";
 
 session_start();
-
   if($_SESSION['logged_in'] != true)
     header("Location: index.php");
 ?>
@@ -21,7 +30,8 @@ session_start();
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
     <title>Trash Tracker</title>
     <link rel="icon" href="../images/trashtracker.png"/>
     <!--BOOTSTRAP-->
@@ -40,10 +50,12 @@ session_start();
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- BUTTON FUNCTIONS FOR GOOGLE.CHARTS -->
     <script type="text/javascript" src="../js/button.js"></script>
-    <script type="text/javascript" src="../js/nchouse.js"></script>
 		<!--FUNCTIONS FOR IMAGE HOUSE FLIPS/THUMBS STACK-->
-		<!-- <script type="text/javascript" src="../js/ratio.js"></script> -->
+    <!-- PHP FILES FOR  NORMAL COMPARISON -->
 		<?php include "comparison.php"; ?>
+		<?php include "routeavg.php"; ?>
+		<?php include "cityavg.php"; ?>
+    <!-- JS SCRIPTS FOR NORMAL AND GENERAL INFO -->
 		<script type = "text/javascript">
         //GENERAL INFO YOUR RATIO
         ratioInfo();
@@ -53,7 +65,7 @@ session_start();
         var elem = document.createElement("img")
         document.getElementById("yourratiobig").appendChild(elem).style.width = "25%";
         if(owner < neighbor)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
         elem.src = '../images/greenhouse.png';
         }
@@ -62,11 +74,11 @@ session_start();
           var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
           var elem = document.createElement("img")
-          document.getElementById("thumbupdown").appendChild(elem).style.width = "25%";
+          document.getElementById("thumbupdown").appendChild(elem).style.width = "40%";
         if(neighbor < owner)
-         elem.src = '../images/thumb.png';
+         elem.src = '../images/normalComp/thumbsUp.png';
         else
-         elem.src = '../images/thumbDown.png';
+         elem.src = '../images/normalComp/thumbsDown.png';
         }
         function ttext1(){
           var owner = <?php echo $housecompare ?>;
@@ -75,9 +87,19 @@ session_start();
           //var more = "more";
           var elem = document.getElementById("tratio1");
         if(neighbor < owner)
-          elem.innerHTML = "<b>more</b>";
+          elem.innerHTML = "<b>Nice job!</b>";
         else
-          elem.innerHTML = "<b>less</b>";
+          elem.innerHTML = "<b>You can do better!</b>";
+        }
+        function thumbsN(){
+          var owner = <?php echo $housecompare ?>;
+          var route = <?php echo $routeTotalAverage?>;
+          var elem = document.createElement("img")
+          document.getElementById("thumbs2").appendChild(elem).style.width = "40%";
+        if(route < owner)
+         elem.src = '../images/thumb.png';
+        else
+         elem.src = '../images/rthumbDown.png';
         }
         function ttext2(){
           var owner = <?php echo $housecompare ?>;
@@ -85,17 +107,35 @@ session_start();
           //var less = "less";
           //var more = "more";
           var elem = document.getElementById("tratio2");
-        if(neighbor < owner)
-           elem.innerHTML = "<b>less</b>";
+        if(neighbor < owner)        
+          elem.innerHTML = "<b>Well done!</b>";
         else
-           elem.innerHTML = "<b>more</b>";
+          elem.innerHTML = "<b>You have alot of neighbors!</b>";
+        }
+        function thumbsC(){
+          var owner = <?php echo $housecompare ?>;
+          var city = <?php echo $cityTotalAverage?>;
+          var elem = document.createElement("img")
+          document.getElementById("thumbs3").appendChild(elem).style.width = "40%";
+        if(city < owner)
+         elem.src = '../images/thumb.png';
+        else
+         elem.src = '../images/rthumbDown.png';
+        }
+        function ttext3(){
+          var owner = <?php echo $housecompare ?>;
+          var neighbor = <?php echo $neighborcomparison?>;
+
+          var elem = document.getElementById("tratio3");
+        if(neighbor < owner)
+          elem.innerHTML = "<b>Amazing!</b>";
+        else
+          elem.innerHTML = "<b>It's okay, its the city!</b>";
         }
         //MAIN RATIO
         function nctext1(){
           var owner = <?php echo $housecompare ?>;
           var neighbor = <?php echo $neighborcomparison?>;
-          //var less = "less";
-          //var more = "more";
           var elem = document.getElementById("ncratio1");
         if(neighbor < owner)
           elem.innerHTML = "<b>more</b>";
@@ -120,8 +160,7 @@ session_start();
           document.getElementById("mr").appendChild(elem).style.width = "15%";
           document.getElementById("mr").style.aligncontent = "center";
         if(owner < neighbor)
-          elem.src = '../images/orangehouse.png';
-
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
@@ -132,7 +171,7 @@ session_start();
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse1").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
@@ -143,7 +182,7 @@ session_start();
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse2").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
@@ -154,7 +193,7 @@ session_start();
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse3").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
@@ -165,7 +204,7 @@ session_start();
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse4").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
@@ -176,47 +215,49 @@ session_start();
           var elem = document.createElement("img")
           document.getElementById("orangegreenhouse5").appendChild(elem).style.width = "25%";
         if(neighbor < owner)
-          elem.src = '../images/orangehouse.png';
+          elem.src = '../images/redhouse.png';
         else
           elem.src = '../images/greenhouse.png';
         }
 		</script>
+    <!-- Jquery for NORMAL COMP tab functions -->
 		<script>
 		$(document).ready(function(){
-
 		$("#neighborInput").click(function(){
 			$("#nav1").hide();//Closest
-			$("#nav3").hide();//City
-			$("#nav2").fadeIn(1000);
+      $("#nav3").hide();//City
+      $("#nav2").fadeIn(1000);
+      $("#thumb1").hide();//Closest
+      $("#thumb3").hide();//City
+      $("#thumb2").fadeIn(1000);
 		});
 		$("#closestInput").click(function(){
 			$("#nav2").hide();//Neighborhood
 			$("#nav3").hide()//City
-			$("#nav1").fadeIn(1000);
+      $("#nav1").fadeIn(1000);
+      $("#thumb2").hide();//Neighborhood
+			$("#thumb3").hide()//City
+      $("#thumb1").fadeIn(1000);
 		});
 		$("#cityInput").click(function(){
 			$("#nav1").hide();//Closest
 			$("#nav2").hide();//Neighborhood
-			$("#nav3").fadeIn(1000);
+      $("#nav3").fadeIn(1000);
+      $("#thumb1").hide();//Closest
+			$("#thumb2").hide();//Neighborhood
+			$("#thumb3").fadeIn(1000);
 		});
 	})
 	</script>
-
 </head>
 
 <!--BEGIN MAIN CONTENT-->
-
 <body><!--START OF BODY-->
   <header style=""> <!--START OF HEADER-->
     <!--START OF NAV-->
     <?php include "temps/header.php"; ?>
   </header><!--END OF HEADER-->
-
-  <!-- GENERAL INFO
-  php include "temps/gen2.php";
-  -->
-  <?php include "temps/gen2.php"; ?>
-
+    <?php include "temps/generalinfo.php"; ?>
   <!--RIGHT-->
   <div class="container" id="info" style="background-color:#b4b4b4; padding: 25px; width:850px; height:auto;">
    <div class="row">
@@ -225,14 +266,11 @@ session_start();
 	<div id="DData">
 
 	</div>
-
-
-   <div class="row">
+  <div class="row">
    <!--Normal Comparison-->
-   <?php include "closest.php"; ?>
-
-  <!--RECYCLE GAME-->
-  <?php include "temps/game.php"; ?>
+   <?php include "closest.php"; ?>  
+   <!--RECYCLE GAME-->
+   <?php include "temps/game.php"; ?>
 
 <footer><!--FOOTER CONTAINER-->
  <nav class="navbar fixed-bottom navbar-expand navbar-light bg-light"><!--START BOTTOM NAVBAR-->
@@ -243,7 +281,11 @@ session_start();
 </footer><!--.FOOTER-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!--<script type="text/javascript" src="../js/onload.js"></script>-->
+<!--<script type="text/javascript" src="../js/onload.js"></script>-->
+  <!-- Jquery for pages and divs to load data after 
+    **Has to be at the bottom or it won't work proberly
+    creates DIVS and then handles the display, functionality and display visualizaton
+  -->
   <script>
   $("#monthlybuttons").hide();
   $("#yearlybuttons").hide();
@@ -254,6 +296,8 @@ session_start();
   $("#chart_div").fadeOut(250);
   $("#DData").load("graph1.php");
   $("#chart_div").fadeIn(1000);
+  $("#thumb2").hide();//Thumb Neighborhood
+  $("#thumb3").hide();//Thumb City
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
           integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

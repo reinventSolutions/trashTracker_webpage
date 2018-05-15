@@ -1,4 +1,12 @@
-    	   <?php include "../../DB/dbinfo.php"; ?>
+<!-- 
+    #######################################################
+    FILENAME: monthlyGraph.php
+    OVERVIEW: Displays Monthly
+    PURPOSE: Pulls data on page load using sessions for 
+	historicalComp.php monthly view 
+    #######################################################
+-->  
+	<?php include "../../DB/dbinfo.php"; ?>
 		   <?php session_start(); ?>
 		   <?php
             
@@ -19,34 +27,16 @@
 					  $minWeek= "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk ASC LIMIT 1";
 					  $min = mysqli_query($connection, $minWeek);//Lowest Week
 					  $minRow = mysqli_fetch_row($min);
-					  $monthLow = $minRow[0];//3 for now
+					  $monthLow = $minRow[0];//1 for now
 					  
 					  
 					  $numOfMonths = "SELECT DISTINCT (Wk) FROM Weights ORDER BY Wk DESC LIMIT 1";
 					  $upperFloor = mysqli_query($connection, $numOfMonths);//HIGHEST MONTH AVAIL
 					  $row = mysqli_fetch_row($upperFloor);
-					  $monthUp2 = $row[0]; //should be 15
-					  $monthUp = ceil($monthUp2/4); //ceil of this makes 15/4 = 4
+					  $monthUp2 = $row[0]; //should be 18
+					  $monthUp = ceil($monthUp2/4); //ceil of this makes 18/4 = 5
 					  $monthUp3 = $monthLow + 3;
-					  
-					  //$monthLow = 0;
-					  
-					  //BinID info
-					  $binIDquery = "SELECT Bin
-									 FROM Bins
-									 WHERE HouseID = '".$house."'";
-									  
-					  $fetchBinsID = mysqli_query($connection, $binIDquery);
-					   $binIDArray = Array();
-					   while($row = mysqli_fetch_array($fetchBinsID)){
-						   $binIDArray[] = $row[0];
-             }
-             
-					  $binID1 = $binIDArray[0];
-					  $binID2 = $binIDArray[1];
-					  $binID3 = $binIDArray[2];
-					  //BinID info End
-					  
+					  				  
 					  $getBins = "SELECT Bin
 								  FROM Bins
 								  WHERE HouseID = ( 
@@ -61,29 +51,7 @@
 					   }
 					   $bin1 = $storeArray[0];
 					   $bin2 = $storeArray[1];
-					   $bin3 = $storeArray[2];
-					   
-					   /*Weekly View*/
-					   $binData1 = "SELECT DISTINCT Wk
-									FROM Weights
-									WHERE (
-									binID = '$bin1'
-									OR binID = '$bin2'
-									OR binID ='$bin3'
-									)
-									AND Wk >= '$monthLow'
-									AND Wk <= '$monthUp3'
-									ORDER BY Wk ASC";
-									
-					 //Gets all bin weights
-					  $binData2 = "SELECT BinWeight 
-								   FROM Weights 
-								   WHERE (binID ='$bin1' OR binID ='$bin2' OR binID ='$bin3') 
-								   AND Wk >= '$monthLow' AND Wk <= '$monthUp2' 
-								   ORDER BY Wk, binID ASC";
-					  
-					  $result1 = mysqli_query($connection, $binData1);//months
-					  $result2 = mysqli_query($connection, $binData2);//weights
+					   $bin3 = $storeArray[2];				   
 					  
 					   $data2 = "var data2 = new google.visualization.DataTable();\n\r"
                       ."data2.addColumn('string', 'Month');\n\r"
@@ -91,67 +59,88 @@
                       ."data2.addColumn('number', 'Trash');\n\r\n\r"
                       ."data2.addColumn('number', 'Greenwaste');\n\r\n\r"
 					  ."data2.addRows([\n\r";
-					  
-					  $weightArray = Array();
-					  while($row1 = mysqli_fetch_array($result2)){
-						  $weightArray[] = $row1[0];
-					  }
 					
-					$counter = 0;
-					$counter3 = 0;
-					$weightArray2 = Array();
-					while($counter3 < ($monthUp2 + 4)){
-					$weightArray2[$counter3] = $weightArray[$counter] + $weightArray[$counter+3] + $weightArray[$counter+6] + $weightArray[$counter+9];
-							$counter = $counter + 1;
-							$counter3 = $counter3 + 1;
-						if($counter % 3 == 0){
-							$weightArray2[$counter3] = $weightArray[$counter] + $weightArray[$counter+3] + $weightArray[$counter+6] + $weightArray[$counter+9];
-							$counter = $counter + 9;}
-					}				  
-					  				  
-					  $counter2 = 0;
+					  $q1 = "SELECT DISTINCT SUBSTRING_INDEX(WeightDate, '-', -2)
+							FROM Weights
+							WHERE Wk <= 16 
+							AND Wk > 1";
+							
+					  $result1 = mysqli_query($connection, $q1);
+					
                       while($row2 = mysqli_fetch_array($result1)){
-                        $monthnum = $row2[0] - 2;
-						if($monthnum == 1){
-							$monthnum = 'Jan';
-						}
-						if($monthnum == 2){
-							$monthnum = 'Feb';
-						}
-						if($monthnum == 3){
-							$monthnum = 'Mar';
-						}
-						if($monthnum == 4){
-							$monthnum = 'Apr';
-						}
-						if($monthnum == 5){
-							$monthnum = 'May';
-						}
-						if($monthnum == 6){
-							$monthnum = 'Jun';
-						}
-						if($monthnum == 7){
-							$monthnum = 'Jul';
-						}
-						if($monthnum == 8){
-							$monthnum = 'Aug';
-						}
-						if($monthnum == 9){
-							$monthnum = 'Sep';
-						}
-						if($monthnum == 10){
-							$monthnum = 'Oct';
-						}
-						if($monthnum == 11){
-							$monthnum = 'Nov';
-						}
-						if($monthnum == 12){
-							$monthnum = 'Dec';
+                        $monthnum = $row2[0];					
+						$bin1q = "SELECT (
+								  SELECT SUM( BinWeight ) 
+								  FROM Weights
+								  WHERE WeightDate LIKE '%$monthnum'
+								  AND BinID = '$bin1'
+								  ) AS Bin1Mo";
+						$binresult1 = mysqli_query($connection, $bin1q);
+						$bin1s = mysqli_fetch_row($binresult1);
+						$bin1sum = $bin1s[0];
+						
+						$bin2q = "SELECT (
+								  SELECT SUM( BinWeight ) 
+								  FROM Weights
+								  WHERE WeightDate LIKE '%$monthnum'
+								  AND BinID = '$bin2'
+								  ) AS Bin2Mo";
+								  
+						$binresult2 = mysqli_query($connection, $bin2q);
+						$bin2s = mysqli_fetch_row($binresult2);
+						$bin2sum = $bin2s[0];
+						
+						$bin3q = "SELECT (
+								  SELECT SUM( BinWeight ) 
+								  FROM Weights
+								  WHERE WeightDate LIKE '%$monthnum'
+								  AND BinID = '$bin3'
+								  ) AS Bin3Mo";
+						$binresult3 = mysqli_query($connection, $bin3q);
+						$bin3s = mysqli_fetch_row($binresult3);
+						$bin3sum = $bin3s[0];
+						
+						switch($monthnum){
+							case "Jan-18" :
+							$monthnum = "January, 2018";
+							break;
+							case "Feb-18" :
+							$monthnum = "February, 2018";
+							break;
+							case "Mar-18" :
+							$monthnum = "March, 2018";
+							break;
+							case "Apr-18" :
+							$monthnum = "April, 2018";
+							break;
+							case "May-18" :
+							$monthnum = "May, 2018";
+							break;
+							case "Jun-18" :
+							$monthnum = "June, 2018";
+							break;
+							case "Jul-18" :
+							$monthnum = "July, 2018";
+							break;
+							case "Aug-18" :
+							$monthnum = "August, 2018";
+							break;
+							case "Sep-18" :
+							$monthnum = "September, 2018";
+							break;
+							case "Oct-18" :
+							$monthnum = "October, 2018";
+							break;
+							case "Nov-18" :
+							$monthnum = "November, 2018";
+							break;
+							case "Dec-18" :
+							$monthnum = "December, 2018";
+							break;
 						}
 						
-                        $data2 = $data2." ['".$monthnum."', ".$weightArray2[$counter2].", ".$weightArray2[$counter2 + 1].", ".$weightArray2[$counter2 + 2]."],\n\r";
+                        $data2 = $data2." ['".$monthnum."', ".$bin1sum.", ".$bin2sum.", ".$bin3sum."],\n\r";
 						echo "\n\r";
-						$counter2 = $counter2 + 3;
                       }
                         $data2 = $data2."]);\n\r";
 					  /*End of Weekly View*/
@@ -162,7 +151,7 @@
 				$storeArray = array();
 				mysqli_close($connection);
 	?>
-				 <script type="text/javascript">
+	<script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 

@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+    FILENAME: routeavg.php
+    OVERVIEW: Neighborhood comparison
+    PURPOSE: PHP page that gets database information 
+	neighborhood comparison.
+    #######################################################
+-->
 <?php include "../../DB/dbinfo.php"; ?>
 <?php
 
@@ -53,7 +61,7 @@
 						$result2 = @mysqli_query($connection, $routeAvg);
 						$row2 = mysqli_fetch_row($result2);
 						$routeTotalAverage = $row2[0] * 100; //Average of other homes on same route
-					  $routeTotalAverage= number_format($routeTotalAverage,0);	
+					  	$routeTotalAverage= number_format($routeTotalAverage,0);	
 						$_SESSION['routeAverage'] = $routeTotalAverage;
 
 mysqli_close($connection);

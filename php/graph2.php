@@ -1,3 +1,11 @@
+<!-- 
+    #######################################################
+    FILENAME: graph2.php
+    OVERVIEW: Displays Weekly
+    PURPOSE: Updates data on jquery asynchronously for 
+	historicalComp.php weekly view  
+    #######################################################
+-->
 <?php include "../../DB/dbinfo.php"; ?>
 <?php session_start(); ?>
 <?php
@@ -18,18 +26,7 @@
 		$lower = $_POST['lowerValue'];
 		$upper = $_POST['upperValue'];
 	}
-	
-		$max = 16;
 
-	if($lower < 0){
-		$lower = $max - 5;
-		$upper = $max;  
-	}
-								
-	if($upper > 17){
-		$lower = 0;
-		$upper = 5;
-	}
 		$house = $_SESSION['House'];
 		
 		//BinID info
